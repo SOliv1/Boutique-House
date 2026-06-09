@@ -1,11 +1,12 @@
 <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
 
-## View live website [HERE](https://sjk-boutiqueado.herokuapp.com/)
+
 
 [![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml)
-[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml)
-[![Build Status](https://travis-ci.com/SOliv1/boutique_ado_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)
+
+<!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml)`
+`[![Build Status](https://travis-ci.com/SOliv1/boutique_ado_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)-->
 
 
 
