@@ -3,16 +3,16 @@
 
 
 
-[![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml)
+[![Jekyll site CI](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml)
 
-<!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml)`
-`[![Build Status](https://travis-ci.com/SOliv1/boutique_ado_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)-->
+<!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`
+`[![Build Status](https://travis-ci.com/SOliv1/boutique_house?branch=master)](https://travis-ci.com/SOliv1/boutique_house)-->
 
 
 
 ## Initial set up project 
 `pip3 install django`
-cd /workspace/.pip-modles/lib/python3.8/site-packages/`
+cd /workspace/.pip-modules/lib/python3.8/site-packages/`
 
 python -m pip install --upgrade pip setuptools wheel
 
@@ -22,7 +22,7 @@ python -m pip install --upgrade pip setuptools wheel
 
  - use a shortcut `cd -` to get back to the last directory that we were working in.
 
-`django-admin startproject boutique_ado .`
+`django-admin startproject boutique_house .`
 
 `touch .gitignore`
 
@@ -102,7 +102,7 @@ add the following:
 
 `EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'`
 
-WSGI_APPLICATION = 'boutique_ado.wsgi.application'`
+WSGI_APPLICATION = 'boutique_house.wsgi.application'`
 
     """
 test by going python.py manage.py runserver
@@ -167,6 +167,6 @@ to main core.css block.
 
 - add kit code: `<script src="https://kit.fontawesome.com/1e03de6694.js" crossorigin="anonymous"></script>` -->
 
-[![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml)
-[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml)
-[![Build Status](https://travis-ci.com/SOliv1/boutique_ado_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)
+[![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml)
+[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/_v1/actions/workflows/codeql-analysis.yml)
+[![Build Status](https://travis-ci.com/SOliv1/_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)

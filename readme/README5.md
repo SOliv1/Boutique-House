@@ -41,7 +41,7 @@
         First removing bag tools.
         Then changing the extra CSS file to one for the profiles app
 - Create the URL for this view.
-- Then include the URLs in the *project level* (Boutique_ado) file
+- Then include the URLs in the *project level* () file
 - finally create the profile template 
   - `templates/profiles/profile.html`
 - copy the checkout template this time and make a couple minor adjustments

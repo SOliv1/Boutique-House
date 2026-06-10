@@ -17,7 +17,7 @@ Go to:
   - export environment variables
   
         export STRIPE_PUBLIC_KEY=pk_test_
-        export STRIPE_SECRET_KEY=sk_test_
+        export STRIPE_SECRET_KEY=your_stripe_secret_key_here
   if not using gitpod you may need to look up the instructions on setting environemt variables called set on windows for your specific situation.
   - This should also work on OSX and Linux operating systems.  These will not be permanent. And you'll have to re-export them each time you start your workspace
     But if you're using gitpod you can make them permanent by going to your main workspaces page
@@ -53,7 +53,7 @@ Go to:
         os.environ.setdefault("STRIPE_PUBLIC_KEY", 'pk_test_')
 
     
-        os.environ.setdefault("STRIPE_SECRET_KEY", 'sk_test_')
+        os.environ.setdefault("STRIPE_SECRET_KEY", 'your_stripe_secret_key_here')
         
         Create success template along side of checkout.html template
         Go to init-_py and add details to that
@@ -64,7 +64,7 @@ Go to:
         by making sure that this sets the order total to zero instead of none.
     -   add credentials again:
             export STRIPE_PUBLIC_KEY=pk_test_
-            export STRIPE_SECRET_KEY=sk_test_
+            export STRIPE_SECRET_KEY=your_stripe_secret_key_here
 
                 test card no = 
                 4242424242424242
