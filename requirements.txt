@@ -26,4 +26,4 @@ wheel==0.43.0
 pytest
 pytest-django
 coverage
-codecov
+codecov-cli

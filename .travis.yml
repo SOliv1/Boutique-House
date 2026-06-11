@@ -19,6 +19,7 @@ before_script:
 
 script:
   - coverage run manage.py test
+  - coverage xml
 
 after_success:
-  - codecov
+  - codecovcli upload-process --fail-on-error -f coverage.xml
