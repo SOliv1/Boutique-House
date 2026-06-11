@@ -1,6 +1,25 @@
 # 🛍️ Boutique House
 
 ## 🚀 Live Site
+<p align="center">
+
+  <!-- Build Status -->
+  <a href="https://app.travis-ci.com/github/SOliv1/Boutique-House">
+    <img src="https://app.travis-ci.com/SOliv1/Boutique-House.svg?branch=master" alt="Build Status">
+  </a>
+
+  <!-- Coverage -->
+  <a href="https://codecov.io/gh/SOliv1/Boutique-House">
+    <img src="https://codecov.io/gh/SOliv1/Boutique-House/branch/master/graph/badge.svg" alt="Coverage">
+  </a>
+
+  <!-- Python -->
+  <img src="https://img.shields.io/badge/Python-3.8-3776AB?logo=python&logoColor=white" alt="Python">
+
+  <!-- Django -->
+  <img src="https://img.shields.io/badge/Django-6.0-092E20?logo=django&logoColor=white" alt="Django">
+
+</p>
 
 **[https://boutique-house-production.up.railway.app](https://boutique-house-production.up.railway.app)**
 
