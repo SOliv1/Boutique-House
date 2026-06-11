@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="loading-overlay" class="loader-preview">
+        <div class="loading-spinner" role="status" aria-live="polite">
+            <p class="loading-title mb-2">Processing your order...</p>
+            <p class="loading-message mb-4">Please wait while we confirm your payment.</p>
+            <div class="ring-loader" aria-hidden="true"></div>
+            <span class="sr-only">Processing your order</span>
+        </div>
+    </div>
+{% endblock %}

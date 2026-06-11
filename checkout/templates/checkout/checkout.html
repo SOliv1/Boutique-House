@@ -53,7 +53,7 @@
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">${{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0 small text-muted">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -65,9 +65,9 @@
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total | floatformat:2 }}</p>
-                        <p class="my-0">${{ delivery | floatformat:2 }}</p>
-                        <p class="my-0"><strong>${{ grand_total | floatformat:2 }}</strong></p>
+                        <p class="my-0">£{{ total | floatformat:2 }}</p>
+                        <p class="my-0">£{{ delivery | floatformat:2 }}</p>
+                        <p class="my-0"><strong>£{{ grand_total | floatformat:2 }}</strong></p>
                     </div>
                 </div>
             </div>
@@ -103,10 +103,17 @@
                     </fieldset>
                     <fieldset class="px-3">
                         <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                        <!-- A Stripe card element will go here -->
-                        <div class="mb-3" id="card-element"></div>
-                        <!-- Used to display form errors -->
-                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        {% if mock_stripe %}
+                            <div class="alert alert-info rounded-0" role="alert">
+                                <strong>Mock payment mode:</strong>
+                                no real payment will be taken. Submit the form to test the complete order process.
+                            </div>
+                        {% else %}
+                            <!-- A Stripe card element will go here -->
+                            <div class="mb-3" id="card-element"></div>
+                            <!-- Used to display form errors -->
+                            <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        {% endif %}
                         <!-- Pass the client secret to the view so we can get the payment intent id -->
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
                     </fieldset>
@@ -119,7 +126,9 @@
 							<span class="font-weight-bold">Adjust Bag</span>
 						</a>
 						<button id="submit-button" class="btn btn-black rounded-0">
-							<span class="font-weight-bold">Complete Order</span>
+							<span class="font-weight-bold">
+                                {% if mock_stripe %}Complete Test Order{% else %}Complete Order{% endif %}
+                            </span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>
@@ -128,25 +137,32 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>${{ grand_total|floatformat:2 }}</strong></span>
+                            {% if mock_stripe %}
+                                <span>Test total: <strong>£{{ grand_total|floatformat:2 }}</strong>. No charge will be made.</span>
+                            {% else %}
+							    <span>Your card will be charged <strong>£{{ grand_total|floatformat:2 }}</strong></span>
+                            {% endif %}
 						</p>
 					</div>
                 </form>
             </div>
         </div>
     </div>
-    <div id="loading-overlay">
-        <h1 class="text-light logo-font loading-spinner">
-            <span class="icon">
-                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-            </span>
-        </h1>
+    <div id="loading-overlay"{% if show_loader_preview %} class="loader-preview"{% endif %}>
+        <div class="loading-spinner" role="status" aria-live="polite">
+            <p class="loading-title mb-2">Processing your order...</p>
+            <p class="loading-message mb-4">Please wait while we confirm your payment.</p>
+            <div class="ring-loader" aria-hidden="true"></div>
+            <span class="sr-only">Processing your order</span>
+        </div>
     </div>
 {% endblock %}
 
 {% block postloadjs %}
     {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    {% if not mock_stripe %}
+        {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+        {{ client_secret|json_script:"id_client_secret" }}
+        <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    {% endif %}
 {% endblock %}

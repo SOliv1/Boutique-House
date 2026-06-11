@@ -1,13 +1,25 @@
 Hello {{ order.full_name }}!
 
-This is a confirmation of your order at Boutique Ado. Your order information is below:
+This is a confirmation of your order at Boutique House. Your order information is below:
 
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
-Order Total: ${{ order.order_total }}
-Delivery: ${{ order.delivery_cost }}
-Grand Total: ${{ order.grand_total }}
+YOUR ORDER
+{% for item in order.lineitems.all %}
+{{ item.product.name }}
+{% if item.product.colour_finish %}Colour / Finish: {{ item.product.colour_finish }}
+{% endif %}{% if item.product_size %}Size: {{ item.product_size|upper }}
+{% endif %}SKU: {{ item.product.sku }}
+Quantity: {{ item.quantity }}
+Unit Price: £{{ item.product.price }}
+Line Total: £{{ item.lineitem_total }}
+
+{% endfor %}
+ORDER SUMMARY
+Order Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Grand Total: £{{ order.grand_total }}
 
 Your order will be shipped to {{ order.street_address1 }} in {{ order.town_or_city }}, {{ order.country }}.
 
@@ -19,5 +31,5 @@ Thank you for your order!
 
 Sincerely,
 
-Boutique Ado
+Boutique House
 

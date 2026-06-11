@@ -7,12 +7,12 @@
 
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripePublicKey);
+var stripe = Stripe(stripePublicKey, {locale: 'en-GB'});
 var elements = stripe.elements();
 var style = {
     base: {
         color: '#000',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontFamily: '"Plus Jakarta Sans", Arial, sans-serif',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         '::placeholder': {
@@ -24,7 +24,10 @@ var style = {
         iconColor: '#dc3545'
     }
 };
-var card = elements.create('card', {style: style});
+var card = elements.create('card', {
+    style: style,
+    hidePostalCode: true
+});
 card.mount('#card-element');
 
 // Handle realtime validation errors on the card element
@@ -45,6 +48,21 @@ card.addEventListener('change', function (event) {
 
 // Handle form submit
 var form = document.getElementById('payment-form');
+
+function restoreCheckoutForm(message) {
+    if (message) {
+        $('#card-errors').html(`
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${message}</span>
+        `);
+    }
+    $('#payment-form').show();
+    $('#loading-overlay').hide();
+    card.update({disabled: false});
+    $('#submit-button').attr('disabled', false);
+}
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
@@ -76,6 +94,7 @@ form.addEventListener('submit', function(ev) {
                         line2: $.trim(form.street_address2.value),
                         city: $.trim(form.town_or_city.value),
                         country: $.trim(form.country.value),
+                        postal_code: $.trim(form.postcode.value),
                         state: $.trim(form.county.value),
                     }
                 }
@@ -94,25 +113,25 @@ form.addEventListener('submit', function(ev) {
             },
         }).then(function(result) {
             if (result.error) {
-                var errorDiv = document.getElementById('card-errors');
-                var html = `
-                    <span class="icon" role="alert">
-                    <i class="fas fa-times"></i>
-                    </span>
-                    <span>${result.error.message}</span>`;
-                $(errorDiv).html(html);
-                $('#payment-form').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
-                card.update({ 'disabled': false});
-                $('#submit-button').attr('disabled', false);
+                restoreCheckoutForm(result.error.message);
+            } else if (result.paymentIntent &&
+                       result.paymentIntent.status === 'succeeded') {
+                form.submit();
             } else {
-                if (result.paymentIntent.status === 'succeeded') {
-                    form.submit();
-                }
+                var status = result.paymentIntent ?
+                    result.paymentIntent.status : 'unknown';
+                restoreCheckoutForm(
+                    `Payment was not completed. Stripe status: ${status}.`
+                );
             }
+        }).catch(function(error) {
+            restoreCheckoutForm(
+                error.message || 'Stripe could not complete the payment.'
+            );
         });
-    }).fail(function () {
-        // just reload the page, the error will be in django messages
-        location.reload();
-    })
+    }).fail(function (response) {
+        var message = response.responseText ||
+            'Checkout could not prepare the payment. Please try again.';
+        restoreCheckoutForm(message);
+    });
 });

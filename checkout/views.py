@@ -5,6 +5,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
+from .emails import send_order_confirmation
 
 from products.models import Product
 from profiles.models import UserProfile
@@ -13,17 +14,21 @@ from bag.contexts import bag_contents
 
 import stripe
 import json
+import uuid
 
 
 @require_POST
 def cache_checkout_data(request):
+    if settings.MOCK_STRIPE:
+        return HttpResponse(status=200)
+
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
+            'save_info': str(request.POST.get('save_info', False)),
+            'username': str(request.user),
         })
         return HttpResponse(status=200)
     except Exception as e:
@@ -35,6 +40,16 @@ def cache_checkout_data(request):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
+    mock_stripe = settings.MOCK_STRIPE
+    show_loader_preview = (
+        settings.DEBUG and request.GET.get('preview_loader') == '1'
+    )
+
+    if show_loader_preview:
+        return render(
+            request,
+            'checkout/loader_preview.html',
+        )
 
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -100,11 +115,15 @@ def checkout(request):
         current_bag = bag_contents(request)
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,
-        )
+        if mock_stripe:
+            client_secret = f'mock_pi_{uuid.uuid4().hex}_secret_mock'
+        else:
+            stripe.api_key = stripe_secret_key
+            intent = stripe.PaymentIntent.create(
+                amount=stripe_total,
+                currency=settings.STRIPE_CURRENCY,
+            )
+            client_secret = intent.client_secret
 
         # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
@@ -126,7 +145,7 @@ def checkout(request):
         else:
             order_form = OrderForm()
 
-    if not stripe_public_key:
+    if not stripe_public_key and not mock_stripe:
         messages.warning(request, 'Stripe public key is missing. \
             Did you forget to set it in your environment?')
 
@@ -134,7 +153,8 @@ def checkout(request):
     context = {
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret,
+        'client_secret': client_secret,
+        'mock_stripe': mock_stripe,
     }
 
     return render(request, template, context)
@@ -174,6 +194,9 @@ def checkout_success(request, order_number):
 
     if 'bag' in request.session:
         del request.session['bag']
+
+    if settings.DEBUG:
+        send_order_confirmation(order)
 
     template = 'checkout/checkout_success.html'
     context = {
