@@ -27,10 +27,24 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'sjk-boutiqueado.herokuapp.com',
+    '.railway.app',
+    '.up.railway.app',
 ]
 
 if os.environ.get('ALLOWED_HOSTS'):
-    ALLOWED_HOSTS.extend(os.environ.get('ALLOWED_HOSTS').split(','))
+    ALLOWED_HOSTS.extend(
+        host.strip()
+        for host in os.environ.get('ALLOWED_HOSTS').split(',')
+        if host.strip()
+    )
+
+if os.environ.get('RAILWAY_PUBLIC_DOMAIN'):
+    ALLOWED_HOSTS.append(os.environ.get('RAILWAY_PUBLIC_DOMAIN'))
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{os.environ.get('RAILWAY_PUBLIC_DOMAIN')}"
+    ]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
@@ -59,6 +73,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,6 +149,18 @@ DATABASES = {
     }
 }
 
+if os.environ.get('PGDATABASE') and os.environ.get('PGHOST'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('PGDATABASE'),
+            'USER': os.environ.get('PGUSER'),
+            'PASSWORD': os.environ.get('PGPASSWORD'),
+            'HOST': os.environ.get('PGHOST'),
+            'PORT': os.environ.get('PGPORT', '5432'),
+        }
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -172,7 +199,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
       os.path.join(BASE_DIR, 'static'),
     )
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.environ.get(
+    'STATIC_ROOT',
+    os.path.join(BASE_DIR, 'staticfiles'),
+)
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
