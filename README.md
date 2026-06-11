@@ -3,7 +3,7 @@
 
 
 
-[![Jekyll site CI](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml)
+[![Jekyll site CI](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml) [![Build Status](https://app.travis-ci.com/SOliv1/Boutique-House.svg&branch=master)](https://app.travis-ci.com/SOliv1/Boutique-House)
 
 <!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`
 `[![Build Status](https://travis-ci.com/SOliv1/boutique_house?branch=master)](https://travis-ci.com/SOliv1/boutique_house)-->
