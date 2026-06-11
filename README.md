@@ -1,5 +1,3 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
-
 # 🛍️ Boutique House
 
 ## 🚀 Live Site
@@ -10,8 +8,7 @@
 
 
 
-
-[![Jekyll site CI](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml) [![Build Status](https://app.travis-ci.com/SOliv1/Boutique-House.svg&branch=master)](https://app.travis-ci.com/SOliv1/Boutique-House)
+[![Jekyll site CI](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml) 
 
 <!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`
 `[![Build Status](https://travis-ci.com/SOliv1/boutique_house?branch=master)](https://travis-ci.com/SOliv1/boutique_house)-->
@@ -163,6 +160,8 @@ it ignored these files below - have no idea where they came from but it  works n
 - mkdir media
 - mkdir static/css
 
+- <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+
 <!-- - css framework: https://bulma.io/  -  ensures that whenever we use font awesome icons.
 They will always stay perfectly centred and have a consistent size.
 
@@ -177,5 +176,4 @@ to main core.css block.
 - add kit code: `<script src="https://kit.fontawesome.com/1e03de6694.js" crossorigin="anonymous"></script>` -->
 
 [![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml)
-[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/_v1/actions/workflows/codeql-analysis.yml)
-[![Build Status](https://travis-ci.com/SOliv1/_v1.svg?branch=master)](https://travis-ci.com/SOliv1/boutique_ado_v1)
+[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)]
