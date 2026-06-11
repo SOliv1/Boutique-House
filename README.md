@@ -19,7 +19,20 @@
   <!-- Django -->
   <img src="https://img.shields.io/badge/Django-6.0-092E20?logo=django&logoColor=white" alt="Django">
 
+  <!-- Jekyll CI -->
+  <a href="https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml">
+    <img src="https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml/badge.svg" alt="Jekyll site CI">
+  </a>
+
+  <!-- CodeQL -->
+  <a href="https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml">
+    <img src="https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL">
+  </a>
+
 </p>
+
+
+ 
 
 **[https://boutique-house-production.up.railway.app](https://boutique-house-production.up.railway.app)**
 
