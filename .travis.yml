@@ -1,17 +1,23 @@
 language: python
 python:
-  - "3.8"
+  - "3.12"
 
 os: linux
 dist: focal
 
-before_install:
-  - pip install --upgrade pip==23.3.1
-
+cache: pip
 
 install:
+  - python -m pip install --upgrade pip setuptools wheel
   - pip install -r requirements.txt
 
-script:
-  - python manage.py test
+before_script:
+  - export DJANGO_SETTINGS_MODULE=boutique_house.settings
+  - export SECRET_KEY="travis-ci-secret-key"
+  - export DEVELOPMENT=1
 
+script:
+  - coverage run manage.py test
+
+after_success:
+  - codecov
