@@ -5,10 +5,13 @@ python:
 os: linux
 dist: focal
 
+before_install:
+  - pip install --upgrade pip==23.3.1
+
+
 install:
   - pip install -r requirements.txt
 
 script:
   - python manage.py test
-
 
