@@ -1,0 +1,11 @@
+[
+{
+  "model": "products.collection",
+  "pk": 2,
+  "fields": {
+    "name": "moods_board",
+    "friendly_name": "Moods Board",
+    "description": "Boutique House is a curated lifestyle store for elegant clothing, home pieces, and gifts."
+  }
+}
+]

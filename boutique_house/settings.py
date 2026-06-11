@@ -1,6 +1,7 @@
 import os
-# import dj_database_url
+import dj_database_url
 from pathlib import Path
+from django.core.exceptions import ImproperlyConfigured
 
 if os.path.exists('env.py'):
     import env
@@ -22,6 +23,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-development-key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
+IS_TESTING = (
+    'test' in os.sys.argv
+    or 'pytest' in os.path.basename(os.sys.argv[0])
+    or os.environ.get('DJANGO_TEST') == '1'
+)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -142,14 +148,13 @@ WSGI_APPLICATION = 'boutique_house.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if os.environ.get('DATABASE_URL'):
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+        )
     }
-}
-
-if os.environ.get('PGDATABASE') and os.environ.get('PGHOST'):
+elif os.environ.get('PGDATABASE') and os.environ.get('PGHOST'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -160,6 +165,17 @@ if os.environ.get('PGDATABASE') and os.environ.get('PGHOST'):
             'PORT': os.environ.get('PGPORT', '5432'),
         }
     }
+elif DEBUG or IS_TESTING:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    raise ImproperlyConfigured(
+        'Production requires DATABASE_URL or Railway PostgreSQL PG* variables.'
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -212,7 +228,7 @@ STORAGES = {
     },
 }
 
-if 'test' in os.sys.argv or os.environ.get('DJANGO_TEST') == '1':
+if IS_TESTING:
     STORAGES['staticfiles'] = {
         'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
     }

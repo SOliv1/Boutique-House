@@ -1,1 +1,74 @@
-[{"pk": 1, "model": "products.category", "fields": {"name": "activewear", "friendly_name": "Activewear"}}, {"pk": 2, "model": "products.category", "fields": {"name": "bed_bath", "friendly_name": "Bed & Bath"}}, {"pk": 3, "model": "products.category", "fields": {"name": "clearance", "friendly_name": "Clearance"}}, {"pk": 4, "model": "products.category", "fields": {"name": "deals", "friendly_name": "Deals"}}, {"pk": 5, "model": "products.category", "fields": {"name": "essentials", "friendly_name": "Essentials"}}, {"pk": 6, "model": "products.category", "fields": {"name": "jeans", "friendly_name": "Jeans"}}, {"pk": 7, "model": "products.category", "fields": {"name": "kitchen_dining", "friendly_name": "Kitchen & Dining"}}, {"pk": 8, "model": "products.category", "fields": {"name": "new_arrivals", "friendly_name": "New Arrivals"}}, {"pk": 9, "model": "products.category", "fields": {"name": "shirts", "friendly_name": "Shirts"}}]
+[
+{
+  "model": "products.category",
+  "pk": 1,
+  "fields": {
+    "name": "home_decor",
+    "friendly_name": "Home Decor"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 2,
+  "fields": {
+    "name": "lighting",
+    "friendly_name": "Lighting"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 3,
+  "fields": {
+    "name": "textiles",
+    "friendly_name": "Textiles"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 4,
+  "fields": {
+    "name": "furniture",
+    "friendly_name": "Furniture"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 5,
+  "fields": {
+    "name": "tableware",
+    "friendly_name": "Tableware"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 6,
+  "fields": {
+    "name": "scent_ritual",
+    "friendly_name": "Scent & Ritual"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 7,
+  "fields": {
+    "name": "accessories",
+    "friendly_name": "Accessories"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 8,
+  "fields": {
+    "name": "gifts",
+    "friendly_name": "Gifts"
+  }
+},
+{
+  "model": "products.category",
+  "pk": 9,
+  "fields": {
+    "name": "moods_board",
+    "friendly_name": "Moods Board"
+  }
+}
+]
