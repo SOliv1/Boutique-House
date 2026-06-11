@@ -212,7 +212,7 @@ STORAGES = {
     },
 }
 
-if 'test' in os.sys.argv:
+if 'test' in os.sys.argv or os.environ.get('DJANGO_TEST') == '1':
     STORAGES['staticfiles'] = {
         'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
     }

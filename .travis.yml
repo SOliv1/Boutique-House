@@ -15,6 +15,7 @@ before_script:
   - export DJANGO_SETTINGS_MODULE=boutique_house.settings
   - export SECRET_KEY="travis-ci-secret-key"
   - export DEVELOPMENT=1
+  - export DJANGO_TEST=1
 
 script:
   - coverage run manage.py test
