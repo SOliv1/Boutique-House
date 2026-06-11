@@ -8,7 +8,7 @@
 
 
 
-[![Jekyll site CI](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml) 
+[![Jekyll site CI](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml) [![CodeQL](https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml)
 
 <!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`
 `[![Build Status](https://travis-ci.com/SOliv1/boutique_house?branch=master)](https://travis-ci.com/SOliv1/boutique_house)-->
@@ -176,4 +176,3 @@ to main core.css block.
 - add kit code: `<script src="https://kit.fontawesome.com/1e03de6694.js" crossorigin="anonymous"></script>` -->
 
 [![Jekyll site CI](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/_v1/actions/workflows/jekyll.yml)
-[![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)]
