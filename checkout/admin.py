@@ -27,6 +27,11 @@ class OrderAdmin(admin.ModelAdmin):
                     'order_total', 'delivery_cost',
                     'grand_total',)
 
+    search_fields = ('order_number', 'full_name', 'email', 'stripe_pid')
+    search_help_text = (
+        'Search by order number, customer name, email, or Stripe payment ID.'
+    )
+    list_filter = ('date', 'confirmation_email_sent_at')
     ordering = ('-date',)
 
     @admin.display(description='Confirmation email')
