@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'storages',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -271,8 +272,18 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
 MOCK_STRIPE = DEBUG and not STRIPE_SECRET_KEY
 SEND_REAL_EMAILS = os.environ.get('SEND_REAL_EMAILS') == '1'
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY', '')
 
-if DEBUG and not SEND_REAL_EMAILS:
+if RESEND_API_KEY:
+    EMAIL_BACKEND = 'anymail.backends.resend.EmailBackend'
+    ANYMAIL = {
+        'RESEND_API_KEY': RESEND_API_KEY,
+    }
+    DEFAULT_FROM_EMAIL = os.environ.get(
+        'DEFAULT_FROM_EMAIL',
+        'Boutique House <onboarding@resend.dev>',
+    )
+elif DEBUG and not SEND_REAL_EMAILS:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'orders@boutique-house.test'
 else:
