@@ -1,5 +1,3 @@
-import logging
-
 from django.shortcuts import (
     HttpResponse,
     get_object_or_404,
@@ -13,8 +11,6 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from .emails import send_order_confirmation
-
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
@@ -23,9 +19,6 @@ from bag.contexts import bag_contents
 import stripe
 import json
 import uuid
-
-
-logger = logging.getLogger(__name__)
 
 
 @require_POST
@@ -205,19 +198,6 @@ def checkout_success(request, order_number):
 
     if 'bag' in request.session:
         del request.session['bag']
-
-    try:
-        send_order_confirmation(order)
-    except Exception:
-        logger.exception(
-            'Confirmation email failed for order %s',
-            order.order_number,
-        )
-        messages.warning(
-            request,
-            'Your order was saved, but the confirmation email could not be '
-            'sent. Please contact us with your order number.',
-        )
 
     template = 'checkout/checkout_success.html'
     context = {
