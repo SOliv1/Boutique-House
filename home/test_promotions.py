@@ -17,6 +17,8 @@ class HomePromotionTests(TestCase):
         response = self.client.get(reverse('home'))
 
         self.assertContains(response, promotion.heading)
+        self.assertContains(response, 'The After-Dark Collection')
+        self.assertContains(response, 'Discover the collection')
         self.assertContains(response, 'promotion-popup.js')
         self.assertContains(
             response,

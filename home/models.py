@@ -36,7 +36,10 @@ class HomePageHero(models.Model):
 
 
 class HomePromotion(models.Model):
-	eyebrow = models.CharField(max_length=80, default='The Cinematic Edit')
+	eyebrow = models.CharField(
+		max_length=80,
+		default='The After-Dark Collection',
+	)
 	heading = models.CharField(
 		max_length=140,
 		default='Candlelight, composed',
@@ -47,7 +50,10 @@ class HomePromotion(models.Model):
 			'tones and beautifully considered objects.'
 		),
 	)
-	cta_label = models.CharField(max_length=50, default='Explore the edit')
+	cta_label = models.CharField(
+		max_length=50,
+		default='Discover the collection',
+	)
 	cta_url = models.CharField(
 		max_length=500,
 		default='/products/?collection=moods_board',
