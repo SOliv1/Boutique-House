@@ -5,8 +5,9 @@
   </div>
 </div>
 {% endblock %} {% block content %}
-<div class="container h-100">
-  <div class="row h-100 align-items-center">
+<main class="home-hero-section">
+<div class="container">
+  <div class="row align-items-center">
     <div class="col-12 col-lg-6 my-auto home-hero-copy-wrap">
       <p class="home-season-label mb-2">
         {% if home_hero %} {{ home_hero.season_label }} {% else %} Summer Edit
@@ -61,6 +62,7 @@
     </div>
   </div>
 </div>
+</main>
 {% if home_promotion %}
 <div
   class="promotion-popup"

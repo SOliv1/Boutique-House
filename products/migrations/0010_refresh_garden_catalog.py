@@ -5,6 +5,28 @@ from django.conf import settings
 from django.db import migrations
 
 
+def repair_catalog_columns(apps, schema_editor):
+    models_to_check = (
+        apps.get_model('products', 'Collection'),
+        apps.get_model('products', 'Product'),
+    )
+
+    with schema_editor.connection.cursor() as cursor:
+        for model in models_to_check:
+            table = model._meta.db_table
+            existing_columns = {
+                column.name
+                for column in schema_editor.connection.introspection.get_table_description(
+                    cursor,
+                    table,
+                )
+            }
+            for field in model._meta.local_fields:
+                if field.column not in existing_columns:
+                    schema_editor.add_field(model, field)
+                    existing_columns.add(field.column)
+
+
 def _load_fixture(name):
     fixture_path = (
         Path(settings.BASE_DIR) / 'products' / 'fixtures' / f'{name}.json'
@@ -50,6 +72,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(
+            repair_catalog_columns,
+            migrations.RunPython.noop,
+        ),
         migrations.RunPython(
             refresh_garden_catalog,
             migrations.RunPython.noop,
