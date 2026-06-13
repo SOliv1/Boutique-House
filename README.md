@@ -181,6 +181,7 @@ that extend this base.
 - add `home`, to installed apps in settings.py
 - add to backends 
 - startup the development server: `python3 manage.py runserver`
+- - [Superbase Storage user friendly alternative to AWS storage](https://github.com/supabase/storage) for storing large media 
 
 <!-- *pre-receive hook declined:*
 - found large files on my workspace and could not push to github. What you need to do is `.gitignore` them in the future if you should ever find them again.
@@ -193,6 +194,8 @@ it ignored these files below - have no idea where they came from but it  works n
 - mkdir static/css
 
 - <img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+
+
 
 <!-- - css framework: https://bulma.io/  -  ensures that whenever we use font awesome icons.
 They will always stay perfectly centred and have a consistent size.
