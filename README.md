@@ -30,7 +30,7 @@
   </a>
 </p>
 
-**[boutique-house-production.up.railway.app](https://boutique-house-production.up.railway.app)**
+**[boutique-house-production-751b.up.railway.app](https://boutique-house-production-751b.up.railway.app)**
 
 > Deployed on [Railway](https://railway.app)
 
