@@ -70,5 +70,13 @@
     "name": "moods_board",
     "friendly_name": "Moods Board"
   }
+},
+{
+  "model": "products.category",
+  "pk": 10,
+  "fields": {
+    "name": "garden",
+    "friendly_name": "Garden"
+  }
 }
 ]

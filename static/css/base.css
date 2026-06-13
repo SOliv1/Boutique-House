@@ -151,6 +151,61 @@ body {
     opacity: .98;
 }
 
+.collection-hero {
+    align-items: flex-end;
+    background: #e5e8df;
+    display: flex;
+    min-height: 62vh;
+    overflow: hidden;
+    padding: 8rem max(1rem, 6vw) 4rem;
+    position: relative;
+}
+
+.collection-hero-image {
+    background-position: center 48%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.collection-hero-image::before {
+    background: linear-gradient(90deg, rgba(24, 19, 14, .62), rgba(24, 19, 14, .06) 70%);
+    content: "";
+    inset: 0;
+    position: absolute;
+}
+
+.collection-hero-content {
+    color: #fff;
+    max-width: 620px;
+    position: relative;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .25);
+}
+
+.collection-hero:not(.collection-hero-image) .collection-hero-content {
+    color: #1d1916;
+    text-shadow: none;
+}
+
+.collection-hero-kicker {
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.collection-hero-title {
+    font-size: clamp(3rem, 5vw, 5.75rem);
+    line-height: .95;
+}
+
+.collection-hero-copy {
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 560px;
+}
+
 .overlay {
 	height: 100%;
 	width: 100%;
@@ -357,6 +412,10 @@ input[name='q']::placeholder {
     .header-container {
         padding-top: 164px;
     }
+
+    .collection-hero-image {
+        background-attachment: fixed;
+    }
 }
 
 /* pad the top a bit when navbar is collapsed on mobile */
@@ -376,6 +435,15 @@ input[name='q']::placeholder {
 
     .product-card-title {
         font-size: 1.375rem;
+    }
+
+    .collection-hero {
+        min-height: 54vh;
+        padding: 7rem 1.25rem 3rem;
+    }
+
+    .collection-hero-image {
+        background-position: 62% center;
     }
 
     .nav-link {

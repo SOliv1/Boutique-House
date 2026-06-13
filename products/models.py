@@ -20,6 +20,8 @@ class Collection(models.Model):
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
+    hero_image_url = models.CharField(max_length=1024, null=True, blank=True)
+    hero_image = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -38,6 +40,9 @@ class Product(models.Model):
     colour_finish = models.CharField(max_length=254, null=True, blank=True)
     stock_quantity = models.PositiveIntegerField('total stock', default=0)
     reserved_quantity = models.PositiveIntegerField(default=0)
+    is_new_arrival = models.BooleanField(default=False)
+    is_special_offer = models.BooleanField(default=False)
+    is_clearance = models.BooleanField(default=False)
     name = models.CharField(max_length=254)
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)

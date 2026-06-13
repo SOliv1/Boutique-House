@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Collection
 from .forms import ProductForm
 
 # Create your views here.
@@ -16,6 +16,11 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     categories = None
+    collections = None
+    current_collection = None
+    moods_board_collection = None
+    moods_board_products = None
+    current_promotion = None
     sort = None
     direction = None
 
@@ -39,6 +44,31 @@ def all_products(request):
             products = products.filter(category__name__in=categories)
             categories = Category.objects.filter(name__in=categories)
 
+        if 'collection' in request.GET:
+            collection_names = request.GET['collection'].split(',')
+            products = products.filter(collection__name__in=collection_names)
+            collections = Collection.objects.filter(name__in=collection_names)
+            if collections.count() == 1:
+                current_collection = collections.first()
+                if current_collection.name == 'garden':
+                    moods_board_collection = Collection.objects.filter(
+                        name='moods_board'
+                    ).first()
+                    moods_board_products = Product.objects.filter(
+                        collection__name='moods_board'
+                    )
+
+        if 'promotion' in request.GET:
+            promotion = request.GET['promotion']
+            promotion_filters = {
+                'new_arrivals': ('is_new_arrival', 'New Arrivals'),
+                'deals': ('is_special_offer', 'Special Deals'),
+                'clearance': ('is_clearance', 'Clearance'),
+            }
+            if promotion in promotion_filters:
+                field_name, current_promotion = promotion_filters[promotion]
+                products = products.filter(**{field_name: True})
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
@@ -54,6 +84,11 @@ def all_products(request):
         'products': products,
         'search_term': query,
         'current_categories': categories,
+        'current_collections': collections,
+        'current_collection': current_collection,
+        'moods_board_collection': moods_board_collection,
+        'moods_board_products': moods_board_products,
+        'current_promotion': current_promotion,
         'current_sorting': current_sorting,
     }
 

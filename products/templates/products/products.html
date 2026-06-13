@@ -11,12 +11,42 @@
 
 {% block content %}
     <div class="overlay"></div>
+    {% if current_collection %}
+        {% if current_collection.hero_image %}
+            <section class="collection-hero collection-hero-image" style="background-image: url('{{ current_collection.hero_image.url }}');">
+        {% elif current_collection.hero_image_url %}
+            <section class="collection-hero collection-hero-image" style="background-image: url('{{ current_collection.hero_image_url }}');">
+        {% else %}
+            <section class="collection-hero">
+        {% endif %}
+            <div class="collection-hero-content">
+                <p class="collection-hero-kicker mb-2">The Boutique House Collection</p>
+                <h1 class="collection-hero-title logo-font mb-3">{{ current_collection.friendly_name }}</h1>
+                {% if current_collection.description %}
+                    <p class="collection-hero-copy mb-0">{{ current_collection.description }}</p>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center mt-3">
-                <h2 class="logo-font">Products</h2>
+                <h2 class="logo-font">
+                    {% if current_collection %}
+                        Shop {{ current_collection.friendly_name }}
+                    {% elif current_promotion %}
+                        {{ current_promotion }}
+                    {% else %}
+                        Products
+                    {% endif %}
+                </h2>
                 {% for c in current_categories %}
                     <a class="category-badge text-decoration-none" href="{% url 'products' %}?category={{ c.name }}">
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+                {% for c in current_collections %}
+                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?collection={{ c.name }}">
                         <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ c.friendly_name }}</span>
                     </a>
                 {% endfor %}
@@ -43,7 +73,7 @@
                     </div>
                     <div class="col-12 col-md-6 order-md-first">
                         <p class="text-muted mt-3 text-center text-md-left">
-                            {% if search_term or current_categories or current_sorting != 'None_None' %}
+                            {% if search_term or current_categories or current_collections or current_promotion or current_sorting != 'None_None' %}
                                 <span class="small"><a href="{% url 'products' %}">Products Home</a> | </span>
                             {% endif %}
                             {{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
@@ -58,6 +88,10 @@
                                 <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                 </a>
+                                {% elif product.image_url %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
@@ -65,7 +99,16 @@
                                 {% endif %}
                                 <div class="card-body pb-0">
                                     <h3 class="product-card-title mb-2">{{ product.name }}</h3>
-                                    <p class="product-card-description mb-0">{{ product.description|truncatewords:18 }}</p>
+                                    {% if product.is_new_arrival %}
+                                        <span class="badge badge-light border mb-2">New Arrival</span>
+                                    {% endif %}
+                                    {% if product.is_special_offer %}
+                                        <span class="badge badge-dark mb-2">Special Deal</span>
+                                    {% endif %}
+                                    {% if product.is_clearance %}
+                                        <span class="badge badge-danger mb-2">Clearance</span>
+                                    {% endif %}
+                                    <p class="product-card-description mb-0">{{ product.description }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
@@ -113,6 +156,69 @@
             </div>
         </div>
     </div>
+    {% if moods_board_collection and moods_board_products %}
+        <section id="moods-board-collection" class="container-fluid border-top mt-5 pt-5">
+            <div class="row">
+                <div class="col text-center">
+                    <p class="collection-hero-kicker text-muted mb-2">The Boutique House Collection</p>
+                    <h2 class="logo-font mb-3">{{ moods_board_collection.friendly_name }}</h2>
+                    {% if moods_board_collection.description %}
+                        <p class="collection-hero-copy text-muted mx-auto mb-4">{{ moods_board_collection.description }}</p>
+                    {% endif %}
+                    <a class="category-badge text-decoration-none" href="{% url 'products' %}?collection=moods_board">
+                        <span class="p-2 badge badge-white text-black rounded-0 border border-dark">
+                            Shop {{ moods_board_collection.friendly_name }}
+                        </span>
+                    </a>
+                    <hr class="w-50 mb-4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="product-container col-10 offset-1">
+                    <div class="row">
+                        {% for product in moods_board_products %}
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-5">
+                                <div class="card product-card h-100 border-0">
+                                    {% if product.image %}
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                        </a>
+                                    {% elif product.image_url %}
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ product.image_url }}" alt="{{ product.name }}">
+                                        </a>
+                                    {% else %}
+                                        <a href="{% url 'product_detail' product.id %}">
+                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                        </a>
+                                    {% endif %}
+                                    <div class="card-body pb-0">
+                                        <h3 class="product-card-title mb-2">{{ product.name }}</h3>
+                                        <p class="product-card-description mb-0">{{ product.description }}</p>
+                                    </div>
+                                    <div class="card-footer bg-white pt-0 border-0 text-left">
+                                        <p class="product-card-price mb-0">£{{ product.price }}</p>
+                                        {% if product.category %}
+                                            <p class="small mt-1 mb-0">
+                                                <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                    <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                </a>
+                                            </p>
+                                        {% endif %}
+                                        {% if product.rating %}
+                                            <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} / 5</small>
+                                        {% else %}
+                                            <small class="text-muted">No Rating</small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
     <div class="btt-button shadow-sm rounded-0 border border-black">
         <a class="btt-link d-flex h-100">
             <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>

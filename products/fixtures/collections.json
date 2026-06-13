@@ -5,7 +5,20 @@
   "fields": {
     "name": "moods_board",
     "friendly_name": "Moods Board",
-    "description": "Boutique House is a curated lifestyle store for elegant clothing, home pieces, and gifts."
+    "description": "Boutique House is a curated lifestyle store for elegant clothing, home pieces, and gifts.",
+    "hero_image_url": null,
+    "hero_image": ""
+  }
+},
+{
+  "model": "products.collection",
+  "pk": 3,
+  "fields": {
+    "name": "garden",
+    "friendly_name": "The Garden Collection",
+    "description": "A luminous outdoor world of furniture, tableware, roses, textiles, lighting, and beautifully useful pieces. Colour and atmosphere flow through Impressionist, Seasonal, Weather, Morning, Afternoon, Evening, Cinematic, and Midnight moods.",
+    "hero_image_url": "/static/images/collections/garden/boutique-banner-reclining-parasol.png",
+    "hero_image": ""
   }
 }
 ]

@@ -46,16 +46,16 @@
     "category": 3,
     "collection": 2,
     "sku": "BH-TEX-001",
-    "product_family": null,
-    "colour_finish": null,
+    "product_family": "Wool Throw",
+    "colour_finish": "Autumn Velvet Dusk",
     "stock_quantity": 10,
     "reserved_quantity": 0,
-    "name": "Charcoal Wool Throw",
-    "description": "A deep charcoal wool throw with a soft brushed finish, made for layering over sofas, reading chairs, and beds during slower seasons.",
+    "name": "Autumn Velvet Dusk Wool Throw",
+    "description": "A softly brushed wool throw woven in chestnut shadow, burnished rust, harvest blush, dusk bark, and warm cream. Drawn from the Seasonal and Evening Moods Board families, it brings quiet autumn colour to sofas, reading chairs, and beds.",
     "has_sizes": false,
     "price": "74.00",
     "rating": "4.60",
-    "image_url": null,
+    "image_url": "/static/images/products/moods-board/autumn-velvet-dusk-wool-throw.png",
     "image": ""
   }
 },
@@ -616,6 +616,673 @@
     "price": "42.00",
     "rating": "4.80",
     "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 40,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-001",
+    "product_family": "Garden Planter",
+    "colour_finish": "Weathered Stone",
+    "stock_quantity": 8,
+    "reserved_quantity": 0,
+    "name": "First Light Weathered Garden Planter",
+    "description": "A low weathered stone planter from the First Light seasonal story, made for herbs, clipped greenery, and quiet garden thresholds.",
+    "has_sizes": false,
+    "price": "58.00",
+    "rating": "4.80",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 41,
+  "fields": {
+    "category": 2,
+    "collection": 3,
+    "sku": "BH-GDN-002",
+    "product_family": "Outdoor Lantern",
+    "colour_finish": "Antique Brass",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "name": "Midsummer Glow Outdoor Lantern",
+    "description": "A handled antique brass lantern from the Midsummer Glow story, designed to warm terraces, pathways, and long evening tables.",
+    "has_sizes": false,
+    "price": "46.00",
+    "rating": "4.70",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 42,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-003",
+    "product_family": "Outdoor Cushion",
+    "colour_finish": "Sage Stripe",
+    "stock_quantity": 12,
+    "reserved_quantity": 1,
+    "name": "Spring Meadow Stripe Outdoor Cushion",
+    "description": "A weather-minded cushion in a soft sage stripe from the Spring Meadow story, bringing relaxed comfort to benches, sofas, and garden rooms.",
+    "has_sizes": false,
+    "price": "34.00",
+    "rating": "4.60",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 43,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-004",
+    "product_family": "Serving Tray",
+    "colour_finish": "Smoked Acacia",
+    "stock_quantity": 7,
+    "reserved_quantity": 0,
+    "name": "High Summer Acacia Garden Tray",
+    "description": "A smoked acacia serving tray from the High Summer table story, made for iced drinks, small plates, and garden supper details.",
+    "has_sizes": false,
+    "price": "42.00",
+    "rating": "4.50",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 44,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-005",
+    "product_family": "Seed Tin",
+    "colour_finish": "Deep Green",
+    "stock_quantity": 10,
+    "reserved_quantity": 0,
+    "is_clearance": true,
+    "name": "Early Spring Deep Green Seed Tin",
+    "description": "A deep green seed tin from the Early Spring story, with tidy internal dividers for packets, notes, labels, and seasonal planting rituals.",
+    "has_sizes": false,
+    "price": "24.00",
+    "rating": "4.40",
+    "image_url": "/static/images/products/garden/accessories/early-spring-deep-green-seed-tin.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 45,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-006",
+    "product_family": "Garden Apron",
+    "colour_finish": "Olive Canvas",
+    "stock_quantity": 5,
+    "reserved_quantity": 0,
+    "name": "Harvest Season Olive Garden Apron",
+    "description": "A durable olive canvas apron from the Harvest Season story, with generous pockets for secateurs, twine, tags, and everyday garden tools.",
+    "has_sizes": false,
+    "price": "52.00",
+    "rating": "4.90",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 46,
+  "fields": {
+    "category": 4,
+    "collection": 3,
+    "sku": "BH-GDN-FUR-001",
+    "product_family": "Outdoor Sofa",
+    "colour_finish": "Honey Rattan & Natural Linen",
+    "stock_quantity": 3,
+    "reserved_quantity": 0,
+    "name": "Midsummer House Rattan Garden Sofa",
+    "description": "A generous honey-rattan garden sofa with natural linen cushions, created for the long, unhurried afternoons of the Midsummer House story.",
+    "has_sizes": false,
+    "price": "895.00",
+    "rating": "4.90",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 47,
+  "fields": {
+    "category": 4,
+    "collection": 3,
+    "sku": "BH-GDN-FUR-002",
+    "product_family": "Garden Armchair",
+    "colour_finish": "Weathered Oak & Oatmeal",
+    "stock_quantity": 5,
+    "reserved_quantity": 0,
+    "name": "Spring Morning Garden Armchair",
+    "description": "A deep outdoor armchair in weathered oak with oatmeal cushions, inspired by clear Spring Morning light and quiet coffee on the terrace.",
+    "has_sizes": false,
+    "price": "425.00",
+    "rating": "4.80",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 48,
+  "fields": {
+    "category": 4,
+    "collection": 3,
+    "sku": "BH-GDN-FUR-003",
+    "product_family": "Outdoor Dining Table",
+    "colour_finish": "Smoked Acacia",
+    "stock_quantity": 4,
+    "reserved_quantity": 0,
+    "name": "Golden Hour Acacia Dining Table",
+    "description": "A six-seat smoked acacia dining table with a softly slatted top, designed for Golden Hour suppers and relaxed summer entertaining.",
+    "has_sizes": false,
+    "price": "675.00",
+    "rating": "4.90",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 49,
+  "fields": {
+    "category": 4,
+    "collection": 3,
+    "sku": "BH-GDN-FUR-004",
+    "product_family": "Bistro Set",
+    "colour_finish": "Chalk White Metal",
+    "stock_quantity": 6,
+    "reserved_quantity": 1,
+    "name": "May Blossom Garden Bistro Set",
+    "description": "A chalk-white bistro table and two chairs from the May Blossom story, perfectly scaled for balconies, courtyards, and rose-filled corners.",
+    "has_sizes": false,
+    "price": "295.00",
+    "rating": "4.70",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 50,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-TBL-001",
+    "product_family": "Outdoor Dinnerware",
+    "colour_finish": "Soft Ivory & Botanical Green",
+    "stock_quantity": 9,
+    "reserved_quantity": 0,
+    "name": "Summer Garden Twelve-Piece Table Set",
+    "description": "A twelve-piece outdoor table set in soft ivory with botanical green detailing, made for Summer Garden lunches and candlelit suppers.",
+    "has_sizes": false,
+    "price": "148.00",
+    "rating": "4.80",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 51,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-TBL-002",
+    "product_family": "Drinks Set",
+    "colour_finish": "Blush Glass",
+    "stock_quantity": 8,
+    "reserved_quantity": 0,
+    "name": "Rose Dusk Garden Pitcher & Tumbler Set",
+    "description": "A blush glass pitcher with four matching tumblers, designed for cordial, citrus water, and the warm final light of the Rose Dusk season.",
+    "has_sizes": false,
+    "price": "86.00",
+    "rating": "4.70",
+    "image_url": null,
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 52,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-ROSE-001",
+    "product_family": "Climbing Rose",
+    "colour_finish": "Blush Pink",
+    "stock_quantity": 14,
+    "reserved_quantity": 2,
+    "name": "May Morning Blush Climbing Rose",
+    "description": "A romantic repeat-flowering climbing rose with layered blush-pink blooms and a light old-rose fragrance, supplied in a nursery pot ready for a sunny wall or pergola.",
+    "has_sizes": false,
+    "price": "38.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/roses/may-morning-blush-climbing-rose.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 53,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-ROSE-002",
+    "product_family": "Shrub Rose",
+    "colour_finish": "Soft Apricot",
+    "stock_quantity": 11,
+    "reserved_quantity": 0,
+    "name": "First Summer Apricot Shrub Rose",
+    "description": "A softly scented shrub rose with full apricot blooms fading gently to cream, selected for borders, generous containers, and the first warm days of summer.",
+    "has_sizes": false,
+    "price": "34.00",
+    "rating": "4.80",
+    "image_url": "/static/images/products/garden/roses/first-summer-apricot-shrub-rose.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 54,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-ROSE-003",
+    "product_family": "Patio Rose",
+    "colour_finish": "Pearl Ivory",
+    "stock_quantity": 16,
+    "reserved_quantity": 1,
+    "name": "Midsummer Pearl Patio Rose",
+    "description": "A compact patio rose carrying clusters of pearl-ivory flowers throughout summer, ideal for terrace pots, table-side planters, and smaller garden spaces.",
+    "has_sizes": false,
+    "price": "28.00",
+    "rating": "4.70",
+    "image_url": "/static/images/products/garden/roses/midsummer-pearl-patio-rose.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 55,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-ROSE-004",
+    "product_family": "Rambling Rose",
+    "colour_finish": "Dusk Pink",
+    "stock_quantity": 8,
+    "reserved_quantity": 0,
+    "name": "Rose Dusk Garden Rambler",
+    "description": "A graceful rambling rose with abundant dusk-pink rosettes, made to soften an arch, mature tree, or garden wall with a loose and romantic summer display.",
+    "has_sizes": false,
+    "price": "42.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/roses/rose-dusk-garden-rambler.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 56,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-MOOD-001",
+    "product_family": "Refreshment Set",
+    "colour_finish": "Clear Glass & Burnished Pewter",
+    "stock_quantity": 5,
+    "reserved_quantity": 0,
+    "is_special_offer": true,
+    "name": "Golden Evening Pewter Garden Refreshment Set",
+    "description": "A hand-blown glass jug and six delicate tumblers arranged on an oval burnished pewter tray. Inspired by the Golden Evening mood, it brings warm amber light, cool shadow, and delightful ceremony to garden refreshments.",
+    "has_sizes": false,
+    "price": "225.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/moods-table/golden-evening-pewter-refreshment-set.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 57,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-MOOD-002",
+    "product_family": "Coaster Set",
+    "colour_finish": "Seasonal Painterly Glaze",
+    "stock_quantity": 12,
+    "reserved_quantity": 1,
+    "is_special_offer": true,
+    "name": "Four Seasons Mood Coasters",
+    "description": "Eight reversible artisan coasters moving through Spring Soft Renewal, Summer Quiet Warmth, Autumn Velvet Dusk, and Winter Moonlit Quiet, finished with a fine burnished pewter edge.",
+    "has_sizes": false,
+    "price": "58.00",
+    "rating": "4.80",
+    "image_url": "/static/images/products/garden/moods-table/four-seasons-mood-coasters.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 58,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-MOOD-003",
+    "product_family": "Placemat Set",
+    "colour_finish": "Impressionist Daylight Linen",
+    "stock_quantity": 9,
+    "reserved_quantity": 0,
+    "name": "Impressionist Daylight Garden Placemats",
+    "description": "Four reversible washed-linen placemats woven in the Water Garden Haze, Rose Lantern, and Lilac Riverlight palette: water blue, lily green, blush rose, peach light, iris lilac, and soft cerulean.",
+    "has_sizes": false,
+    "price": "92.00",
+    "rating": "4.80",
+    "image_url": "/static/images/products/garden/moods-table/impressionist-daylight-placemats.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 59,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-MOOD-004",
+    "product_family": "Napkin Set",
+    "colour_finish": "Cinematic Evening Linen",
+    "stock_quantity": 10,
+    "reserved_quantity": 0,
+    "name": "Cinematic Evening Mood Linen Napkins",
+    "description": "Six washed-linen dinner napkins in claret daydream, burgundy murmur, moonlit indigo, rain blue, warm gold, and ember peach, accompanied by understated burnished pewter rings for an atmospheric evening table.",
+    "has_sizes": false,
+    "price": "78.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/moods-table/cinematic-evening-linen-napkins.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 60,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-001",
+    "product_family": "BBQ Serving Set",
+    "colour_finish": "Burnished Pewter, Walnut & Ember Glaze",
+    "stock_quantity": 5,
+    "reserved_quantity": 0,
+    "name": "Ember Garden Alfresco BBQ Serving Set",
+    "description": "A burnished pewter serving platter with walnut-handled tongs and fork, a matching sauce pot, brush, and artisan condiment bowls. Inspired by the Cinematic Firelight and Seasonal Autumn palettes, it balances ember rust, warm cream, shadowed claret, and grounding natural wood for elegant outdoor cooking.",
+    "has_sizes": false,
+    "price": "195.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/ember-garden-bbq-serving-set.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 61,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-002",
+    "product_family": "Dinner Plate Set",
+    "colour_finish": "Water Garden Haze Porcelain",
+    "stock_quantity": 8,
+    "reserved_quantity": 0,
+    "name": "Water Garden Haze Alfresco Dinner Plates",
+    "description": "Six fine porcelain dinner plates with calm linen-ivory centres and restrained impressionist rims of water blue, lily green, soft cerulean, and garden teal. Drawn directly from the Water Garden Haze and Impressionist Day palettes, each plate is finished with a whisper-thin burnished pewter line.",
+    "has_sizes": false,
+    "price": "168.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/water-garden-haze-dinner-plates.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 62,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-003",
+    "product_family": "Side Plate Set",
+    "colour_finish": "Rose Lantern Porcelain",
+    "stock_quantity": 10,
+    "reserved_quantity": 1,
+    "name": "Rose Lantern Alfresco Side Plates",
+    "description": "Six smaller porcelain side plates with pale, versatile centres and hand-painted rims of blush rose, peach light, butter glow, claret daydream, and iris lilac. Their colour story comes from Rose Lantern and the Impressionist Evening collection, softened by a fine aged-pewter edge.",
+    "has_sizes": false,
+    "price": "128.00",
+    "rating": "4.80",
+    "image_url": "/static/images/products/garden/alfresco/rose-lantern-side-plates.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 63,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-004",
+    "product_family": "Wine Glass Set",
+    "colour_finish": "Clear Crystal with Seasonal Etching",
+    "stock_quantity": 7,
+    "reserved_quantity": 0,
+    "name": "Four Seasons Etched Garden Wine Glasses",
+    "description": "Six fine crystal wine glasses, each engraved with a different movement of light: spring tendrils, summer ripples, autumn wind, winter frost, impressionist reflections, and a cinematic evening spiral. Clear glass and graceful stems keep the seasonal motifs subtle, luminous, and timeless.",
+    "has_sizes": false,
+    "price": "156.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/four-seasons-etched-wine-glasses.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 64,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-005",
+    "product_family": "Tablecloth",
+    "colour_finish": "Water Garden Impressionist Linen",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "name": "Water Garden Impressionist Linen Tablecloth",
+    "description": "A generously sized washed-linen tablecloth woven in water blue, soft cerulean, lily green, garden teal, blush rose, iris lilac, and linen ivory. Inspired by Water Garden Haze, Lilac Riverlight, and the Impressionist Day family, its painterly passages capture reflected garden light without overpowering the table.",
+    "has_sizes": false,
+    "price": "185.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/water-garden-impressionist-tablecloth.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 65,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-006",
+    "product_family": "Tea Towel Set",
+    "colour_finish": "Morning & Evening Linen",
+    "stock_quantity": 12,
+    "reserved_quantity": 0,
+    "name": "Morning & Evening Impressionist Tea Towels",
+    "description": "Two absorbent washed-linen tea towels expressing a complete day: Morning combines water blue, leaf light, peach light, and linen ivory; Evening moves into blush rose, claret daydream, warm gold, and lilac shadow. Both reference the Impressionist, Morning, and Evening Moods Board families.",
+    "has_sizes": false,
+    "price": "48.00",
+    "rating": "4.80",
+    "image_url": "/static/images/products/garden/alfresco/morning-evening-impressionist-tea-towels.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 66,
+  "fields": {
+    "category": 3,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-007",
+    "product_family": "Oven Glove Set",
+    "colour_finish": "Firelight Quilted Linen",
+    "stock_quantity": 9,
+    "reserved_quantity": 0,
+    "name": "Firelight Impressionist Double Oven Gloves",
+    "description": "A thick quilted double oven glove with two matching mitts for safely carrying hot alfresco dishes. The ember rust, warm gold, terracotta, cream, and claret-shadow weave is inspired by the Cinematic Firelight palette, with reinforced heat-resistant palms and carefully bound edges.",
+    "has_sizes": false,
+    "price": "68.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/firelight-impressionist-oven-gloves.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 67,
+  "fields": {
+    "category": 7,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-008",
+    "product_family": "Handheld Parasol",
+    "colour_finish": "Lilac Riverlight Cotton-Silk",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "name": "Lilac Riverlight Tasselled Garden Parasol",
+    "description": "A small handheld sun parasol in matte cotton-silk, washed with iris lilac, water blue, soft cerulean, blush mist, and linen ivory. Inspired by Lilac Riverlight and the Impressionist Day collection, it has a polished wood handle, delicate tonal fringe, and a softly moving tassel for personal garden shade.",
+    "has_sizes": false,
+    "price": "145.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/lilac-riverlight-tasselled-parasol.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 68,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-009",
+    "product_family": "Napkin Ring Set",
+    "colour_finish": "Burnished Pewter",
+    "stock_quantity": 11,
+    "reserved_quantity": 0,
+    "name": "Golden Evening Burnished Pewter Napkin Rings",
+    "description": "Six substantial hand-finished pewter napkin rings, each carrying a quiet low-relief motif: spring tendril, summer ripple, autumn wind, winter frost curl, impressionist water reflection, and cinematic evening spiral. Warm highlights and softly aged recesses draw from Golden Evening while remaining beautifully timeless.",
+    "has_sizes": false,
+    "price": "72.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/golden-evening-pewter-napkin-rings.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 69,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-010",
+    "product_family": "Champagne Coupe Set",
+    "colour_finish": "Clear Crystal with Seasonal Etching",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Marie Antoinette Garden Etched Champagne Coupes",
+    "description": "Six shallow crystal champagne coupes with graceful, salon-inspired proportions and the collection's signature seasonal engraving: spring tendril, summer ripple, autumn wind, winter frost, impressionist reflection, and cinematic evening spiral. Dappled garden light creates prismatic sparkle without disturbing their quiet elegance.",
+    "has_sizes": false,
+    "price": "175.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/marie-antoinette-etched-champagne-coupes.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 70,
+  "fields": {
+    "category": 5,
+    "collection": 3,
+    "sku": "BH-GDN-ALF-011",
+    "product_family": "Champagne Flute Set",
+    "colour_finish": "Clear Crystal with Seasonal Etching",
+    "stock_quantity": 7,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Dappled Light Seasonal Etched Champagne Flutes",
+    "description": "Six slender crystal champagne flutes engraved with the same six movements of the Garden glass collection. Their narrow bowls, fine stems, and translucent swirls catch points of dappled sunlight, blending Seasonal, Impressionist, and Cinematic moods into a luminous celebration set.",
+    "has_sizes": false,
+    "price": "165.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/alfresco/dappled-light-etched-champagne-flutes.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 71,
+  "fields": {
+    "category": 7,
+    "collection": 3,
+    "sku": "BH-GDN-ACC-009",
+    "product_family": "Wool Throw",
+    "colour_finish": "Noir Shadow Charcoal",
+    "stock_quantity": 8,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Noir Shadow Wool Throw",
+    "description": "A deeply tactile charcoal wool throw for firelit terraces and quiet evening rooms. Inspired by the Noir and Midnight Moods Board families, its near-black weave gathers warm amber light while Blue Black and Moon Violet shadows give it cinematic depth. Finished with a softly fringed edge.",
+    "has_sizes": false,
+    "price": "135.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/accessories/noir-shadow-charcoal-wool-throw.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 72,
+  "fields": {
+    "category": 7,
+    "collection": 3,
+    "sku": "BH-GDN-ACC-010",
+    "product_family": "Woven Sun Hat",
+    "colour_finish": "Cinematic Grain Natural Weave",
+    "stock_quantity": 10,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Cinematic Grain Woven Garden Hat",
+    "description": "A refined wide-brim garden hat in tightly woven natural fibre, shaped with a structured crown and softly rolled edge. Dappled golden light brings out its honey-grain texture, while a narrow Noir Shadow grosgrain ribbon links it to the Cinematic and Midnight Moods Board families.",
+    "has_sizes": false,
+    "price": "88.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/garden/accessories/cinematic-grain-woven-garden-hat.png",
     "image": ""
   }
 }
