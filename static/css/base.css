@@ -120,6 +120,7 @@ body {
 
 .home-hero-image-wrap {
     min-height: 420px;
+    margin-top: 1.25rem;
 }
 
 .home-hero-portrait {
@@ -452,6 +453,17 @@ input[name='q']::placeholder {
 @media (max-width: 991px) {
     .home-hero-copy-wrap {
         padding-bottom: 0;
+    }
+
+    .home-hero-image-wrap {
+        min-height: 0;
+        padding-bottom: 1.5rem;
+    }
+
+    .home-hero-portrait {
+        height: auto;
+        max-height: 420px;
+        width: min(100%, 340px);
     }
 }
 

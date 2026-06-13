@@ -27,14 +27,17 @@
             href="{% url 'products' %}"
             class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3"
           >
-            {% if home_hero %} {{ home_hero.cta_label }} {% else %} Shop Now {%
-            endif %}
+            {% if home_hero %}
+              {{ home_hero.cta_label }}
+            {% else %}
+              Shop Now
+            {% endif %}
           </a>
         </h4>
       </div>
     </div>
     <div
-      class="col-lg-6 d-none d-lg-flex justify-content-end align-items-end home-hero-image-wrap"
+      class="col-12 col-lg-6 d-flex justify-content-center justify-content-lg-end align-items-end home-hero-image-wrap"
     >
       {% if home_hero and home_hero.portrait_image_url %}
       <img
