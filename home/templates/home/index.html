@@ -9,26 +9,17 @@
   <div class="row h-100 align-items-center">
     <div class="col-12 col-lg-6 my-auto home-hero-copy-wrap">
       <p class="home-season-label mb-2">
-        {% if home_hero %}
-          {{ home_hero.season_label }}
-        {% else %}
-          Summer Edit
+        {% if home_hero %} {{ home_hero.season_label }} {% else %} Summer Edit
         {% endif %}
       </p>
       <h1 class="display-4 logo-font text-black">
-        {% if home_hero %}
-          {{ home_hero.heading }}
-        {% else %}
-          The new collections are here
-        {% endif %}
+        {% if home_hero %} {{ home_hero.heading }} {% else %} The new
+        collections are here {% endif %}
       </h1>
       <p class="hero-subheading mt-3 mb-0">
-        {% if home_hero %}
-          {{ home_hero.subheading }}
-        {% else %}
-          Soft, sculptural, editorial. A quiet, modern counterpoint that keeps
-          the UI clean.
-        {% endif %}
+        {% if home_hero %} {{ home_hero.subheading }} {% else %} Soft,
+        sculptural, editorial. A quiet, modern counterpoint that keeps the UI
+        clean. {% endif %}
       </p>
       <div class="my-5">
         <h4>
@@ -36,11 +27,8 @@
             href="{% url 'products' %}"
             class="shop-now-button btn btn-lg rounded-0 text-uppercase py-3"
           >
-            {% if home_hero %}
-              {{ home_hero.cta_label }}
-            {% else %}
-              Shop Now
-            {% endif %}
+            {% if home_hero %} {{ home_hero.cta_label }} {% else %} Shop Now {%
+            endif %}
           </a>
         </h4>
       </div>
