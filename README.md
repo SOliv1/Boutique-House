@@ -181,7 +181,16 @@ that extend this base.
 - add `home`, to installed apps in settings.py
 - add to backends 
 - startup the development server: `python3 manage.py runserver`
-- - [Superbase Storage user friendly alternative to AWS storage](https://github.com/supabase/storage) for storing large media 
+- - [Superbase Storage user friendly alternative to AWS storage](https://github.com/supabase/storage) for storing large media
+  - Email confirmations with RESEND:
+  - The Sent status is achieved like this:
+  -   Place a new Stripe test order using the intended recipient’s email.
+  -  Use test card 4242 4242 4242 4242, any future expiry and CVC.
+  -  Stripe sends payment_intent.succeeded to Boutique House.
+  -  Boutique House sends the confirmation through Resend.
+  -  Admin records the sent timestamp.
+  -  Resend’s dashboard confirms delivery or rejection.
+Use a new order when retesting; completed confirmations are protected against duplicate sending.
 
 <!-- *pre-receive hook declined:*
 - found large files on my workspace and could not push to github. What you need to do is `.gitignore` them in the future if you should ever find them again.
