@@ -14,11 +14,14 @@ Go to:
   - give stripe_elements some functionality with card event listener to check to see if there are any errors.
   - if so then it will show on the checkout page - on card errors div we created near the card element on the checkout page.
   - update views.py in checkout with stripe card elemaents and then install `pip3 install stripe`
+- To check in a current project if you have an active stripe account in requirements.txt - check with:
+- .\.venv\Scripts\python.exe -m pip show  stripe
+- then:
   - export environment variables
   
         export STRIPE_PUBLIC_KEY=pk_test_
         export STRIPE_SECRET_KEY=your_stripe_secret_key_here
-  if not using gitpod you may need to look up the instructions on setting environemt variables called set on windows for your specific situation.
+  if not using gitpod you may need to look up the instructions on setting environment variables called set on windows for your specific situation.
   - This should also work on OSX and Linux operating systems.  These will not be permanent. And you'll have to re-export them each time you start your workspace
     But if you're using gitpod you can make them permanent by going to your main workspaces page
     Clicking your account icon in the upper right. And going to settings

@@ -223,6 +223,7 @@ install django crispy forms to format forms using  bootstrap styling forms autom
     Then update `requriements.txt`
     `pip3 freeze > requirements.txt`
     Now with that done, render the form in the checkout template.
+
  ## Stripe part 1
  -  go to https://stripe.com/gb 
     start now - create account and add email then go back and verify email in your account.

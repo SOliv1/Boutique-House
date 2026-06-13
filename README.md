@@ -28,11 +28,7 @@
   <a href="https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml">
     <img src="https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL">
   </a>
-
 </p>
-
-
- 
 
 **[boutique-house-production.up.railway.app](https://boutique-house-production.up.railway.app)**
 
@@ -45,14 +41,21 @@
 <!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`
 `[![Build Status](https://travis-ci.com/SOliv1/boutique_house?branch=master)](https://travis-ci.com/SOliv1/boutique_house)-->
 
+## TO REACTIVATE existing project in local environment to keep working on it after deployment:
 
+```powershell
+.\.venv\Scripts\Activate.ps1
+python manage.py runserver
+```
+
+Only run this if the environment is missing packages, broken, or you recreated/deleted .venv:
+python -m pip install -r requirements.txt
 
 ## Initial set up project 
 `pip3 install django`
 cd /workspace/.pip-modules/lib/python3.8/site-packages/`
 
 python -m pip install --upgrade pip setuptools wheel
-
 
  `ls -la` 
  - to view list of site packages

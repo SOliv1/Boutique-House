@@ -8,6 +8,10 @@ class HomePageTests(TestCase):
     def test_home_page_returns_200(self):
         response = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(
+            response,
+            'images/collections/garden/boutique-banner-portrait.png',
+        )
 
     def test_home_page_uses_admin_portrait_url(self):
         portrait_url = 'https://images.example.com/model-portrait.jpg'
