@@ -54,31 +54,28 @@
         <div
           class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"
         >
-          <a href="{% url 'home' %}" class="nav-link main-logo-link">
-            <h2 class="logo-font text-black my-0">
-              <strong>Boutique</strong> House
-            </h2>
+          <a href="{% url 'home' %}" class="nav-link main-logo-link" aria-label="Boutique House home">
+            <span class="brand-mark" aria-hidden="true">
+              <span class="brand-monogram">BH</span>
+              <span class="brand-name">Boutique House</span>
+            </span>
           </a>
         </div>
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
           <form method="GET" action="{% url 'products' %}">
-            <div class="input-group w-100">
+            <div class="site-search-control">
               <input
-                class="form-control border border-black rounded-0"
+                class="form-control site-search-input"
                 type="text"
                 name="q"
                 placeholder="Search our site"
+                aria-label="Search Boutique House"
               />
-              <div class="input-group-append">
-                <button
-                  class="form-control btn btn-black border border-black rounded-0"
-                  type="submit"
-                >
-                  <span class="icon">
-                    <i class="fas fa-search"></i>
-                  </span>
-                </button>
-              </div>
+              <button class="btn site-search-button" type="submit" aria-label="Submit search">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+              </button>
             </div>
           </form>
         </div>
@@ -157,6 +154,13 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <a
+            href="{% url 'home' %}"
+            class="mobile-brand-link d-lg-none"
+            aria-label="Boutique House home"
+          >
+            BH
+          </a>
           {% include 'includes/mobile-top-header.html' %}
           {% include 'includes/main-nav.html' %}
         </nav>
