@@ -42,8 +42,10 @@
                             <a href="{% url 'product_detail' item.product.id %}">
                                 {% if item.product.image %}
                                     <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                                {% elif item.product.image_url %}
+                                    <img class="w-100" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="w-100" src="{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}" alt="{{ item.product.name }}">
                                 {% endif %}
                             </a>
                         </div>

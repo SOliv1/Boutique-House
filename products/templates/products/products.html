@@ -94,7 +94,7 @@
                                 </a>
                                 {% else %}
                                 <a href="{% url 'product_detail' product.id %}">
-                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    <img class="card-img-top img-fluid" src="{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}" alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
                                 <div class="card-body pb-0">
@@ -189,7 +189,7 @@
                                         </a>
                                     {% else %}
                                         <a href="{% url 'product_detail' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                            <img class="card-img-top img-fluid" src="{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}" alt="{{ product.name }}">
                                         </a>
                                     {% endif %}
                                     <div class="card-body pb-0">

@@ -4,6 +4,25 @@ from django.urls import reverse
 from .models import Category, Collection, Product
 
 
+class GardenSeedMigrationTests(TestCase):
+    def test_migration_seeds_complete_garden_catalog(self):
+        garden_products = Product.objects.filter(collection__name='garden')
+
+        self.assertEqual(garden_products.count(), 33)
+
+    def test_garden_catalog_uses_deployable_image_fallback(self):
+        response = self.client.get(
+            reverse('products'),
+            {'collection': 'garden'},
+        )
+
+        self.assertNotContains(response, '/media/noimage.png')
+        self.assertContains(
+            response,
+            'images/collections/garden/boutique-banner-garden-cover.png',
+        )
+
+
 class GardenCollectionViewTests(TestCase):
     @classmethod
     def setUpTestData(cls):

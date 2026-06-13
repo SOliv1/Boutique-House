@@ -1,3 +1,4 @@
+{% load static %}
 <div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
     <div class="arrow-up arrow-success"></div>
     <div class="w-100 toast-capper bg-success"></div>
@@ -22,8 +23,10 @@
                         <div class="col-3 my-1">
                             {% if item.product.image %}
                             <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% elif item.product.image_url %}
+                            <img class="w-100" src="{{ item.product.image_url }}" alt="{{ item.product.name }}">
                             {% else %}
-                            <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                            <img class="w-100" src="{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}" alt="{{ item.product.name }}">
                             {% endif %}
                         </div>
                         <div class="col-9">
@@ -56,4 +59,3 @@
         {% endif %}
     </div>
 </div>
-
