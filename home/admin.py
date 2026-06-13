@@ -20,6 +20,7 @@ class HomePageHeroAdmin(admin.ModelAdmin):
                     'heading',
                     'subheading',
                     'cta_label',
+                    'portrait_image_url',
                     'portrait_image',
                     'image_preview',
                     'is_active',
@@ -31,9 +32,10 @@ class HomePageHeroAdmin(admin.ModelAdmin):
 
     @admin.display(description='Preview')
     def image_preview(self, obj):
-        if obj and obj.portrait_image:
+        if obj and (obj.portrait_image_url or obj.portrait_image):
+            image_url = obj.portrait_image_url or obj.portrait_image.url
             return format_html(
                 '<img src="{}" style="width: 96px; height: 120px; object-fit: cover; border-radius: 4px;" />',
-                obj.portrait_image.url,
+                image_url,
             )
         return 'No image'

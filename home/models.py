@@ -16,6 +16,10 @@ class HomePageHero(models.Model):
 		blank=True,
 		null=True,
 	)
+	portrait_image_url = models.URLField(
+		blank=True,
+		help_text='Recommended on Railway: use a permanent hosted image URL.',
+	)
 	is_active = models.BooleanField(default=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
