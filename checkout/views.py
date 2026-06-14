@@ -203,5 +203,16 @@ def checkout_success(request, order_number):
     context = {
         'order': order,
     }
+    
+    def track_order(request):
+        if request.method == "POST":
+        order_number = request.POST.get("order-number")
+        postcode = request.POST.get("delivery-postcode")
+        # handle lookup logic here
+        return render(request, "track_order_result.html", {...})
+    return render(request, "track_order.html")
+
+    
+    
 
     return render(request, template, context)

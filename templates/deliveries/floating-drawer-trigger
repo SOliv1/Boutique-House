@@ -1,0 +1,38 @@
+<!-- Trigger Button -->
+<button class="drawer-open-btn">Track Your Order</button>
+
+<!-- Drawer -->
+<div class="drawer-overlay"></div>
+
+<div class="drawer">
+  <div class="drawer-header">
+    <h3>Track Your Order</h3>
+    <button class="drawer-close-btn">&times;</button>
+  </div>
+
+  <form method="POST" class="drawer-form">
+    {% csrf_token %}
+
+    <label for="drawer-order-number">Order number</label>
+    <input
+      type="text"
+      id="drawer-order-number"
+      name="order-number"
+      placeholder="Enter your order number"
+      required
+    />
+
+    <label for="drawer-postcode">Delivery postcode or email</label>
+    <input
+      type="text"
+      id="drawer-postcode"
+      name="delivery-postcode"
+      placeholder="Enter your postcode or email"
+      required
+    />
+
+    <button type="submit" class="drawer-submit-btn">
+      Check Status
+    </button>
+  </form>
+</div>

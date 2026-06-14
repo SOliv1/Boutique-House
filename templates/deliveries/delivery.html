@@ -1,0 +1,53 @@
+<section class="track-order">
+  <h2>Track Your Order</h2>
+  <p>
+    View the details of your purchase, including your order status and delivery
+    tracking information.
+  </p>
+
+  <form class="track-order-form">
+    <label for="order-number">Order number</label>
+    <input
+      type="text"
+      id="order-number"
+      name="order-number"
+      placeholder="Enter your order number"
+      required
+    />
+
+    <label for="delivery-postcode">Delivery postcode or email</label>
+    <input
+      type="text"
+      id="delivery-postcode"
+      name="delivery-postcode"
+      placeholder="Enter your postcode or email"
+      required
+    />
+
+    <button type="submit" class="track-order-button">
+      Check Status
+    </button>
+  </form>
+</section>
+
+<script>
+  const drawer = document.querySelector('.drawer');
+  const overlay = document.querySelector('.drawer-overlay');
+  const openBtn = document.querySelector('.drawer-open-btn');
+  const closeBtn = document.querySelector('.drawer-close-btn');
+
+  openBtn.addEventListener('click', () => {
+    drawer.classList.add('active');
+    overlay.classList.add('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    drawer.classList.remove('active');
+    overlay.classList.remove('active');
+  });
+</script>

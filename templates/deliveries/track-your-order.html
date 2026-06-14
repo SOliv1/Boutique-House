@@ -1,0 +1,33 @@
+<section class="track-order">
+  <h2>Track Your Order</h2>
+  <p>
+    View the details of your purchase, including your order status and delivery
+    tracking information.
+  </p>
+
+  <form method="POST" class="track-order-form">
+    {% csrf_token %}
+
+    <label for="order-number">Order number</label>
+    <input
+      type="text"
+      id="order-number"
+      name="order-number"
+      placeholder="Enter your order number"
+      required
+    />
+
+    <label for="delivery-postcode">Delivery postcode or email</label>
+    <input
+      type="text"
+      id="delivery-postcode"
+      name="delivery-postcode"
+      placeholder="Enter your postcode or email"
+      required
+    />
+
+    <button type="submit" class="track-order-button">
+      Check Status
+    </button>
+  </form>
+</section>

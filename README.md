@@ -81,6 +81,20 @@ git add .
 git commit -m "initial commit"
 git push
 
+
+> HOW TO TEST TRACK ORDER FORMS
+> Use an existing completed order from the Railway database:
+>Exact customer Email
+>
+>Open Track Your Order.
+>Enter both details and submit.
+>Expected result: order date, delivery area, total, items, and “We are preparing your order.”
+>Also test privacy safely:
+>Correct order number + wrong email should show “could not find an order.”
+>Blank fields should be rejected.
+>A fake order number should reveal no customer details.
+>Avoid placing a real paid order solely for testing. The tracker is read-only and cannot alter or >cancel orders.
+>  
 ## Python3 manage.py start app home
 mkdir -p home/templates/home
 - right-click the inner home directory, new file and create an index.html

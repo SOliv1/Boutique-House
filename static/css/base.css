@@ -1116,3 +1116,195 @@ body.promotion-is-open {
         transition: none;
     }
 }
+
+/* LAYOUT MOBILE RESPONSIVE */
+.delivery-section,
+.track-order {
+  padding: 2rem 1.5rem;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.delivery-section h1,
+.delivery-section h2,
+.track-order h2 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.delivery-section p,
+.track-order p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* Cards */
+.delivery-card {
+  background: #f7f7f7;
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.delivery-card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.delivery-card ul {
+  padding-left: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Track Order Form */
+.track-order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+}
+
+.track-order-form label {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.track-order-form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.track-order-button {
+  padding: 0.85rem 1rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+.track-order-button:hover {
+  background: #333;
+}
+
+/* Desktop Enhancements */
+@media (min-width: 768px) {
+  .delivery-card {
+    padding: 1.75rem 2rem;
+  }
+
+  .delivery-section,
+  .track-order {
+    padding: 3rem 2rem;
+  }
+}
+
+
+/* Fade-in animation */
+@keyframes fadeInSoft {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeInSoft 0.8s ease forwards;
+}
+
+/* Drawer Overlay */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+
+/* Drawer Container */
+.drawer {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.15);
+  transition: bottom 0.35s ease;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Drawer Active State */
+.drawer.active {
+  bottom: 0;
+}
+
+.drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Drawer Header */
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.drawer-close-btn:hover {
+  opacity: 1;
+}
+
+/* Drawer Form */
+.drawer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.drawer-form input {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 6px;
+}
+
+.drawer-submit-btn {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.drawer-submit-btn:hover {
+  background: #333;
+}
+
+/* Trigger Button */
+.drawer-open-btn {
+  padding: 0.75rem 1.25rem;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
