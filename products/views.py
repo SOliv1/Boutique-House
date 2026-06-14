@@ -54,7 +54,7 @@ def all_products(request):
                 collections = Collection.objects.filter(name__in=collection_names)
 
                 collections_count = collections.count()
-                products.exists()
+                products.first()
 
                 if collections_count == 1:
                     current_collection = collections.first()
@@ -65,6 +65,7 @@ def all_products(request):
                         moods_board_products = Product.objects.filter(
                             collection__name='moods_board'
                         )
+                        moods_board_products.first()
 
             if 'promotion' in request.GET:
                 promotion = request.GET['promotion']
@@ -86,8 +87,9 @@ def all_products(request):
                 queries = Q(name__icontains=query) | Q(description__icontains=query)
                 products = products.filter(queries)
 
-        # Force query evaluation so database/schema issues are handled here.
-        products.exists()
+        # Force row-level evaluation so missing columns/schema drift are
+        # handled here instead of failing later in template rendering.
+        products.first()
     except DatabaseError:
         messages.error(
             request,
