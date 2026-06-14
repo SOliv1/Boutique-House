@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import DatabaseError
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -46,17 +47,30 @@ def all_products(request):
 
         if 'collection' in request.GET:
             collection_names = request.GET['collection'].split(',')
-            products = products.filter(collection__name__in=collection_names)
-            collections = Collection.objects.filter(name__in=collection_names)
-            if collections.count() == 1:
-                current_collection = collections.first()
-                if current_collection.name == 'garden':
-                    moods_board_collection = Collection.objects.filter(
-                        name='moods_board'
-                    ).first()
-                    moods_board_products = Product.objects.filter(
-                        collection__name='moods_board'
-                    )
+            try:
+                products = products.filter(collection__name__in=collection_names)
+                collections = Collection.objects.filter(name__in=collection_names)
+
+                # Force a small evaluation here so DB/schema issues are handled gracefully.
+                collections_count = collections.count()
+                products.exists()
+
+                if collections_count == 1:
+                    current_collection = collections.first()
+                    if current_collection.name == 'garden':
+                        moods_board_collection = Collection.objects.filter(
+                            name='moods_board'
+                        ).first()
+                        moods_board_products = Product.objects.filter(
+                            collection__name='moods_board'
+                        )
+            except DatabaseError:
+                messages.error(
+                    request,
+                    'The selected collection is temporarily unavailable. '
+                    'Please try again shortly.',
+                )
+                return redirect(reverse('products'))
 
         if 'promotion' in request.GET:
             promotion = request.GET['promotion']
