@@ -508,6 +508,14 @@ body {
     justify-content: center;
 }
 
+.moods-board-actions {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .85rem;
+    justify-content: center;
+}
+
 .moods-board-return-btn {
     border-width: 3px;
     box-shadow: 0 12px 26px rgba(23, 19, 16, .28);

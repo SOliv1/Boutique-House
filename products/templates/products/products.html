@@ -48,8 +48,7 @@
             <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>
             Return to The Boutique House
           </a>
-          {% endif %}
-          {% for c in current_categories %}
+          {% endif %} {% for c in current_categories %}
           <a
             class="category-badge text-decoration-none"
             href="{% url 'products' %}?category={{ c.name }}"
@@ -313,6 +312,23 @@
             <h2 class="logo-font mb-0">
               {{ moods_board_collection.friendly_name }}
             </h2>
+          </div>
+          {% if moods_board_collection.description %}
+          <p class="collection-hero-copy text-muted mx-auto mb-4">
+            {{ moods_board_collection.description }}
+          </p>
+          {% endif %}
+          <div class="moods-board-actions mb-2">
+            <a
+              class="category-badge text-decoration-none"
+              href="{% url 'products' %}?collection=moods_board"
+            >
+              <span
+                class="p-2 badge badge-white text-black rounded-0 border border-dark"
+              >
+                Shop {{ moods_board_collection.friendly_name }}
+              </span>
+            </a>
             <a
               href="{% url 'products' %}"
               class="btn shop-now-button moods-board-return-btn text-uppercase"
@@ -321,21 +337,6 @@
               Return to The Boutique House
             </a>
           </div>
-          {% if moods_board_collection.description %}
-          <p class="collection-hero-copy text-muted mx-auto mb-4">
-            {{ moods_board_collection.description }}
-          </p>
-          {% endif %}
-          <a
-            class="category-badge text-decoration-none"
-            href="{% url 'products' %}?collection=moods_board"
-          >
-            <span
-              class="p-2 badge badge-white text-black rounded-0 border border-dark"
-            >
-              Shop {{ moods_board_collection.friendly_name }}
-            </span>
-          </a>
           <hr class="w-50 mb-4" />
         </div>
       </div>
