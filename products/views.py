@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.db import DatabaseError
 from django.db.models import Q
 from django.db.models.functions import Lower
 
@@ -24,59 +25,83 @@ def all_products(request):
     sort = None
     direction = None
 
-    if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'category__name'
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
+    try:
+        if request.GET:
+            if 'sort' in request.GET:
+                sortkey = request.GET['sort']
+                sort = sortkey
+                if sortkey == 'name':
+                    sortkey = 'lower_name'
+                    products = products.annotate(lower_name=Lower('name'))
+                if sortkey == 'category':
+                    sortkey = 'category__name'
+                if 'direction' in request.GET:
+                    direction = request.GET['direction']
+                    if direction == 'desc':
+                        sortkey = f'-{sortkey}'
+                products = products.order_by(sortkey)
 
-        if 'category' in request.GET:
-            categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            if 'category' in request.GET:
+                categories = request.GET['category'].split(',')
+                products = products.filter(category__name__in=categories)
+                categories = Category.objects.filter(name__in=categories)
 
-        if 'collection' in request.GET:
-            collection_names = request.GET['collection'].split(',')
-            products = products.filter(collection__name__in=collection_names)
-            collections = Collection.objects.filter(name__in=collection_names)
-            if collections.count() == 1:
-                current_collection = collections.first()
-                if current_collection.name == 'garden':
-                    moods_board_collection = Collection.objects.filter(
-                        name='moods_board'
-                    ).first()
-                    moods_board_products = Product.objects.filter(
-                        collection__name='moods_board'
-                    )
+            if 'collection' in request.GET:
+                collection_names = request.GET['collection'].split(',')
+                if 'moods_board' in collection_names:
+                    return redirect('https://soliv1.github.io/moodsboard-reflections-family/#/')
+                products = products.filter(collection__name__in=collection_names)
+                collections = Collection.objects.filter(name__in=collection_names)
 
-        if 'promotion' in request.GET:
-            promotion = request.GET['promotion']
-            promotion_filters = {
-                'new_arrivals': ('is_new_arrival', 'New Arrivals'),
-                'deals': ('is_special_offer', 'Special Deals'),
-                'clearance': ('is_clearance', 'Clearance'),
-            }
-            if promotion in promotion_filters:
-                field_name, current_promotion = promotion_filters[promotion]
-                products = products.filter(**{field_name: True})
+                collections_count = collections.count()
+                products.first()
 
-        if 'q' in request.GET:
-            query = request.GET['q']
-            if not query:
-                messages.error(request, "You didn't enter any search criteria!")
-                return redirect(reverse('products'))
+                if collections_count == 1:
+                    current_collection = collections.first()
+                    if current_collection.name == 'garden':
+                        moods_board_collection = Collection.objects.filter(
+                            name='moods_board'
+                        ).first()
+                        moods_board_products = Product.objects.filter(
+                            collection__name='moods_board'
+                        )
+                        moods_board_products.first()
 
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
-            products = products.filter(queries)
+            if 'promotion' in request.GET:
+                promotion = request.GET['promotion']
+                promotion_filters = {
+                    'new_arrivals': ('is_new_arrival', 'New Arrivals'),
+                    'deals': ('is_special_offer', 'Special Deals'),
+                    'clearance': ('is_clearance', 'Clearance'),
+                }
+                if promotion in promotion_filters:
+                    field_name, current_promotion = promotion_filters[promotion]
+                    products = products.filter(**{field_name: True})
+
+            if 'q' in request.GET:
+                query = request.GET['q']
+                if not query:
+                    messages.error(request, "You didn't enter any search criteria!")
+                    return redirect(reverse('products'))
+
+                queries = Q(name__icontains=query) | Q(description__icontains=query)
+                products = products.filter(queries)
+
+        # Force row-level evaluation so missing columns/schema drift are
+        # handled here instead of failing later in template rendering.
+        products.first()
+    except DatabaseError:
+        messages.error(
+            request,
+            'Products are temporarily unavailable. Please try again shortly.',
+        )
+        products = Product.objects.none()
+        categories = None
+        collections = None
+        current_collection = None
+        moods_board_collection = None
+        moods_board_products = None
+        current_promotion = None
 
     current_sorting = f'{sort}_{direction}'
 
