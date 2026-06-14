@@ -47,6 +47,8 @@ def all_products(request):
 
         if 'collection' in request.GET:
             collection_names = request.GET['collection'].split(',')
+            if 'moods_board' in collection_names:
+                return redirect('https://soliv1.github.io/moodsboard-reflections-family/#/')
             try:
                 products = products.filter(collection__name__in=collection_names)
                 collections = Collection.objects.filter(name__in=collection_names)
