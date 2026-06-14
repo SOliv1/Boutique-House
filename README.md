@@ -196,6 +196,22 @@ that extend this base.
   -  Resend’s dashboard confirms delivery or rejection.
 Use a new order when retesting; completed confirmations are protected against duplicate sending.
 
+###  Testing Tracked Orders in ADMIN
+Use an existing completed order from the Railway database:
+Open your Railway/Django admin and select Orders.
+Copy an order’s:Order number
+Exact customer Email
+
+Open Track Your Order.
+Enter both details and submit.
+Expected result: order date, delivery area, total, items, and “We are preparing your order.”
+Also test privacy safely:
+
+Correct order number + wrong email should show “could not find an order.”
+Blank fields should be rejected.
+A fake order number should reveal no customer details.
+Avoid placing a real paid order solely for testing. The tracker is read-only and cannot alter or cancel orders.
+
 <!-- *pre-receive hook declined:*
 - found large files on my workspace and could not push to github. What you need to do is `.gitignore` them in the future if you should ever find them again.
 it ignored these files below - have no idea where they came from but it  works now thank goodness. 
