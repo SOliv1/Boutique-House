@@ -30,6 +30,20 @@ body {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 1.05rem;
     font-weight: 500;
+    text-decoration: none;
+}
+
+.site-footer__brand:hover,
+.site-footer__brand:focus,
+.site-footer__link:hover,
+.site-footer__link:focus {
+    color: #f1e3c8;
+    text-decoration: underline;
+}
+
+.site-footer__link {
+    color: rgba(255, 255, 255, .92);
+    text-underline-offset: .15em;
 }
 
 /* from Bulma */
@@ -453,6 +467,37 @@ body {
     font-size: 1rem;
     line-height: 1.8;
     max-width: 560px;
+}
+
+.moods-board-previews {
+    display: flex;
+    gap: .9rem;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 440px;
+}
+
+.moods-board-preview {
+    border: 1px solid rgba(23, 19, 16, .25);
+    border-radius: .35rem;
+    display: block;
+    flex: 1 1 0;
+    max-width: 205px;
+    overflow: hidden;
+    transition: box-shadow .2s ease, transform .2s ease;
+}
+
+.moods-board-preview img {
+    display: block;
+    height: 126px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.moods-board-preview:hover,
+.moods-board-preview:focus {
+    box-shadow: 0 10px 22px rgba(23, 19, 16, .18);
+    transform: translateY(-2px);
 }
 
 .overlay {
@@ -1003,6 +1048,7 @@ body.promotion-is-open {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .brand-name,
     .shop-now-button,
     .site-search-button,
