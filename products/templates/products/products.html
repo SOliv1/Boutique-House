@@ -161,7 +161,12 @@
             <div class="row">
                 <div class="col text-center">
                     <p class="collection-hero-kicker text-muted mb-2">The Boutique House Collection</p>
-                    <h2 class="logo-font mb-3">{{ moods_board_collection.friendly_name }}</h2>
+                    <div class="moods-board-heading-row mb-3">
+                        <h2 class="logo-font mb-0">{{ moods_board_collection.friendly_name }}</h2>
+                        <a href="{% url 'products' %}" class="btn shop-now-button moods-board-return-btn text-uppercase">
+                            Return to The Boutique House
+                        </a>
+                    </div>
                     {% if moods_board_collection.description %}
                         <p class="collection-hero-copy text-muted mx-auto mb-4">{{ moods_board_collection.description }}</p>
                     {% endif %}
