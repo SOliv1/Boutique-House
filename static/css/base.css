@@ -509,8 +509,45 @@ body {
 }
 
 .moods-board-return-btn {
+    border-width: 3px;
+    box-shadow: 0 12px 26px rgba(23, 19, 16, .28);
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: .03em;
     margin: 0;
     min-width: 280px;
+    padding: .8rem 1.45rem;
+    position: relative;
+}
+
+.moods-board-return-btn:hover,
+.moods-board-return-btn:focus {
+    box-shadow: 0 16px 34px rgba(96, 72, 88, .34);
+    transform: translateY(-1px) scale(1.01);
+}
+
+.moods-board-return-btn::after {
+    animation: moods-board-return-pulse 1.8s ease-in-out infinite;
+    border: 1px solid rgba(139, 111, 131, .4);
+    border-radius: 999px;
+    content: "";
+    inset: -6px;
+    pointer-events: none;
+    position: absolute;
+}
+
+@keyframes moods-board-return-pulse {
+
+    0%,
+    100% {
+        opacity: .2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .48;
+        transform: scale(1.02);
+    }
 }
 
 .overlay {
