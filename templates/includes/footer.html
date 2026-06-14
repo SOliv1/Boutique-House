@@ -1,9 +1,24 @@
 <footer class="site-footer">
   <div class="container text-center">
     <p class="site-footer__text">
-      <span class="site-footer__brand">Boutique House</span>
+      <a class="site-footer__brand" href="{% url 'home' %}">Boutique House</a>
       <span aria-hidden="true"> - </span>
-      &copy; 2026 Boutique House: Part of the Cinematic Moods Board Family
+      &copy; 2026 Boutique House: Part of the
+      <a
+        class="site-footer__link"
+        href="https://soliv1.github.io/moodsboard-reflections-family/#/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Cinematic Moods Board Family</a>
     </p>
+    <nav class="site-footer__legal" aria-label="Legal information">
+      <a class="site-footer__link" href="{% url 'privacy_policy' %}">
+        Privacy Policy
+      </a>
+      <span aria-hidden="true">·</span>
+      <a class="site-footer__link" href="{% url 'terms_and_conditions' %}">
+        Terms &amp; Conditions
+      </a>
+    </nav>
   </div>
 </footer>

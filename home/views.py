@@ -17,3 +17,13 @@ def index(request):
         'home_promotion': home_promotion,
     }
     return render(request, 'home/index.html', context)
+
+
+def privacy_policy(request):
+    """Return the Boutique House privacy policy."""
+    return render(request, 'legal/privacy_policy.html')
+
+
+def terms_and_conditions(request):
+    """Return the Boutique House terms and conditions."""
+    return render(request, 'legal/terms.html')

@@ -35,3 +35,19 @@ class HomePromotionTests(TestCase):
 
         self.assertNotContains(response, 'Hidden promotion')
         self.assertNotContains(response, 'id="home-promotion"')
+
+    def test_privacy_policy_is_available_from_footer(self):
+        home_response = self.client.get(reverse('home'))
+        policy_response = self.client.get(reverse('privacy_policy'))
+
+        self.assertContains(home_response, reverse('privacy_policy'))
+        self.assertEqual(policy_response.status_code, 200)
+        self.assertContains(policy_response, 'Privacy Policy')
+
+    def test_terms_are_available_from_footer(self):
+        home_response = self.client.get(reverse('home'))
+        terms_response = self.client.get(reverse('terms_and_conditions'))
+
+        self.assertContains(home_response, reverse('terms_and_conditions'))
+        self.assertEqual(terms_response.status_code, 200)
+        self.assertContains(terms_response, 'Terms &amp; Conditions')

@@ -1,3 +1,5 @@
+{% load static %}
+
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item d-block d-md-none">
@@ -41,10 +43,52 @@
             </div>
         </li>
 
-        <li class="nav-item">
-            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'products' %}?collection=moods_board" id="moods-board-link">
-                Moods Board
+        <li class="nav-item moods-board-nav">
+            <a
+                class="nav-link moods-board-signature mr-5"
+                href="https://soliv1.github.io/moodsboard-reflections-family/#/"
+                id="moods-board-link"
+                aria-describedby="moods-board-preview"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <span class="moods-board-signature__eyebrow">Visit the</span>
+                <span class="moods-board-signature__name">Moods Board</span>
+                <span class="moods-board-signature__arrow" aria-hidden="true">↗</span>
             </a>
+            <div class="moods-board-preview" id="moods-board-preview">
+                <p class="moods-board-preview__eyebrow">Reflections Family</p>
+                <div class="moods-board-preview__images">
+                    <a
+                        href="https://soliv1.github.io/moodsboard-reflections-family/#/"
+                        class="moods-board-preview__card"
+                    >
+                        <img
+                            src="{% static 'images/moods-board/season-swatch-collection.jpg' %}"
+                            alt="Seasonal swatches from the Reflections Family Moods Board"
+                        />
+                        <span>Seasonal colour</span>
+                    </a>
+                    <a
+                        href="https://soliv1.github.io/moodsboard-reflections-family/#/moodsboard-cinematic"
+                        class="moods-board-preview__card"
+                    >
+                        <img
+                            src="{% static 'images/moods-board/cinematic-collection.jpg' %}"
+                            alt="Cinematic dusk and impressionist haze colour study"
+                        />
+                        <span>Cinematic moods</span>
+                    </a>
+                </div>
+                <a
+                    href="https://soliv1.github.io/moodsboard-reflections-family/#/"
+                    class="moods-board-preview__shop-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Open the full Moods Board
+                </a>
+            </div>
         </li>
 
         <li class="nav-item">
