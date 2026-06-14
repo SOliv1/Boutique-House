@@ -1,3 +1,4 @@
+{% load static %}
 <footer class="site-footer">
   <div class="container text-center">
     <p class="site-footer__text">
@@ -12,6 +13,14 @@
       >Cinematic Moods Board Family</a>
     </p>
     <nav class="site-footer__legal" aria-label="Legal information">
+      <a class="site-footer__link" href="{% url 'delivery_information' %}">
+        Delivery
+      </a>
+      <span aria-hidden="true">·</span>
+      <a class="site-footer__link" href="{% url 'track_order' %}">
+        Track Your Order
+      </a>
+      <span aria-hidden="true">·</span>
       <a class="site-footer__link" href="{% url 'privacy_policy' %}">
         Privacy Policy
       </a>
@@ -22,3 +31,54 @@
     </nav>
   </div>
 </footer>
+
+<button
+  class="order-tracker-launcher"
+  type="button"
+  aria-expanded="false"
+  aria-controls="floating-order-tracker"
+  data-tracker-toggle
+>
+  <i class="fas fa-box-open" aria-hidden="true"></i>
+  <span>Track your order</span>
+</button>
+
+<aside
+  class="floating-order-tracker"
+  id="floating-order-tracker"
+  aria-label="Track your order"
+  hidden
+>
+  <button
+    class="floating-order-tracker__close"
+    type="button"
+    aria-label="Close order tracker"
+    data-tracker-close
+  >&times;</button>
+  <p class="floating-order-tracker__eyebrow">Boutique House delivery</p>
+  <h2>Where is my order?</h2>
+  <p>Enter the details from your confirmation email.</p>
+  <form method="post" action="{% url 'track_order' %}">
+    {% csrf_token %}
+    <label for="floating-order-number">Order number</label>
+    <input
+      id="floating-order-number"
+      name="order_number"
+      type="text"
+      autocomplete="off"
+      required
+    >
+    <label for="floating-order-email">Email address</label>
+    <input
+      id="floating-order-email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+    >
+    <button type="submit">Track order</button>
+  </form>
+  <a href="{% url 'delivery_information' %}">Read delivery information</a>
+</aside>
+
+<script src="{% static 'js/order-tracker.js' %}"></script>

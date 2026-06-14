@@ -9,4 +9,6 @@ urlpatterns = [
         views.terms_and_conditions,
         name='terms_and_conditions',
     ),
+    path('delivery/', views.delivery_information, name='delivery_information'),
+    path('track-order/', views.track_order, name='track_order'),
 ]

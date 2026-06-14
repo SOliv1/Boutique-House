@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block extra_title %}Delivery{% endblock %}
+
+{% block content %}
+<main class="delivery-page">
+  <section class="delivery-section">
+    <p class="legal-page__eyebrow">Boutique House service</p>
+    <h1>Delivery</h1>
+    <p class="delivery-section__intro">
+      At Boutique House, we understand that life moves quickly. Your order
+      should arrive in a way that feels simple, calm, and convenient. We offer
+      two delivery options depending on the size of your items.
+    </p>
+
+    <h2>Courier Delivery — Small &amp; Lightweight Items</h2>
+    <p>
+      Smaller pieces such as accessories, lighting, textiles, and select
+      seating are delivered through our trusted courier partners across most UK
+      mainland postcodes. Standard delivery typically arrives within 5 working
+      days.
+    </p>
+
+    <div class="delivery-card">
+      <h3>Standard Delivery</h3>
+      <ul>
+        <li>Free on orders over <strong>£150</strong></li>
+        <li><strong>£6.95</strong> for orders under £150</li>
+        <li>Available to most UK postcodes, including Northern Ireland</li>
+      </ul>
+    </div>
+
+    <div class="delivery-card">
+      <h3>Next-Day Delivery</h3>
+      <ul>
+        <li><strong>£9.95</strong> for eligible small-parcel items</li>
+        <li>Order before <strong>2pm</strong> on a working day</li>
+        <li>Not available for Northern Ireland or UK remote, Highlands &amp; Islands</li>
+        <li>Some larger items may not qualify due to courier restrictions</li>
+      </ul>
+    </div>
+
+    <div class="delivery-card">
+      <h3>Remote, Highlands &amp; Islands</h3>
+      <ul>
+        <li>Courier delivery: <strong>£17.50</strong></li>
+        <li>Next-day delivery is not available</li>
+      </ul>
+    </div>
+
+    <div class="delivery-card">
+      <h3>Republic of Ireland</h3>
+      <ul>
+        <li>Free delivery on orders over <strong>€250</strong></li>
+        <li><strong>€30</strong> for orders below €250</li>
+        <li>Next-day delivery is not available</li>
+      </ul>
+    </div>
+
+    <h3>International</h3>
+    <p>We currently deliver within the UK and Republic of Ireland only.</p>
+
+    <h3>Product Restrictions</h3>
+    <p>
+      Certain candles and fragrance items cannot be shipped to Northern Ireland
+      or the Republic of Ireland. Any restrictions will be clearly noted on the
+      relevant product pages.
+    </p>
+
+    <a class="delivery-page__track-link" href="{% url 'track_order' %}">
+      Track your order
+    </a>
+  </section>
+</main>
+{% endblock %}

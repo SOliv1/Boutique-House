@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block extra_title %}Track Your Order{% endblock %}
+
+{% block content %}
+<main class="tracking-page">
+  <section class="tracking-panel">
+    <p class="legal-page__eyebrow">Boutique House delivery</p>
+    <h1>Track Your Order</h1>
+    <p>
+      Use the order number and email address shown in your confirmation email.
+    </p>
+
+    <form class="tracking-form" method="post">
+      {% csrf_token %}
+      <div>
+        <label for="order-number">Order number</label>
+        <input
+          id="order-number"
+          name="order_number"
+          type="text"
+          value="{{ submitted_order_number }}"
+          autocomplete="off"
+          required
+        >
+      </div>
+      <div>
+        <label for="order-email">Email address</label>
+        <input
+          id="order-email"
+          name="email"
+          type="email"
+          value="{{ submitted_email }}"
+          autocomplete="email"
+          required
+        >
+      </div>
+      <button type="submit">Find my order</button>
+    </form>
+
+    {% if lookup_error %}
+    <div class="tracking-message tracking-message--error" role="alert">
+      {{ lookup_error }}
+    </div>
+    {% endif %}
+
+    {% if order %}
+    <section class="tracking-result" aria-live="polite">
+      <div class="tracking-result__status">
+        <span aria-hidden="true"><i class="fas fa-check"></i></span>
+        <div>
+          <p>Order received</p>
+          <h2>We are preparing your order</h2>
+        </div>
+      </div>
+      <dl>
+        <div>
+          <dt>Order number</dt>
+          <dd>{{ order.order_number }}</dd>
+        </div>
+        <div>
+          <dt>Placed</dt>
+          <dd>{{ order.date|date:"j F Y" }}</dd>
+        </div>
+        <div>
+          <dt>Delivering to</dt>
+          <dd>{{ order.town_or_city }}{% if order.postcode %}, {{ order.postcode }}{% endif %}</dd>
+        </div>
+        <div>
+          <dt>Order total</dt>
+          <dd>£{{ order.grand_total }}</dd>
+        </div>
+      </dl>
+      <h3>Items</h3>
+      <ul class="tracking-result__items">
+        {% for item in order.lineitems.all %}
+        <li>
+          <span>{{ item.product.name }}</span>
+          <span>Qty {{ item.quantity }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="tracking-result__note">
+        Carrier tracking will be sent to your email when your parcel is
+        dispatched.
+      </p>
+    </section>
+    {% endif %}
+
+    <p class="tracking-page__help">
+      Need help? Email
+      <a href="mailto:hello@boutiquehouse.co.uk">hello@boutiquehouse.co.uk</a>.
+    </p>
+  </section>
+</main>
+{% endblock %}
