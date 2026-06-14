@@ -40,6 +40,15 @@
             }} {% elif current_promotion %} {{ current_promotion }} {% else %}
             Products {% endif %}
           </h2>
+          {% if current_collection and current_collection.name == 'garden' %}
+          <a
+            href="{% url 'products' %}"
+            class="btn shop-now-button moods-board-return-btn text-uppercase mt-2 mb-3"
+          >
+            <i class="fas fa-arrow-left mr-2" aria-hidden="true"></i>
+            Return to The Boutique House
+          </a>
+          {% endif %}
           {% for c in current_categories %}
           <a
             class="category-badge text-decoration-none"
