@@ -123,7 +123,7 @@
               </p>
             </div>
           </div>
-          <div class="row">
+          <div class="row" id="product-grid">
             {% for product in products %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="card product-card h-100 border-0">
@@ -358,7 +358,7 @@
       <button
         class="product-scroll-action product-scroll-action--down"
         type="button"
-        data-scroll-target="products-list"
+        data-scroll-target="product-grid"
         aria-label="Scroll to products"
       >
         <i class="fas fa-arrow-down" aria-hidden="true"></i>

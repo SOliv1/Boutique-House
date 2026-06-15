@@ -1153,8 +1153,8 @@ a.category-badge>span.badge:hover {
     bottom: 1.25rem;
     display: grid;
     gap: .55rem;
+    left: 1rem;
     position: fixed;
-    right: 1rem;
     z-index: 1035;
 }
 
@@ -1722,7 +1722,7 @@ body.promotion-is-open {
 
     .product-scroll-actions {
         bottom: .85rem;
-        right: .75rem;
+        left: .75rem;
     }
 
     .product-scroll-action {
