@@ -275,12 +275,48 @@ a.category-badge > span.badge:hover {
     color: #fff !important;
 }
 
-.btt-button {
-    height: 42px;
-    width: 42px;
+.product-scroll-actions {
+    bottom: 1.25rem;
+    display: grid;
+    gap: .55rem;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    right: 1rem;
+    z-index: 1035;
+}
+
+.product-scroll-action {
+    align-items: center;
+    background: rgba(23, 19, 16, .92);
+    border: 1px solid rgba(255, 255, 255, .58);
+    border-radius: 999px;
+    box-shadow: 0 12px 30px -16px rgba(18, 14, 11, .86);
+    color: #fffaf4;
+    display: inline-flex;
+    font-size: .78rem;
+    font-weight: 600;
+    gap: .45rem;
+    justify-content: center;
+    min-height: 2.75rem;
+    min-width: 7.5rem;
+    padding: .7rem .95rem;
+    transition: background-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+
+.product-scroll-action:hover,
+.product-scroll-action:focus {
+    background: #8b6f83;
+    box-shadow: 0 16px 34px -16px rgba(52, 35, 48, .86);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.product-scroll-action:focus-visible {
+    outline: 3px solid rgba(139, 111, 131, .35);
+    outline-offset: 3px;
+}
+
+.product-scroll-action i {
+    font-size: .82rem;
 }
 
 .btt-link,
@@ -530,5 +566,20 @@ input[name='q']::placeholder {
 
     .increment-qty, .decrement-qty {
         padding: .25rem .5rem !important;
+    }
+
+    .product-scroll-actions {
+        bottom: .85rem;
+        right: .75rem;
+    }
+
+    .product-scroll-action {
+        min-height: 2.55rem;
+        min-width: 3rem;
+        padding: .65rem .75rem;
+    }
+
+    .product-scroll-action span {
+        display: none;
     }
 }
