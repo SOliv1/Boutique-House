@@ -127,6 +127,7 @@
             {% for product in products %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
               <div class="card product-card h-100 border-0">
+                <div class="product-image-frame">
                 {% if product.image %}
                 <a href="{% url 'product_detail' product.id %}">
                   <img
@@ -152,6 +153,19 @@
                   />
                 </a>
                 {% endif %}
+                {% if product.is_coming_soon %}
+                <a
+                  class="product-coming-soon-veil"
+                  href="{% url 'product_detail' product.id %}"
+                  aria-label="{{ product.name }} coming soon"
+                >
+                  <span class="product-coming-soon-panel">
+                    <span class="product-coming-soon-label">Coming Soon</span>
+                    <span class="product-coming-soon-copy">Preview image while this piece is prepared.</span>
+                  </span>
+                </a>
+                {% endif %}
+                </div>
                 <div class="card-body pb-0">
                   <h3 class="product-card-title mb-2">{{ product.name }}</h3>
                   {% if product.is_new_arrival %}
@@ -160,6 +174,8 @@
                   <span class="badge badge-dark mb-2">Special Deal</span>
                   {% endif %} {% if product.is_clearance %}
                   <span class="badge badge-danger mb-2">Clearance</span>
+                  {% endif %} {% if product.is_coming_soon %}
+                  <span class="badge badge-secondary mb-2">Coming Soon</span>
                   {% endif %}
                   <p class="product-card-description mb-0">
                     {{ product.description }}
@@ -262,6 +278,7 @@
             {% for product in moods_board_products %}
             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-5">
               <div class="card product-card h-100 border-0">
+                <div class="product-image-frame">
                 {% if product.image %}
                 <a href="{% url 'product_detail' product.id %}">
                   <img
@@ -287,8 +304,24 @@
                   />
                 </a>
                 {% endif %}
+                {% if product.is_coming_soon %}
+                <a
+                  class="product-coming-soon-veil"
+                  href="{% url 'product_detail' product.id %}"
+                  aria-label="{{ product.name }} coming soon"
+                >
+                  <span class="product-coming-soon-panel">
+                    <span class="product-coming-soon-label">Coming Soon</span>
+                    <span class="product-coming-soon-copy">Preview image while this piece is prepared.</span>
+                  </span>
+                </a>
+                {% endif %}
+                </div>
                 <div class="card-body pb-0">
                   <h3 class="product-card-title mb-2">{{ product.name }}</h3>
+                  {% if product.is_coming_soon %}
+                  <span class="badge badge-secondary mb-2">Coming Soon</span>
+                  {% endif %}
                   <p class="product-card-description mb-0">
                     {{ product.description }}
                   </p>

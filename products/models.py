@@ -43,6 +43,7 @@ class Product(models.Model):
     is_new_arrival = models.BooleanField(default=False)
     is_special_offer = models.BooleanField(default=False)
     is_clearance = models.BooleanField(default=False)
+    is_coming_soon = models.BooleanField(default=False)
     name = models.CharField(max_length=254)
     description = models.TextField()
     has_sizes = models.BooleanField(default=False, null=True, blank=True)

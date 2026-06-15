@@ -18,6 +18,7 @@ class ProductAdmin(admin.ModelAdmin):
         'is_new_arrival',
         'is_special_offer',
         'is_clearance',
+        'is_coming_soon',
         'price',
         'rating',
         'image',
@@ -26,6 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
         'is_new_arrival',
         'is_special_offer',
         'is_clearance',
+        'is_coming_soon',
         'product_family',
         'colour_finish',
         'category',
@@ -38,6 +40,7 @@ class ProductAdmin(admin.ModelAdmin):
         'is_new_arrival',
         'is_special_offer',
         'is_clearance',
+        'is_coming_soon',
         'price',
     )
 

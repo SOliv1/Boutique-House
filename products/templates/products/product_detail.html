@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
                 <div class="image-container my-5">
+                    <div class="product-image-frame product-image-frame--detail">
                     {% if product.image %}
                         <a href="{{ product.image.url }}" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
@@ -28,6 +29,15 @@
                             <img class="card-img-top img-fluid" src="{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}" alt="{{ product.name }}">
                         </a>
                     {% endif %}
+                    {% if product.is_coming_soon %}
+                        <div class="product-coming-soon-veil" aria-label="{{ product.name }} coming soon">
+                            <span class="product-coming-soon-panel">
+                                <span class="product-coming-soon-label">Coming Soon</span>
+                                <span class="product-coming-soon-copy">Preview image while this piece is prepared.</span>
+                            </span>
+                        </div>
+                    {% endif %}
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
@@ -42,6 +52,9 @@
                     {% endif %}
                     {% if product.is_clearance %}
                         <span class="badge badge-danger mt-2">Clearance</span>
+                    {% endif %}
+                    {% if product.is_coming_soon %}
+                        <span class="badge badge-secondary mt-2">Coming Soon</span>
                     {% endif %}
                     {% if product.category %}
                     <p class="small mt-1 mb-0">
@@ -122,7 +135,11 @@
                                     </span>
                                     <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                {% if product.is_coming_soon %}
+                                    <button type="button" class="btn btn-black rounded-0 text-uppercase mt-5" disabled>Coming Soon</button>
+                                {% else %}
+                                    <input type="submit" class="btn btn-black rounded-0 text-uppercase mt-5" value="Add to Bag">
+                                {% endif %}
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% endwith %}
