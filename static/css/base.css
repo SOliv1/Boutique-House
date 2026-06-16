@@ -1065,14 +1065,16 @@ body {
 }
 
 .vintage-notes-hero__image {
-    height: calc(100% - 3rem);
-    margin: 1.5rem auto;
-    max-width: min(92vw, 1180px);
+    bottom: 1.5rem;
+    height: auto;
+    left: 50%;
+    max-height: calc(100% - 3rem);
     object-fit: contain;
-    object-position: center;
+    object-position: center top;
     opacity: 0;
-    right: 0;
-    width: 100%;
+    right: auto;
+    top: 1.5rem;
+    width: min(92vw, 1180px);
 }
 
 .vintage-notes-hero__image--1 {
@@ -1128,17 +1130,18 @@ body {
     0%,
     100% {
         opacity: 0;
-        transform: scale(1.02);
+        transform: translateX(-50%) scale(1.01);
     }
 
     8%,
     30% {
         opacity: 1;
+        transform: translateX(-50%) scale(1.01);
     }
 
     42% {
         opacity: 0;
-        transform: scale(1.06);
+        transform: translateX(-50%) scale(1.035);
     }
 }
 
