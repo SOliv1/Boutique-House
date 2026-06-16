@@ -111,6 +111,27 @@
                                         {% endfor %}
                                     </div>
                                 </div>
+                            {% elif product.collection and product.collection.name == 'garden' and product.colour_finish %}
+                                <div class="col-12">
+                                    <p class="mb-2"><strong>Colourway:</strong></p>
+                                    <div class="vintage-product-colours vintage-product-colours--choice mb-3" aria-label="Choose colourway">
+                                        {% for colour in product.colour_finish|vintage_colourways %}
+                                            <label class="vintage-colour-chip vintage-colour-chip--choice vintage-colour-chip--{{ colour.slug }}">
+                                                <input
+                                                    type="radio"
+                                                    name="product_colour"
+                                                    value="{{ colour.name }}"
+                                                    {% if forloop.first %}checked{% endif %}
+                                                >
+                                                <span class="vintage-colour-chip__swatch" aria-hidden="true"></span>
+                                                <span>{{ colour.name }}</span>
+                                                <span class="vintage-colour-chip__check" aria-hidden="true">
+                                                    <i class="fas fa-check"></i>
+                                                </span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
                             {% endif %}
                             {% with product.has_sizes as s %}
                             {% if s %}

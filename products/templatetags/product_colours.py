@@ -10,6 +10,8 @@ VINTAGE_COLOUR_SWATCHES = {
     'soft meadow': 'soft-meadow',
     'oyster': 'oyster',
     'peacock teal': 'peacock-teal',
+    'saphire depth': 'sapphire-depth',
+    'sapphire depth': 'sapphire-depth',
     'midnight ink': 'midnight-ink',
     'ivory silk': 'ivory-silk',
     'noir shadow': 'noir-shadow',

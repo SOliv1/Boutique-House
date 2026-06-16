@@ -1254,6 +1254,10 @@ body {
     --vintage-swatch: #087e82;
 }
 
+.vintage-colour-chip--sapphire-depth {
+    --vintage-swatch: #16377d;
+}
+
 .vintage-colour-chip--midnight-ink {
     --vintage-swatch: #16377d;
 }

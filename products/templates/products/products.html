@@ -245,6 +245,15 @@
                     {% endfor %}
                   </div>
                   {% endif %}
+                  {% elif current_collection and current_collection.name == 'garden' and product.colour_finish %}
+                  <div class="vintage-product-colours mt-3" aria-label="Available colourways">
+                    {% for colour in product.colour_finish|vintage_colourways %}
+                    <span class="vintage-colour-chip vintage-colour-chip--{{ colour.slug }}">
+                      <span class="vintage-colour-chip__swatch" aria-hidden="true"></span>
+                      <span>{{ colour.name }}</span>
+                    </span>
+                    {% endfor %}
+                  </div>
                   {% endif %}
                 </div>
                 <div class="card-footer bg-white pt-0 border-0 text-left">
