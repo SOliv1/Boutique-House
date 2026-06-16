@@ -1116,6 +1116,15 @@ body {
     z-index: 1;
 }
 
+.vintage-notes-hero__mood {
+    color: rgba(39, 31, 25, .66);
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
+
 .vintage-notes-intro {
     color: #625b55;
     max-width: 620px;
