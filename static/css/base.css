@@ -1152,6 +1152,10 @@ body {
     margin-top: .65rem;
 }
 
+.vintage-product-colours--choice {
+    gap: .55rem;
+}
+
 .vintage-colour-chip {
     align-items: center;
     background: rgba(255, 250, 244, .74);
@@ -1166,6 +1170,57 @@ body {
     line-height: 1.2;
     padding: .32rem .58rem .32rem .38rem;
     white-space: nowrap;
+}
+
+.vintage-colour-chip--choice {
+    cursor: pointer;
+    min-height: 2.3rem;
+    position: relative;
+    transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease, transform .18s ease;
+}
+
+.vintage-colour-chip--choice input {
+    height: 1px;
+    opacity: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.vintage-colour-chip--choice:hover {
+    border-color: rgba(39, 31, 25, .42);
+    box-shadow: 0 6px 18px rgba(68, 48, 34, .08);
+    transform: translateY(-1px);
+}
+
+.vintage-colour-chip--choice:has(input:focus-visible) {
+    box-shadow: 0 0 0 3px rgba(139, 111, 131, .22);
+}
+
+.vintage-colour-chip--choice:has(input:checked) {
+    background: rgba(255, 250, 244, .96);
+    border-color: #44352c;
+    box-shadow: 0 8px 22px rgba(68, 48, 34, .13);
+    color: #271f19;
+}
+
+.vintage-colour-chip__check {
+    align-items: center;
+    background: #44352c;
+    border-radius: 50%;
+    color: #fffaf4;
+    display: none;
+    font-size: .55rem;
+    height: .95rem;
+    justify-content: center;
+    width: .95rem;
+}
+
+.vintage-colour-chip--choice:has(input:checked) .vintage-colour-chip__check {
+    display: inline-flex;
+}
+
+.vintage-colour-chip--choice input:checked ~ .vintage-colour-chip__check {
+    display: inline-flex;
 }
 
 .vintage-colour-chip__swatch {
