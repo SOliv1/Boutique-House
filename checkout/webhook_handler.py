@@ -3,7 +3,11 @@ from django.http import HttpResponse
 from .models import Order
 from .emails import send_order_confirmation
 
+import logging
 import time
+
+
+logger = logging.getLogger(__name__)
 
 
 class StripeWH_Handler:
@@ -14,7 +18,14 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        send_order_confirmation(order)
+        try:
+            return send_order_confirmation(order)
+        except Exception:
+            logger.exception(
+                'Webhook confirmation email failed for order %s',
+                order.order_number,
+            )
+            return 0
 
     def handle_event(self, event):
         """
@@ -39,21 +50,26 @@ class StripeWH_Handler:
                     time.sleep(1)
                 continue
 
-            self._send_confirmation_email(order)
+            messages_sent = self._send_confirmation_email(order)
             return HttpResponse(
                 content=(
                     f'Webhook received: {event["type"]} | '
-                    'SUCCESS: Order confirmed'
+                    f'SUCCESS: Order confirmed | emails sent: {messages_sent}'
                 ),
                 status=200,
             )
 
+        logger.warning(
+            'Stripe webhook received for payment ID %s before order existed',
+            pid,
+        )
         return HttpResponse(
             content=(
                 f'Webhook received: {event["type"]} | '
-                f'ERROR: Order with payment ID {pid} was not found'
+                f'Order with payment ID {pid} was not found yet; '
+                'checkout success fallback will handle confirmation email.'
             ),
-            status=500,
+            status=200,
         )
 
     def handle_payment_intent_payment_failed(self, event):

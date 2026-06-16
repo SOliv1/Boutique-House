@@ -133,10 +133,29 @@ class PaymentIntentWebhookTests(TestCase):
 
     @patch('checkout.webhook_handler.send_order_confirmation')
     def test_existing_order_is_confirmed(self, send_confirmation):
+        send_confirmation.return_value = 1
+
         response = self.handler.handle_payment_intent_succeeded(self.event)
 
         self.assertEqual(response.status_code, 200)
         send_confirmation.assert_called_once_with(self.order)
+
+    def test_missing_order_webhook_returns_success_for_checkout_fallback(self):
+        self.event['data']['object'] = SimpleNamespace(id='pi_missing')
+
+        response = self.handler.handle_payment_intent_succeeded(self.event)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'was not found yet', response.content)
+
+    @patch('checkout.webhook_handler.send_order_confirmation')
+    def test_email_failure_does_not_fail_webhook(self, send_confirmation):
+        send_confirmation.side_effect = RuntimeError('email provider down')
+
+        response = self.handler.handle_payment_intent_succeeded(self.event)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'emails sent: 0', response.content)
 
 
 class WarehouseAdminActionTests(TestCase):
