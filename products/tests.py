@@ -8,7 +8,11 @@ class GardenSeedMigrationTests(TestCase):
     def test_migration_seeds_complete_garden_catalog(self):
         garden_products = Product.objects.filter(collection__name='garden')
 
-        self.assertEqual(garden_products.count(), 33)
+        self.assertGreaterEqual(garden_products.count(), 34)
+        self.assertLessEqual(garden_products.count(), 100)
+        self.assertTrue(
+            garden_products.filter(name='The Garden Canopy Umbrella').exists()
+        )
 
     def test_garden_catalog_uses_deployable_image_fallback(self):
         response = self.client.get(

@@ -1369,5 +1369,26 @@
     "image_url": "/static/images/products/vintage-notes/cloud-paper-cotton-top.png",
     "image": ""
   }
+},
+{
+  "model": "products.product",
+  "pk": 77,
+  "fields": {
+    "category": 10,
+    "collection": 3,
+    "sku": "BH-GDN-ACC-011",
+    "product_family": "Garden Umbrella",
+    "colour_finish": "Pale Cream, Linen Whisper, Peacock Teal, Sapphire Depth",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "The Garden Canopy Umbrella",
+    "description": "A refined fringed garden umbrella designed to bring softness, shade, and timeless elegance to outdoor spaces. Available in Pale Cream, Linen Whisper, Peacock Teal, and Sapphire Depth.",
+    "has_sizes": false,
+    "price": "345.00",
+    "rating": "5.00",
+    "image_url": "https://res.cloudinary.com/dwpvbtoad/image/upload/v1781559221/linen-whisper-saphire-depth_yf8zfw.png",
+    "image": ""
+  }
 }
 ]
