@@ -6,6 +6,43 @@ from django.contrib import messages
 from products.models import Product
 
 
+def _variant_key(size, colour):
+    return f'{size or "no-size"}::{colour or "no-colour"}'
+
+
+def _variant_label(size, colour):
+    details = []
+    if colour:
+        details.append(colour)
+    if size:
+        details.append(f'size {size.upper()}')
+    return ', '.join(details)
+
+
+def _ensure_variant_bag_item(bag, item_id):
+    if item_id not in bag:
+        bag[item_id] = {'items_by_variant': {}}
+    elif isinstance(bag[item_id], int):
+        bag[item_id] = {
+            'items_by_variant': {
+                _variant_key(None, None): {
+                    'quantity': bag[item_id],
+                    'size': None,
+                    'colour': None,
+                },
+            },
+        }
+    elif 'items_by_variant' not in bag[item_id]:
+        variants = {}
+        for size, quantity in bag[item_id].get('items_by_size', {}).items():
+            variants[_variant_key(size, None)] = {
+                'quantity': quantity,
+                'size': size,
+                'colour': None,
+            }
+        bag[item_id] = {'items_by_variant': variants}
+
+
 def view_bag(request):
     """ A view that renders the bag contents page """
 
@@ -21,25 +58,27 @@ def add_to_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+    colour = request.POST.get('product_colour') or None
     bag = request.session.get('bag', {})
 
-    if size:
-        if item_id in list(bag.keys()):
-            if size in bag[item_id]['items_by_size'].keys():
-                bag[item_id]['items_by_size'][size] += quantity
-                messages.success(request,
-                                 (f'Updated size {size.upper()} '
-                                  f'{product.name} quantity to '
-                                  f'{bag[item_id]["items_by_size"][size]}'))
-            else:
-                bag[item_id]['items_by_size'][size] = quantity
-                messages.success(request,
-                                 (f'Added size {size.upper()} '
-                                  f'{product.name} to your bag'))
-        else:
-            bag[item_id] = {'items_by_size': {size: quantity}}
+    if size or colour:
+        key = _variant_key(size, colour)
+        label = _variant_label(size, colour)
+        _ensure_variant_bag_item(bag, item_id)
+        if key in bag[item_id]['items_by_variant'].keys():
+            bag[item_id]['items_by_variant'][key]['quantity'] += quantity
             messages.success(request,
-                             (f'Added size {size.upper()} '
+                             (f'Updated {label} '
+                              f'{product.name} quantity to '
+                              f'{bag[item_id]["items_by_variant"][key]["quantity"]}'))
+        else:
+            bag[item_id]['items_by_variant'][key] = {
+                'quantity': quantity,
+                'size': size,
+                'colour': colour,
+            }
+            messages.success(request,
+                             (f'Added {label} '
                               f'{product.name} to your bag'))
     else:
         if item_id in list(bag.keys()):
@@ -63,9 +102,26 @@ def adjust_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+    colour = request.POST.get('product_colour') or None
+    variant_key = request.POST.get('variant_key') or _variant_key(size, colour)
     bag = request.session.get('bag', {})
 
-    if size:
+    if item_id in bag and 'items_by_variant' in bag[item_id]:
+        label = _variant_label(size, colour)
+        if quantity > 0:
+            bag[item_id]['items_by_variant'][variant_key]['quantity'] = quantity
+            messages.success(request,
+                             (f'Updated {label} '
+                              f'{product.name} quantity to '
+                              f'{bag[item_id]["items_by_variant"][variant_key]["quantity"]}'))
+        else:
+            del bag[item_id]['items_by_variant'][variant_key]
+            if not bag[item_id]['items_by_variant']:
+                bag.pop(item_id)
+            messages.success(request,
+                             (f'Removed {label} '
+                              f'{product.name} from your bag'))
+    elif size:
         if quantity > 0:
             bag[item_id]['items_by_size'][size] = quantity
             messages.success(request,
@@ -103,9 +159,18 @@ def remove_from_bag(request, item_id):
         size = None
         if 'product_size' in request.POST:
             size = request.POST['product_size']
+        colour = request.POST.get('product_colour') or None
+        variant_key = request.POST.get('variant_key') or _variant_key(size, colour)
         bag = request.session.get('bag', {})
 
-        if size:
+        if item_id in bag and 'items_by_variant' in bag[item_id]:
+            del bag[item_id]['items_by_variant'][variant_key]
+            if not bag[item_id]['items_by_variant']:
+                bag.pop(item_id)
+            messages.success(request,
+                             (f'Removed {_variant_label(size, colour)} '
+                              f'{product.name} from your bag'))
+        elif size:
             del bag[item_id]['items_by_size'][size]
             if not bag[item_id]['items_by_size']:
                 bag.pop(item_id)

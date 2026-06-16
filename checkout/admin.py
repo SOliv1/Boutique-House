@@ -5,6 +5,13 @@ from .models import Order, OrderLineItem
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
+    fields = (
+        'product',
+        'product_colour',
+        'product_size',
+        'quantity',
+        'lineitem_total',
+    )
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -27,7 +34,13 @@ class OrderAdmin(admin.ModelAdmin):
                     'order_total', 'delivery_cost',
                     'grand_total',)
 
-    search_fields = ('order_number', 'full_name', 'email', 'stripe_pid')
+    search_fields = (
+        'order_number',
+        'full_name',
+        'email',
+        'stripe_pid',
+        'lineitems__product_colour',
+    )
     search_help_text = (
         'Search by order number, customer name, email, or Stripe payment ID.'
     )

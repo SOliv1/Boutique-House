@@ -13,6 +13,12 @@ class GardenSeedMigrationTests(TestCase):
         self.assertTrue(
             garden_products.filter(name='The Garden Canopy Umbrella').exists()
         )
+        self.assertTrue(
+            garden_products.filter(
+                name='May Blossom Garden Bistro Set',
+                is_clearance=True,
+            ).exists()
+        )
 
     def test_garden_catalog_uses_deployable_image_fallback(self):
         response = self.client.get(

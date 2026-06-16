@@ -4,8 +4,9 @@ from unittest.mock import patch
 from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 
-from .models import Order
+from .models import Order, OrderLineItem
 from .webhook_handler import StripeWH_Handler
+from products.models import Product
 
 
 class CheckoutSuccessTests(TestCase):
@@ -21,6 +22,11 @@ class CheckoutSuccessTests(TestCase):
             original_bag='{}',
             stripe_pid='pi_test',
         )
+        self.product = Product.objects.create(
+            name='The Garden Canopy Umbrella',
+            description='A garden umbrella.',
+            price='345.00',
+        )
 
     @override_settings(DEBUG=False)
     def test_success_page_renders_in_production(self):
@@ -32,6 +38,24 @@ class CheckoutSuccessTests(TestCase):
         )
 
         self.assertEqual(response.status_code, 200)
+
+    @override_settings(DEBUG=False)
+    def test_success_page_shows_selected_colourway(self):
+        OrderLineItem.objects.create(
+            order=self.order,
+            product=self.product,
+            quantity=1,
+            product_colour='Sapphire Depth',
+        )
+
+        response = self.client.get(
+            reverse(
+                'checkout_success',
+                args=[self.order.order_number],
+            )
+        )
+
+        self.assertContains(response, 'Colour: Sapphire Depth')
 
 
 class PaymentIntentWebhookTests(TestCase):

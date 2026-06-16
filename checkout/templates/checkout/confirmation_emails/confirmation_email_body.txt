@@ -8,7 +8,8 @@ Order Date: {{ order.date }}
 YOUR ORDER
 {% for item in order.lineitems.all %}
 {{ item.product.name }}
-{% if item.product.colour_finish %}Colour / Finish: {{ item.product.colour_finish }}
+{% if item.product_colour %}Selected Colour: {{ item.product_colour }}
+{% elif item.product.colour_finish %}Available Colour / Finish: {{ item.product.colour_finish }}
 {% endif %}{% if item.product_size %}Size: {{ item.product_size|upper }}
 {% endif %}SKU: {{ item.product.sku }}
 Quantity: {{ item.quantity }}

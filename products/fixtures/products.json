@@ -811,6 +811,7 @@
     "colour_finish": "Chalk White Metal",
     "stock_quantity": 6,
     "reserved_quantity": 1,
+    "is_clearance": true,
     "name": "May Blossom Garden Bistro Set",
     "description": "A chalk-white bistro table and two chairs from the May Blossom story, perfectly scaled for balconies, courtyards, and rose-filled corners.",
     "has_sizes": false,

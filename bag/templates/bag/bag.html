@@ -138,8 +138,15 @@
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
         var size = $(this).data('product_size');
+        var colour = $(this).data('product_colour');
+        var variantKey = $(this).data('variant_key');
         var url = `/bag/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'product_size': size,
+            'product_colour': colour,
+            'variant_key': variantKey,
+        };
 
         $.post(url, data)
          .done(function() {

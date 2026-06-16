@@ -88,14 +88,26 @@ def checkout(request):
                         )
                         order_line_item.save()
                     else:
-                        for size, quantity in item_data['items_by_size'].items():
-                            order_line_item = OrderLineItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=size,
-                            )
-                            order_line_item.save()
+                        if 'items_by_variant' in item_data:
+                            variants = item_data['items_by_variant'].values()
+                            for variant in variants:
+                                order_line_item = OrderLineItem(
+                                    order=order,
+                                    product=product,
+                                    quantity=variant['quantity'],
+                                    product_size=variant.get('size'),
+                                    product_colour=variant.get('colour'),
+                                )
+                                order_line_item.save()
+                        else:
+                            for size, quantity in item_data['items_by_size'].items():
+                                order_line_item = OrderLineItem(
+                                    order=order,
+                                    product=product,
+                                    quantity=quantity,
+                                    product_size=size,
+                                )
+                                order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag wasn't found in our database. "
