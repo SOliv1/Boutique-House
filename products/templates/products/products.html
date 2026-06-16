@@ -433,7 +433,7 @@
       <button
         class="product-scroll-action product-scroll-action--down"
         type="button"
-        data-scroll-target="product-grid"
+        data-scroll-direction="down"
         aria-label="Scroll to products"
       >
         <i class="fas fa-arrow-down" aria-hidden="true"></i>
@@ -453,12 +453,39 @@
     <script type="text/javascript">
       $(".product-scroll-action").click(function () {
         var target = $(this).data("scroll-target");
+        var direction = $(this).data("scroll-direction");
         var targetTop = 0;
+        var headerOffset = 120;
 
-        if (target !== "top") {
+        if (direction === "down") {
+          var currentPosition = window.pageYOffset + headerOffset + 12;
+          var rowTops = [];
+
+          $(".product-card:visible").each(function () {
+            var rowTop = Math.round($(this).offset().top);
+
+            if (rowTops.indexOf(rowTop) === -1) {
+              rowTops.push(rowTop);
+            }
+          });
+
+          rowTops.sort(function (a, b) {
+            return a - b;
+          });
+
+          var nextRowTop = rowTops.find(function (rowTop) {
+            return rowTop > currentPosition;
+          });
+
+          if (nextRowTop !== undefined) {
+            targetTop = nextRowTop - headerOffset;
+          } else {
+            targetTop = document.documentElement.scrollHeight - window.innerHeight;
+          }
+        } else if (target !== "top") {
           var targetElement = $("#" + target);
           if (targetElement.length) {
-            targetTop = targetElement.offset().top - 120;
+            targetTop = targetElement.offset().top - headerOffset;
           }
         }
 
