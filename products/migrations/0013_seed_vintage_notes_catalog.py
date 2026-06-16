@@ -68,7 +68,7 @@ VINTAGE_PRODUCTS = [
         'pk': 75,
         'sku': 'BHVN-ES-003-PC',
         'product_family': 'ES-003',
-        'colour_finish': 'Pale Cream, Ivory Silk, Noir Shadow, Dust Rose',
+        'colour_finish': 'Pale Cream, Ivory Silk, Noir Shadow, Rose Mist',
         'stock_quantity': 6,
         'reserved_quantity': 0,
         'is_new_arrival': True,

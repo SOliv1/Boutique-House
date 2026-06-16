@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
+{% extends "base.html" %} {% load static product_colours %} {% block page_header %}
 <div class="container header-container">
   <div class="row">
     <div class="col"></div>
@@ -236,9 +236,14 @@
                     Style No. {{ product.product_family }}
                   </p>
                   {% if product.colour_finish %}
-                  <p class="vintage-product-colours mb-0">
-                    {{ product.colour_finish }}
-                  </p>
+                  <div class="vintage-product-colours" aria-label="Available colourways">
+                    {% for colour in product.colour_finish|vintage_colourways %}
+                    <span class="vintage-colour-chip vintage-colour-chip--{{ colour.slug }}">
+                      <span class="vintage-colour-chip__swatch" aria-hidden="true"></span>
+                      <span>{{ colour.name }}</span>
+                    </span>
+                    {% endfor %}
+                  </div>
                   {% endif %}
                   {% endif %}
                 </div>
