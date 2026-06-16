@@ -7,6 +7,9 @@ from django.utils.html import format_html
 from .models import Order, OrderLineItem
 
 
+WAREHOUSE_CONTACT_NUMBER = '020 7946 0182'
+
+
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
@@ -107,20 +110,24 @@ class OrderAdmin(admin.ModelAdmin):
                 'background: #f0fdf4; color: #14532d;">'
                 '<strong>Sent to Warehouse / Delivery.</strong><br>'
                 'Sent by {} on {}.<br>'
-                '<span>{}</span>'
+                '<span>{}</span><br>'
+                '<span>Warehouse contact: {}</span>'
                 '</div>',
                 sent_by,
                 sent_at,
                 obj.warehouse_sent_by_role or 'Role not recorded',
+                WAREHOUSE_CONTACT_NUMBER,
             )
         return format_html(
             '<div style="padding: 14px 16px; border-left: 6px solid #b45309; '
             'background: #fffbeb; color: #78350f;">'
-            '<strong>Action needed:</strong> {}'
+            '<strong>Action needed:</strong> {}<br>'
+            '<strong>Warehouse contact:</strong> {}'
             '</div>',
             'this order has not yet been sent to Warehouse / Delivery. Use '
             'the prominent button at the top of this order when it is ready '
             'for fulfilment.',
+            WAREHOUSE_CONTACT_NUMBER,
         )
 
     def _warehouse_user_role(self, user):

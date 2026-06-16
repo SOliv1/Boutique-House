@@ -151,3 +151,5 @@ class WarehouseAdminActionTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Send to Warehouse / Delivery')
         self.assertContains(response, 'Action needed:')
+        self.assertContains(response, 'Warehouse tel: 020 7946 0182')
+        self.assertContains(response, 'Warehouse contact:')
