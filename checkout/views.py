@@ -19,6 +19,12 @@ from bag.contexts import bag_contents
 import stripe
 import json
 import uuid
+import logging
+
+from .emails import send_order_confirmation
+
+
+logger = logging.getLogger(__name__)
 
 
 @require_POST
@@ -207,6 +213,19 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
+
+    try:
+        send_order_confirmation(order)
+    except Exception:
+        logger.exception(
+            'Order confirmation email failed for order %s',
+            order.order_number,
+        )
+        messages.warning(
+            request,
+            'Your order was successful, but we could not send the confirmation '
+            'email automatically. Please contact us if it does not arrive.',
+        )
 
     if 'bag' in request.session:
         del request.session['bag']

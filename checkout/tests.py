@@ -3,7 +3,9 @@ from unittest.mock import patch
 
 from django.contrib.admin.sites import AdminSite
 from django.contrib.auth import get_user_model
+from django.core import mail
 from django.test import RequestFactory, TestCase, override_settings
+from django.utils import timezone
 from django.urls import reverse
 
 from .admin import OrderAdmin
@@ -59,6 +61,53 @@ class CheckoutSuccessTests(TestCase):
         )
 
         self.assertContains(response, 'Colour: Sapphire Depth')
+
+    @override_settings(
+        DEBUG=False,
+        EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend',
+        DEFAULT_FROM_EMAIL='orders@boutique-house.test',
+    )
+    def test_success_page_sends_customer_confirmation_email(self):
+        OrderLineItem.objects.create(
+            order=self.order,
+            product=self.product,
+            quantity=1,
+            product_colour='Sapphire Depth',
+        )
+
+        response = self.client.get(
+            reverse(
+                'checkout_success',
+                args=[self.order.order_number],
+            )
+        )
+
+        self.order.refresh_from_db()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertIn(self.order.order_number, mail.outbox[0].subject)
+        self.assertIn('Selected Colour: Sapphire Depth', mail.outbox[0].body)
+        self.assertIsNotNone(self.order.confirmation_email_sent_at)
+
+    @override_settings(
+        DEBUG=False,
+        EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend',
+        DEFAULT_FROM_EMAIL='orders@boutique-house.test',
+    )
+    def test_success_page_does_not_resend_existing_confirmation_email(self):
+        self.order.confirmation_email_sent_at = timezone.now()
+        self.order.save(update_fields=['confirmation_email_sent_at'])
+
+        response = self.client.get(
+            reverse(
+                'checkout_success',
+                args=[self.order.order_number],
+            )
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(mail.outbox), 0)
 
 
 class PaymentIntentWebhookTests(TestCase):
