@@ -1047,7 +1047,9 @@ body {
 
 .vintage-notes-hero {
     align-items: flex-end;
-    background: #171310;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255, 250, 240, .16), transparent 58%),
+        #171310;
     display: flex;
     min-height: 68vh;
     overflow: hidden;
@@ -1063,23 +1065,30 @@ body {
 }
 
 .vintage-notes-hero__image {
-    height: 100%;
-    object-fit: cover;
-    object-position: center 42%;
+    height: calc(100% - 3rem);
+    margin: 1.5rem auto;
+    max-width: min(92vw, 1180px);
+    object-fit: contain;
+    object-position: center;
     opacity: 0;
+    right: 0;
     width: 100%;
 }
 
 .vintage-notes-hero__image--1 {
-    animation: vintageHeroFade 18s ease-in-out infinite;
+    animation: vintageHeroFade 24s ease-in-out infinite;
 }
 
 .vintage-notes-hero__image--2 {
-    animation: vintageHeroFade 18s ease-in-out 6s infinite;
+    animation: vintageHeroFade 24s ease-in-out 6s infinite;
 }
 
 .vintage-notes-hero__image--3 {
-    animation: vintageHeroFade 18s ease-in-out 12s infinite;
+    animation: vintageHeroFade 24s ease-in-out 12s infinite;
+}
+
+.vintage-notes-hero__image--4 {
+    animation: vintageHeroFade 24s ease-in-out 18s infinite;
 }
 
 .vintage-notes-hero__veil {
