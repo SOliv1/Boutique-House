@@ -78,5 +78,13 @@
     "name": "garden",
     "friendly_name": "Garden"
   }
+},
+{
+  "model": "products.category",
+  "pk": 11,
+  "fields": {
+    "name": "vintage_notes",
+    "friendly_name": "Vintage Notes"
+  }
 }
 ]

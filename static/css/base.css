@@ -1045,6 +1045,94 @@ body {
     max-width: 560px;
 }
 
+.vintage-notes-hero {
+    align-items: flex-end;
+    background: #171310;
+    display: flex;
+    min-height: 68vh;
+    overflow: hidden;
+    padding: 8rem max(1rem, 6vw) 4rem;
+    position: relative;
+}
+
+.vintage-notes-hero__carousel,
+.vintage-notes-hero__image,
+.vintage-notes-hero__veil {
+    inset: 0;
+    position: absolute;
+}
+
+.vintage-notes-hero__image {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    opacity: 0;
+    width: 100%;
+}
+
+.vintage-notes-hero__image--1 {
+    animation: vintageHeroFade 18s ease-in-out infinite;
+}
+
+.vintage-notes-hero__image--2 {
+    animation: vintageHeroFade 18s ease-in-out 6s infinite;
+}
+
+.vintage-notes-hero__image--3 {
+    animation: vintageHeroFade 18s ease-in-out 12s infinite;
+}
+
+.vintage-notes-hero__veil {
+    background:
+        linear-gradient(90deg, rgba(23, 19, 16, .76), rgba(23, 19, 16, .36) 48%, rgba(23, 19, 16, .12)),
+        linear-gradient(180deg, rgba(23, 19, 16, .16), rgba(23, 19, 16, .62));
+}
+
+.vintage-notes-hero__content {
+    color: #fffaf4;
+    max-width: 640px;
+    position: relative;
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .26);
+    z-index: 1;
+}
+
+.vintage-notes-intro {
+    color: #625b55;
+    max-width: 620px;
+}
+
+.vintage-product-style {
+    color: #8b6f83;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.vintage-product-colours {
+    color: #77706b;
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+@keyframes vintageHeroFade {
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    8%,
+    30% {
+        opacity: 1;
+    }
+
+    42% {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+}
+
 .moods-board-previews {
     display: flex;
     gap: .9rem;

@@ -44,6 +44,16 @@
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ product.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                    {% if product.collection and product.collection.name == 'vintage_notes' %}
+                        <p class="vintage-product-style mb-2 mt-2">
+                            Style No. {{ product.product_family }}
+                        </p>
+                        {% if product.colour_finish %}
+                            <p class="vintage-product-colours mb-3">
+                                {{ product.colour_finish }}
+                            </p>
+                        {% endif %}
+                    {% endif %}
                     {% if product.is_new_arrival %}
                         <span class="badge badge-light border mt-2">New Arrival</span>
                     {% endif %}

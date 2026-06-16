@@ -1285,5 +1285,68 @@
     "image_url": "/static/images/products/garden/accessories/cinematic-grain-woven-garden-hat.png",
     "image": ""
   }
+},
+{
+  "model": "products.product",
+  "pk": 73,
+  "fields": {
+    "category": 11,
+    "collection": 4,
+    "sku": "BHVN-ES-001-LW",
+    "product_family": "ES-001",
+    "colour_finish": "Linen Whisper, Pale Cream, Soft Meadow",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Meadow Skirt Set",
+    "description": "Drawn from an original Boutique House sketch, c.1980-81. A countryside skirt set remembered from summers long ago, reimagined in quiet, softly worn colourways.",
+    "has_sizes": true,
+    "price": "128.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/vintage-notes/meadow-skirt-set.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 74,
+  "fields": {
+    "category": 11,
+    "collection": 4,
+    "sku": "BHVN-ES-002-LW",
+    "product_family": "ES-002",
+    "colour_finish": "Linen Whisper, Oyster, Peacock Teal, Midnight Ink",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Riviera Trouser Set",
+    "description": "Drawn from an original Boutique House sketch, c.1980-81. Effortless wide-leg tailoring with a soft Riviera lightness, designed to outlast trends.",
+    "has_sizes": true,
+    "price": "148.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/vintage-notes/riviera-trouser-set.png",
+    "image": ""
+  }
+},
+{
+  "model": "products.product",
+  "pk": 75,
+  "fields": {
+    "category": 11,
+    "collection": 4,
+    "sku": "BHVN-ES-003-PC",
+    "product_family": "ES-003",
+    "colour_finish": "Pale Cream, Ivory Silk, Noir Shadow, Dust Rose",
+    "stock_quantity": 6,
+    "reserved_quantity": 0,
+    "is_new_arrival": true,
+    "name": "Poet Skirt Ensemble",
+    "description": "Drawn from an original Boutique House sketch, c.1980-81. A romantic blouse and skirt ensemble inspired by favourite clothes, handwritten notes, and old light.",
+    "has_sizes": true,
+    "price": "136.00",
+    "rating": "4.90",
+    "image_url": "/static/images/products/vintage-notes/poet-skirt-ensemble.png",
+    "image": ""
+  }
 }
 ]

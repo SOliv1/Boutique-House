@@ -20,5 +20,16 @@
     "hero_image_url": "/static/images/collections/garden/boutique-banner-reclining-parasol.png",
     "hero_image": ""
   }
+},
+{
+  "model": "products.collection",
+  "pk": 4,
+  "fields": {
+    "name": "vintage_notes",
+    "friendly_name": "Boutique House Vintage Notes",
+    "description": "Timeless dressing, drawn from memory. Rediscovered from original Boutique House sketches, c.1980-81.",
+    "hero_image_url": "/static/images/products/vintage-notes/riviera-trouser-set.png",
+    "hero_image": ""
+  }
 }
 ]

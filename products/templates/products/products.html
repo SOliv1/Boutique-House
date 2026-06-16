@@ -6,6 +6,37 @@
 </div>
 {% endblock %} {% block content %}
 <div class="overlay"></div>
+{% if current_collection and current_collection.name == 'vintage_notes' %}
+<section class="vintage-notes-hero" aria-label="Boutique House Vintage Notes">
+  <div class="vintage-notes-hero__carousel" aria-hidden="true">
+    {% for product in products|slice:":3" %}
+      {% if product.image %}
+      <img
+        class="vintage-notes-hero__image vintage-notes-hero__image--{{ forloop.counter }}"
+        src="{{ product.image.url }}"
+        alt=""
+      />
+      {% elif product.image_url %}
+      <img
+        class="vintage-notes-hero__image vintage-notes-hero__image--{{ forloop.counter }}"
+        src="{{ product.image_url }}"
+        alt=""
+      />
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div class="vintage-notes-hero__veil"></div>
+  <div class="vintage-notes-hero__content">
+    <p class="collection-hero-kicker mb-2">Boutique House Vintage Notes</p>
+    <h1 class="collection-hero-title logo-font mb-3">
+      A wardrobe drawn from memory.
+    </h1>
+    <p class="collection-hero-copy mb-0">
+      Original Boutique House sketches, softly reimagined as timeless dressing for now.
+    </p>
+  </div>
+</section>
+{% else %}
 {% if current_collection %} {% if current_collection.hero_image %}
 <section
   class="collection-hero collection-hero-image"
@@ -32,6 +63,7 @@
       </div>
     </section>
     {% endif %}
+{% endif %}
     <div class="container-fluid">
       <div class="row" id="products-list">
         <div class="col text-center mt-3">
@@ -39,6 +71,19 @@
             {% if current_collection %} Shop {{ current_collection.friendly_name }} {% elif current_promotion %} {{ current_promotion }} {% else %}
             Products {% endif %}
           </h2>
+          {% if current_collection and current_collection.name == 'vintage_notes' %}
+          <div class="vintage-notes-intro mx-auto mb-4">
+            <p class="collection-hero-kicker text-muted mb-2">
+              The Early Sketch Collection
+            </p>
+            <p class="mb-2">
+              Rediscovered from original Boutique House sketches, c.1980-81.
+            </p>
+            <p class="mb-0">
+              Quiet luxury, softly worn.
+            </p>
+          </div>
+          {% endif %}
           {% if current_collection and current_collection.name == 'garden' %}
           <a
             href="{% url 'products' %}"
@@ -180,6 +225,16 @@
                   <p class="product-card-description mb-0">
                     {{ product.description }}
                   </p>
+                  {% if current_collection and current_collection.name == 'vintage_notes' %}
+                  <p class="vintage-product-style mb-0 mt-3">
+                    Style No. {{ product.product_family }}
+                  </p>
+                  {% if product.colour_finish %}
+                  <p class="vintage-product-colours mb-0">
+                    {{ product.colour_finish }}
+                  </p>
+                  {% endif %}
+                  {% endif %}
                 </div>
                 <div class="card-footer bg-white pt-0 border-0 text-left">
                   <div class="row">
