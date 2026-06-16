@@ -11,6 +11,13 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    WAREHOUSE_PENDING = 'pending'
+    WAREHOUSE_SENT = 'sent'
+    WAREHOUSE_STATUS_CHOICES = (
+        (WAREHOUSE_PENDING, 'Pending'),
+        (WAREHOUSE_SENT, 'Sent to Warehouse / Delivery'),
+    )
+
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
@@ -30,6 +37,20 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     confirmation_email_sent_at = models.DateTimeField(null=True, blank=True)
+    warehouse_status = models.CharField(
+        max_length=20,
+        choices=WAREHOUSE_STATUS_CHOICES,
+        default=WAREHOUSE_PENDING,
+    )
+    warehouse_sent_at = models.DateTimeField(null=True, blank=True)
+    warehouse_sent_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='warehouse_sent_orders',
+    )
+    warehouse_sent_by_role = models.CharField(max_length=254, null=True, blank=True)
 
     def _generate_order_number(self):
         """

@@ -1,9 +1,12 @@
 from types import SimpleNamespace
 from unittest.mock import patch
 
+from django.contrib.admin.sites import AdminSite
+from django.contrib.auth import get_user_model
 from django.test import RequestFactory, TestCase, override_settings
 from django.urls import reverse
 
+from .admin import OrderAdmin
 from .models import Order, OrderLineItem
 from .webhook_handler import StripeWH_Handler
 from products.models import Product
@@ -85,3 +88,40 @@ class PaymentIntentWebhookTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         send_confirmation.assert_called_once_with(self.order)
+
+
+class WarehouseAdminActionTests(TestCase):
+    def setUp(self):
+        self.order = Order.objects.create(
+            full_name='Jane Doe',
+            email='jane@example.com',
+            phone_number='01234567890',
+            country='GB',
+            postcode='SW1A 1AA',
+            town_or_city='London',
+            street_address1='1 Example Street',
+            original_bag='{}',
+            stripe_pid='pi_test',
+        )
+        self.user = get_user_model().objects.create_superuser(
+            username='warehouse-admin',
+            email='warehouse@example.com',
+            password='testpass123',
+        )
+        self.request = RequestFactory().post('/admin/checkout/order/')
+        self.request.user = self.user
+        self.order_admin = OrderAdmin(Order, AdminSite())
+
+    def test_send_to_warehouse_records_staff_reference(self):
+        with patch.object(self.order_admin, 'message_user'):
+            self.order_admin.send_to_warehouse(
+                self.request,
+                Order.objects.filter(pk=self.order.pk),
+            )
+
+        self.order.refresh_from_db()
+
+        self.assertEqual(self.order.warehouse_status, Order.WAREHOUSE_SENT)
+        self.assertEqual(self.order.warehouse_sent_by, self.user)
+        self.assertEqual(self.order.warehouse_sent_by_role, 'Superuser')
+        self.assertIsNotNone(self.order.warehouse_sent_at)
