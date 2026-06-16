@@ -202,3 +202,11 @@ class WarehouseAdminActionTests(TestCase):
         self.assertContains(response, 'Action needed:')
         self.assertContains(response, 'Warehouse tel: 020 7946 0182')
         self.assertContains(response, 'Warehouse contact:')
+
+    def test_admin_order_list_renders_warehouse_status(self):
+        self.client.force_login(self.user)
+
+        response = self.client.get(reverse('admin:checkout_order_changelist'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Needs sending')
