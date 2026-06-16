@@ -125,3 +125,29 @@ class WarehouseAdminActionTests(TestCase):
         self.assertEqual(self.order.warehouse_sent_by, self.user)
         self.assertEqual(self.order.warehouse_sent_by_role, 'Superuser')
         self.assertIsNotNone(self.order.warehouse_sent_at)
+
+    def test_single_order_warehouse_button_route_records_staff_reference(self):
+        with patch.object(self.order_admin, 'message_user'):
+            response = self.order_admin.send_single_order_to_warehouse(
+                self.request,
+                str(self.order.pk),
+            )
+
+        self.order.refresh_from_db()
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.order.warehouse_status, Order.WAREHOUSE_SENT)
+        self.assertEqual(self.order.warehouse_sent_by, self.user)
+        self.assertEqual(self.order.warehouse_sent_by_role, 'Superuser')
+        self.assertIsNotNone(self.order.warehouse_sent_at)
+
+    def test_admin_change_page_shows_prominent_warehouse_button(self):
+        self.client.force_login(self.user)
+
+        response = self.client.get(
+            reverse('admin:checkout_order_change', args=[self.order.pk])
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Send to Warehouse / Delivery')
+        self.assertContains(response, 'Action needed:')

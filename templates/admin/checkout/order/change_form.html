@@ -1,0 +1,44 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block object-tools-items %}
+  {% if original and original.warehouse_status != original.WAREHOUSE_SENT %}
+    <li>
+      <form method="post" action="{% url opts|admin_urlname:'send_to_warehouse' original.pk %}" style="display: inline;">
+        {% csrf_token %}
+        <button
+          type="submit"
+          style="
+            background: #b91c1c;
+            border: 0;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 9px 14px;
+            text-transform: uppercase;
+          "
+        >
+          Send to Warehouse / Delivery
+        </button>
+      </form>
+    </li>
+  {% elif original %}
+    <li>
+      <span
+        style="
+          background: #dcfce7;
+          border-radius: 4px;
+          color: #166534;
+          display: inline-block;
+          font-weight: 700;
+          padding: 9px 14px;
+          text-transform: uppercase;
+        "
+      >
+        Sent to Warehouse / Delivery
+      </span>
+    </li>
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
