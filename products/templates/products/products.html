@@ -9,26 +9,26 @@
 {% if current_collection and current_collection.name == 'vintage_notes' %}
 <section class="vintage-notes-hero" aria-label="Boutique House Vintage Notes">
   <div class="vintage-notes-hero__carousel" aria-hidden="true">
-    <img
-      class="vintage-notes-hero__image vintage-notes-hero__image--1"
-      src="{% static 'images/products/vintage-notes/cloud-paper-cotton-top-carousel.png' %}"
-      alt=""
-    />
-    <img
-      class="vintage-notes-hero__image vintage-notes-hero__image--2"
-      src="{% static 'images/products/vintage-notes/meadow-skirt-set.png' %}"
-      alt=""
-    />
-    <img
-      class="vintage-notes-hero__image vintage-notes-hero__image--3"
-      src="{% static 'images/products/vintage-notes/riviera-trouser-set.png' %}"
-      alt=""
-    />
-    <img
-      class="vintage-notes-hero__image vintage-notes-hero__image--4"
-      src="{% static 'images/products/vintage-notes/poet-skirt-ensemble.png' %}"
-      alt=""
-    />
+    <div class="vintage-notes-hero__slide vintage-notes-hero__slide--archive">
+      <img
+        src="{% static 'images/products/vintage-notes/meadow-skirt-set.png' %}"
+        alt=""
+      />
+      <img
+        src="{% static 'images/products/vintage-notes/riviera-trouser-set.png' %}"
+        alt=""
+      />
+      <img
+        src="{% static 'images/products/vintage-notes/poet-skirt-ensemble.png' %}"
+        alt=""
+      />
+    </div>
+    <div class="vintage-notes-hero__slide vintage-notes-hero__slide--wildcard">
+      <img
+        src="{% static 'images/products/vintage-notes/cloud-paper-cotton-top-carousel.png' %}"
+        alt=""
+      />
+    </div>
   </div>
   <div class="vintage-notes-hero__veil"></div>
   <div class="vintage-notes-hero__content">

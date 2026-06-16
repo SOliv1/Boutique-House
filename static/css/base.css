@@ -1048,62 +1048,71 @@ body {
 .vintage-notes-hero {
     align-items: flex-end;
     background:
-        radial-gradient(circle at 50% 42%, rgba(255, 250, 240, .16), transparent 58%),
-        #171310;
+        radial-gradient(circle at 55% 40%, rgba(255, 255, 255, .72), transparent 58%),
+        linear-gradient(135deg, #f7f1e8, #e9ded0);
     display: flex;
-    min-height: 68vh;
+    min-height: 72vh;
     overflow: hidden;
-    padding: 8rem max(1rem, 6vw) 4rem;
+    padding: 7rem max(1rem, 5vw) 3.25rem;
     position: relative;
 }
 
 .vintage-notes-hero__carousel,
-.vintage-notes-hero__image,
 .vintage-notes-hero__veil {
     inset: 0;
     position: absolute;
 }
 
-.vintage-notes-hero__image {
-    bottom: 1.5rem;
-    height: auto;
-    left: 50%;
-    max-height: calc(100% - 3rem);
+.vintage-notes-hero__slide {
+    align-items: center;
+    display: flex;
+    gap: clamp(.75rem, 2vw, 1.4rem);
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    padding: 4.25rem max(1rem, 5vw) 7.75rem;
+    position: absolute;
+}
+
+.vintage-notes-hero__slide img {
+    display: block;
     object-fit: contain;
     object-position: center top;
-    opacity: 0;
-    right: auto;
-    top: 1.5rem;
-    width: min(92vw, 1180px);
 }
 
-.vintage-notes-hero__image--1 {
-    animation: vintageHeroFade 24s ease-in-out infinite;
+.vintage-notes-hero__slide--archive {
+    animation: vintageHeroSlideFade 18s ease-in-out infinite;
 }
 
-.vintage-notes-hero__image--2 {
-    animation: vintageHeroFade 24s ease-in-out 6s infinite;
+.vintage-notes-hero__slide--archive img {
+    background: rgba(255, 250, 244, .72);
+    box-shadow: 0 20px 42px rgba(68, 48, 34, .14);
+    height: min(50vh, 560px);
+    max-width: 31%;
 }
 
-.vintage-notes-hero__image--3 {
-    animation: vintageHeroFade 24s ease-in-out 12s infinite;
+.vintage-notes-hero__slide--wildcard {
+    animation: vintageHeroSlideFade 18s ease-in-out 9s infinite;
 }
 
-.vintage-notes-hero__image--4 {
-    animation: vintageHeroFade 24s ease-in-out 18s infinite;
+.vintage-notes-hero__slide--wildcard img {
+    box-shadow: 0 22px 48px rgba(68, 48, 34, .18);
+    max-height: min(53vh, 580px);
+    max-width: min(86vw, 1060px);
+    width: auto;
 }
 
 .vintage-notes-hero__veil {
     background:
-        linear-gradient(90deg, rgba(23, 19, 16, .76), rgba(23, 19, 16, .36) 48%, rgba(23, 19, 16, .12)),
-        linear-gradient(180deg, rgba(23, 19, 16, .16), rgba(23, 19, 16, .62));
+        linear-gradient(90deg, rgba(247, 241, 232, .86), rgba(247, 241, 232, .36) 46%, rgba(247, 241, 232, .12)),
+        linear-gradient(180deg, rgba(247, 241, 232, .12), rgba(247, 241, 232, .92));
 }
 
 .vintage-notes-hero__content {
-    color: #fffaf4;
+    color: #271f19;
     max-width: 640px;
     position: relative;
-    text-shadow: 0 2px 18px rgba(0, 0, 0, .26);
+    text-shadow: 0 1px 18px rgba(255, 255, 255, .62);
     z-index: 1;
 }
 
@@ -1126,22 +1135,22 @@ body {
     line-height: 1.6;
 }
 
-@keyframes vintageHeroFade {
+@keyframes vintageHeroSlideFade {
     0%,
     100% {
         opacity: 0;
-        transform: translateX(-50%) scale(1.01);
+        transform: scale(1.006);
     }
 
-    8%,
-    30% {
+    9%,
+    43% {
         opacity: 1;
-        transform: translateX(-50%) scale(1.01);
+        transform: scale(1.006);
     }
 
-    42% {
+    52% {
         opacity: 0;
-        transform: translateX(-50%) scale(1.035);
+        transform: scale(1.018);
     }
 }
 
@@ -1715,6 +1724,31 @@ body.promotion-is-open {
         background-position: 62% center;
     }
 
+    .vintage-notes-hero {
+        min-height: 68vh;
+        padding: 6.25rem 1rem 2.5rem;
+    }
+
+    .vintage-notes-hero__slide {
+        align-items: flex-start;
+        padding: 4rem .75rem 8.5rem;
+    }
+
+    .vintage-notes-hero__slide--archive img {
+        height: auto;
+        max-height: 43vh;
+        max-width: 32%;
+    }
+
+    .vintage-notes-hero__slide--wildcard img {
+        max-height: 43vh;
+        max-width: 94vw;
+    }
+
+    .vintage-notes-hero__content {
+        max-width: 92vw;
+    }
+
     .nav-link {
         padding: 0.15rem;
     }
@@ -1845,5 +1879,13 @@ body.promotion-is-open {
     .promotion-popup__dialog,
     .promotion-popup__cta {
         transition: none;
+    }
+
+    .vintage-notes-hero__slide {
+        animation: none;
+    }
+
+    .vintage-notes-hero__slide--archive {
+        opacity: 1;
     }
 }

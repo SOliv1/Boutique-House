@@ -12,9 +12,9 @@ CLOUD_PAPER_COTTON_TOP = {
     'is_special_offer': False,
     'is_clearance': False,
     'is_coming_soon': False,
-    'name': 'Cloud Paper Cotton Top',
+    'name': 'Cloud Paper Cotton Blouse',
     'description': (
-        'A crisp white cotton top with a cinematic mirror portrait mood, added '
+        'A crisp white cotton blouse with a cinematic mirror portrait mood, added '
         'to Vintage Notes as a softly modern companion piece.'
     ),
     'has_sizes': True,
