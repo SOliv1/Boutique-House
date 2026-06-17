@@ -5,8 +5,8 @@ from .models import Product, Category, Collection
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_per_page = 150
-    list_max_show_all = 150
+    list_per_page = 300
+    list_max_show_all = 300
 
     list_display = (
         'sku',
