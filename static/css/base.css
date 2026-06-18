@@ -2,6 +2,136 @@ html {
     height: 100%;
 }
 
+:root {
+    --bh-bg: #f5f2ec;
+    --bh-text: #3b352e;
+    --bh-accent: #b29a7a;
+    --bh-line: #c9c1b4;
+    --bh-hover: rgba(0, 0, 0, .04);
+}
+
+/* Account and smart-bag controls in the desktop header. */
+.bh-header-actions {
+    align-items: center;
+    display: flex;
+    gap: .75rem;
+    justify-content: flex-end;
+}
+
+.bh-header-actions .list-inline-item {
+    margin-right: 0;
+}
+
+.bh-icon-button {
+    align-items: center;
+    color: var(--bh-text);
+    display: inline-flex;
+    height: 2.4rem;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.bh-icon-button:hover {
+    background: var(--bh-hover);
+    color: var(--bh-text);
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.bh-account {
+    border-radius: 999px;
+    gap: .65rem;
+    padding: 0 .8rem 0 .55rem;
+}
+
+.bh-account-label {
+    font-size: .75rem;
+    letter-spacing: .05em;
+    white-space: nowrap;
+}
+
+.bh-account-avatar {
+    border: 1px solid var(--bh-line);
+    border-radius: 999px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .7);
+    height: 1.3rem;
+    position: relative;
+    width: 1.3rem;
+}
+
+.bh-account-avatar::before {
+    background: #fff;
+    border: 1px solid var(--bh-line);
+    border-radius: 999px;
+    bottom: -.45rem;
+    content: "";
+    height: .55rem;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 1.1rem;
+}
+
+.bh-bag {
+    border-radius: 999px;
+    width: 2.4rem;
+}
+
+.bh-bag-body {
+    align-items: center;
+    background: #f8f4ee;
+    border: 1px solid var(--bh-line);
+    border-radius: .25rem;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .7);
+    display: flex;
+    height: 1.5rem;
+    justify-content: center;
+    position: relative;
+    width: 1.4rem;
+}
+
+.bh-bag-handle {
+    background: #fff;
+    border: 1px solid var(--bh-line);
+    border-radius: 999px;
+    height: .55rem;
+    left: 50%;
+    position: absolute;
+    top: -.45rem;
+    transform: translateX(-50%);
+    width: 1rem;
+}
+
+.bh-bag-monogram {
+    color: var(--bh-accent);
+    font-size: .55rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.bh-bag-count {
+    align-items: center;
+    background: var(--bh-accent);
+    border-radius: 999px;
+    bottom: .05rem;
+    color: #fff;
+    display: flex;
+    font-size: .55rem;
+    height: 1rem;
+    justify-content: center;
+    min-width: 1rem;
+    padding: 0 .2rem;
+    position: absolute;
+    right: -.05rem;
+}
+
+.bh-icon-button:focus-visible {
+    outline: 2px solid var(--bh-accent);
+    outline-offset: 2px;
+}
+
 body {
     background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
     background-size: cover;
