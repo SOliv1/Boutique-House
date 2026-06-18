@@ -1,6 +1,27 @@
 {% load static %}
 
 <div class="collapse navbar-collapse" id="main-nav">
+    <div class="bh-drawer-header d-lg-none">
+        <a href="{% url 'home' %}" class="bh-drawer-brand" aria-label="Boutique House home">
+            <span>BH</span>
+            <span>Boutique House</span>
+        </a>
+        <button
+            class="bh-drawer-close"
+            type="button"
+            data-bh-drawer-toggle
+            aria-label="Close navigation menu"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <form class="bh-drawer-search d-lg-none" method="GET" action="{% url 'products' %}">
+        <label class="sr-only" for="drawer-search-input">Search Boutique House</label>
+        <input id="drawer-search-input" type="search" name="q" placeholder="Search our collections" />
+        <button type="submit" aria-label="Submit search"><i class="fas fa-search" aria-hidden="true"></i></button>
+    </form>
+
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item d-block d-md-none">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">

@@ -35,6 +35,22 @@
             {% endif %}
         </div>
     </div>
+    <button class="update-link btn btn-link text-info p-0" type="submit">
+        <small>Update</small>
+    </button>
 </form>
-<a class="update-link text-info"><small>Update</small></a>
-<a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}" data-product_colour="{{ item.colour }}" data-variant_key="{{ item.variant_key }}"><small>Remove</small></a>
+<form class="remove-form float-right" method="POST" action="{% url 'remove_from_bag' item.item_id %}">
+    {% csrf_token %}
+    {% if item.product.has_sizes %}
+        <input type="hidden" name="product_size" value="{{ item.size }}">
+    {% endif %}
+    {% if item.colour %}
+        <input type="hidden" name="product_colour" value="{{ item.colour }}">
+    {% endif %}
+    {% if item.variant_key %}
+        <input type="hidden" name="variant_key" value="{{ item.variant_key }}">
+    {% endif %}
+    <button class="remove-item btn btn-link text-danger p-0" type="submit">
+        <small>Remove</small>
+    </button>
+</form>

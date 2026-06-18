@@ -1,7 +1,6 @@
-from django.shortcuts import (
-    render, redirect, reverse, HttpResponse, get_object_or_404
-)
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.views.decorators.http import require_POST
 
 from products.models import Product
 
@@ -94,6 +93,7 @@ def add_to_bag(request, item_id):
     return redirect(redirect_url)
 
 
+@require_POST
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
 
@@ -106,7 +106,9 @@ def adjust_bag(request, item_id):
     variant_key = request.POST.get('variant_key') or _variant_key(size, colour)
     bag = request.session.get('bag', {})
 
-    if item_id in bag and 'items_by_variant' in bag[item_id]:
+    item_data = bag.get(item_id)
+
+    if isinstance(item_data, dict) and 'items_by_variant' in item_data:
         label = _variant_label(size, colour)
         if quantity > 0:
             bag[item_id]['items_by_variant'][variant_key]['quantity'] = quantity
@@ -151,6 +153,7 @@ def adjust_bag(request, item_id):
     return redirect(reverse('view_bag'))
 
 
+@require_POST
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
 
@@ -163,7 +166,9 @@ def remove_from_bag(request, item_id):
         variant_key = request.POST.get('variant_key') or _variant_key(size, colour)
         bag = request.session.get('bag', {})
 
-        if item_id in bag and 'items_by_variant' in bag[item_id]:
+        item_data = bag.get(item_id)
+
+        if isinstance(item_data, dict) and 'items_by_variant' in item_data:
             del bag[item_id]['items_by_variant'][variant_key]
             if not bag[item_id]['items_by_variant']:
                 bag.pop(item_id)
@@ -182,7 +187,7 @@ def remove_from_bag(request, item_id):
             messages.success(request, f'Removed {product.name} from your bag')
 
         request.session['bag'] = bag
-        return HttpResponse(status=200)
+        return redirect(reverse('view_bag'))
 
     except Exception as e:
         messages.error(request, f'Error removing item: {e}')
