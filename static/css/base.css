@@ -488,7 +488,7 @@ body {
 }
 
 .brand-mark {
-    align-items: baseline;
+    align-items: center;
     color: #171310;
     display: inline-flex;
     font-family: 'Cormorant Garamond', Georgia, serif;
@@ -497,27 +497,40 @@ body {
 }
 
 .brand-monogram {
-    font-size: 2rem;
+    font-size: 2.6rem;
     font-weight: 500;
     letter-spacing: -.08em;
 }
 
-.brand-name {
-    font-size: 1.55rem;
-    margin-left: .5rem;
-    max-width: 0;
-    opacity: 0;
-    overflow: hidden;
-    transform: translateX(-.4rem);
-    transition: max-width .45s ease, opacity .25s ease, transform .45s ease;
+.brand-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: .6rem;
 }
 
-.main-logo-link:hover .brand-name,
-.main-logo-link:focus .brand-name,
-.main-logo-link:focus-visible .brand-name {
-    max-width: 12rem;
+.brand-name {
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: .01em;
+    line-height: 1.1;
+}
+
+.brand-tagline {
+    font-size: .8rem;
+    font-weight: 400;
+    letter-spacing: .18em;
+    line-height: 1.2;
+    opacity: .72;
+    text-transform: uppercase;
+}
+
+.main-logo-link:hover .brand-name {
     opacity: 1;
-    transform: translateX(0);
+}
+
+.main-logo-link:hover .brand-tagline {
+    opacity: .88;
 }
 
 .main-logo-link:focus-visible {
@@ -2377,7 +2390,6 @@ body.promotion-is-open {
 
 @media (prefers-reduced-motion: reduce) {
 
-    .brand-name,
     .shop-now-button,
     .site-search-button,
     .promotion-popup__backdrop,

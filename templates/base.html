@@ -16,7 +16,7 @@
     />
     <meta name="theme-color" content="#604858" />
     <meta property="og:site_name" content="Boutique House" />
-    <meta property="og:title" content="Boutique House | Curated Living" />
+    <meta property="og:title" content="Curated Living - Boutique House" />
     <meta
       property="og:description"
       content="A curated world of beautiful living, shaped by seasonal colour, atmosphere, and thoughtful design."
@@ -63,7 +63,7 @@
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %} {% block extra_js %} {% endblock %}
 
-    <title>Boutique House | Curated Living{% block extra_title %}{% endblock %}</title>
+    <title>Curated Living - Boutique House{% block extra_title %}{% endblock %}</title>
   </head>
   <body>
     <header class="container-fluid fixed-top">
@@ -74,7 +74,10 @@
           <a href="{% url 'home' %}" class="nav-link main-logo-link" aria-label="Boutique House home">
             <span class="brand-mark" aria-hidden="true">
               <span class="brand-monogram">BH</span>
-              <span class="brand-name">Boutique House</span>
+              <span class="brand-text-group">
+                <span class="brand-name">Boutique House</span>
+                <span class="brand-tagline">Curated Living</span>
+              </span>
             </span>
           </a>
         </div>
