@@ -13,6 +13,15 @@ class HomePageTests(TestCase):
             'images/collections/garden/boutique-banner-portrait.png',
         )
 
+    def test_home_page_renders_mobile_navigation_drawer(self):
+        response = self.client.get(reverse('home'))
+
+        self.assertContains(response, 'class="bh-mobile-menu-toggle')
+        self.assertContains(response, 'id="main-nav"')
+        self.assertContains(response, 'class="bh-drawer-close"')
+        self.assertContains(response, 'class="bh-drawer-backdrop')
+        self.assertNotContains(response, "includes/main-nav.html")
+
     def test_home_page_uses_admin_portrait_url(self):
         portrait_url = 'https://images.example.com/model-portrait.jpg'
         HomePageHero.objects.create(
