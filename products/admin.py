@@ -36,7 +36,15 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
         'collection',
     )
-    search_fields = ('sku', 'name', 'product_family', 'colour_finish')
+    search_fields = (
+        'sku',
+        'name',
+        'product_family',
+        'colour_finish',
+        'seo_title',
+        'seo_description',
+        'seo_keywords',
+    )
     list_editable = (
         'stock_quantity',
         'reserved_quantity',
@@ -71,7 +79,9 @@ class CollectionAdmin(admin.ModelAdmin):
         'name',
         'hero_image',
         'hero_image_url',
+        'seo_title',
     )
+    search_fields = ('friendly_name', 'name', 'seo_title', 'seo_keywords')
 
 
 admin.site.register(Collection, CollectionAdmin)

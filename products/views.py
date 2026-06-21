@@ -11,6 +11,14 @@ from .forms import ProductForm
 # Create your views here.
 
 
+def _absolute_media_url(request, uploaded_image=None, external_url=None):
+    if external_url:
+        return request.build_absolute_uri(external_url)
+    if uploaded_image:
+        return request.build_absolute_uri(uploaded_image.url)
+    return None
+
+
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
@@ -115,6 +123,13 @@ def all_products(request):
         'moods_board_products': moods_board_products,
         'current_promotion': current_promotion,
         'current_sorting': current_sorting,
+        'collection_og_image_url': _absolute_media_url(
+            request,
+            uploaded_image=(current_collection.hero_image
+                            if current_collection else None),
+            external_url=(current_collection.hero_image_url
+                          if current_collection else None),
+        ),
     }
 
     return render(request, 'products/products.html', context)
@@ -127,6 +142,11 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
+        'product_og_image_url': _absolute_media_url(
+            request,
+            uploaded_image=product.image,
+            external_url=product.image_url,
+        ),
     }
 
     return render(request, 'products/product_detail.html', context)

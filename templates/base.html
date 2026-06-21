@@ -12,20 +12,86 @@
     />
     <meta
       name="description"
-      content="Boutique House curates luminous furniture, tableware, textiles, accessories, gifts, and seasonal garden living."
+      content="{% block meta_description %}Boutique House is a curated boutique for vintage fashion, atmospheric homeware, and seasonal living. Thoughtfully sourced pieces with character, craftsmanship, and quiet beauty.{% endblock %}"
     />
+    <meta
+      name="keywords"
+      content="{% block meta_keywords %}boutique house, curated living, vintage fashion uk, vintage homeware uk, curated boutique, atmospheric interiors, seasonal living{% endblock %}"
+    />
+    <meta name="robots" content="{{ robots_directive }}" />
     <meta name="theme-color" content="#604858" />
     <meta property="og:site_name" content="Boutique House" />
-    <meta property="og:title" content="Boutique House | Curated Living" />
+    <meta
+      property="og:type"
+      content="{% block og_type %}website{% endblock %}"
+    />
+    <meta
+      property="og:title"
+      content="{% block og_title %}Boutique House — Curated Living{% endblock %}"
+    />
     <meta
       property="og:description"
-      content="A curated world of beautiful living, shaped by seasonal colour, atmosphere, and thoughtful design."
+      content="{% block og_description %}Vintage fashion, atmospheric homeware, and curated seasonal living.{% endblock %}"
     />
-    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="{% block og_image %}https://boutique-house-production-751b.up.railway.app{% static 'images/promotions/boutique-house-cinematic-promotion.jpg' %}{% endblock %}"
+    />
+    <meta
+      property="og:image:alt"
+      content="{% block og_image_alt %}Boutique House atmospheric homeware and seasonal living collection{% endblock %}"
+    />
+    <meta
+      property="og:url"
+      content="{% block og_url %}https://boutique-house-production-751b.up.railway.app{{ request.path }}{% endblock %}"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="{% block twitter_title %}Boutique House — Curated Living{% endblock %}"
+    />
+    <meta
+      name="twitter:description"
+      content="{% block twitter_description %}Vintage fashion, atmospheric homeware, and curated seasonal living.{% endblock %}"
+    />
+    <meta
+      name="twitter:image"
+      content="{% block twitter_image %}https://boutique-house-production-751b.up.railway.app{% static 'images/promotions/boutique-house-cinematic-promotion.jpg' %}{% endblock %}"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="{% block twitter_image_alt %}Boutique House atmospheric homeware and seasonal living collection{% endblock %}"
+    />
+    <link
+      rel="canonical"
+      href="{% block canonical_url %}https://boutique-house-production-751b.up.railway.app{{ request.path }}{% endblock %}"
+    />
+    <meta name="geo.region" content="GB" />
+    <meta name="geo.placename" content="Worcestershire" />
+    <meta name="geo.position" content="52.09;-1.95" />
+    <meta name="ICBM" content="52.09, -1.95" />
     <link
       rel="icon"
       href="{% static 'images/boutique-house-favicon.svg' %}"
       type="image/svg+xml"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'images/favicon-32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="{% static 'images/favicon-48.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="64x64"
+      href="{% static 'images/favicon-64.png' %}"
     />
     {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
     <link
@@ -63,7 +129,10 @@
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %} {% block extra_js %} {% endblock %}
 
-    <title>Boutique House | Curated Living{% block extra_title %}{% endblock %}</title>
+    <title>
+      {% block title %}Boutique House — Curated Living, Vintage Finds &amp;
+      Atmospheric Homeware{% block extra_title %}{% endblock %}{% endblock %}
+    </title>
   </head>
   <body>
     <header class="container-fluid fixed-top">
@@ -71,7 +140,11 @@
         <div
           class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left"
         >
-          <a href="{% url 'home' %}" class="nav-link main-logo-link" aria-label="Boutique House home">
+          <a
+            href="{% url 'home' %}"
+            class="nav-link main-logo-link"
+            aria-label="Boutique House home"
+          >
             <span class="brand-mark" aria-hidden="true">
               <span class="brand-monogram">BH</span>
               <span class="brand-name">Boutique House</span>
@@ -88,7 +161,11 @@
                 placeholder="Search our site"
                 aria-label="Search Boutique House"
               />
-              <button class="btn site-search-button" type="submit" aria-label="Submit search">
+              <button
+                class="btn site-search-button"
+                type="submit"
+                aria-label="Submit search"
+              >
                 <span class="icon">
                   <i class="fas fa-search"></i>
                 </span>
@@ -97,16 +174,26 @@
           </form>
         </div>
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-          <ul class="bh-header-actions list-inline list-unstyled text-center text-lg-right my-0">
+          <ul
+            class="bh-header-actions list-inline list-unstyled text-center text-lg-right my-0"
+          >
             <li class="bh-account-menu list-inline-item">
               <a
                 class="bh-icon-button bh-account"
                 href="{% if request.user.is_authenticated %}{% url 'profile' %}{% else %}{% url 'account_login' %}{% endif %}"
                 aria-label="My Account"
               >
-                <svg class="bh-premium-icon bh-account-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                <svg
+                  class="bh-premium-icon bh-account-icon"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  focusable="false"
+                >
                   <circle cx="16" cy="12" r="6" fill="currentColor"></circle>
-                  <path d="M4 28c0-6 5-10 12-10s12 4 12 10" fill="currentColor"></path>
+                  <path
+                    d="M4 28c0-6 5-10 12-10s12 4 12 10"
+                    fill="currentColor"
+                  ></path>
                 </svg>
                 <span class="bh-account-label">My Account</span>
               </a>
@@ -117,13 +204,44 @@
                 href="{% url 'view_bag' %}"
                 aria-label="Shopping bag, {{ product_count }} item{{ product_count|pluralize }}"
               >
-                <svg class="bh-premium-icon bh-bag-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-                  <rect x="6" y="10" width="20" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
-                  <path d="M10 10c0-4 3-6 6-6s6 2 6 6" fill="none" stroke="currentColor" stroke-width="2"></path>
-                  <text x="50%" y="60%" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="currentColor" letter-spacing="0.15em">BH</text>
+                <svg
+                  class="bh-premium-icon bh-bag-icon"
+                  viewBox="0 0 32 32"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <rect
+                    x="6"
+                    y="10"
+                    width="20"
+                    height="18"
+                    rx="2"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></rect>
+                  <path
+                    d="M10 10c0-4 3-6 6-6s6 2 6 6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  ></path>
+                  <text
+                    x="50%"
+                    y="60%"
+                    text-anchor="middle"
+                    font-family="Georgia, serif"
+                    font-size="10"
+                    fill="currentColor"
+                    letter-spacing="0.15em"
+                  >
+                    BH
+                  </text>
                 </svg>
                 {% if product_count %}
-                <span class="bh-bag-count" aria-hidden="true">{{ product_count }}</span>
+                <span class="bh-bag-count" aria-hidden="true"
+                  >{{ product_count }}</span
+                >
                 {% endif %}
               </a>
             </li>
@@ -153,8 +271,8 @@
           >
             BH
           </a>
-          {% include 'includes/mobile-top-header.html' %}
-          {% include 'includes/main-nav.html' %}
+          {% include 'includes/mobile-top-header.html' %} {% include
+          'includes/main-nav.html' %}
           <button
             class="bh-drawer-backdrop d-lg-none"
             type="button"
@@ -175,24 +293,17 @@
 
     {% if messages %}
     <div class="message-container">
-      {% for message in messages %}
-      {% with message.level as level %}
-      {% if level == 40 %}
-      {% include 'includes/toasts/toast_error.html' %}
-      {% elif level == 30 %}
-      {% include 'includes/toasts/toast_warning.html' %}
-      {% elif level == 25 %}
-      {% include 'includes/toasts/toast_success.html' %}
-      {% else %}
-      {% include 'includes/toasts/toast_info.html' %}
-      {% endif %}
-      {% endwith %}
-      {% endfor %}
+      {% for message in messages %} {% if message.level == 40 %} {% include
+      'includes/toasts/toast_error.html' %} {% elif message.level == 30 %} {%
+      include 'includes/toasts/toast_warning.html' %} {% elif message.level ==
+      25 %} {% include 'includes/toasts/toast_success.html' %} {% else %} {%
+      include 'includes/toasts/toast_info.html' %} {% endif %} {% endfor %}
     </div>
     {% endif %}
-
-    {% block page_header %} {% endblock %}
-    {% block content %} {% endblock %}
+    {% block page_header %}
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
     {% include 'includes/footer.html' %}
     {% block postloadjs %}
     <script type="text/javascript">
@@ -207,27 +318,36 @@
           drawerToggle.setAttribute("aria-expanded", String(isOpen));
         };
 
-        document.querySelectorAll("[data-bh-drawer-toggle]").forEach(function (control) {
-          control.addEventListener("click", function () {
-            setDrawerOpen(!mobileDrawer.classList.contains("bh-drawer-visible"));
+        document
+          .querySelectorAll("[data-bh-drawer-toggle]")
+          .forEach(function (control) {
+            control.addEventListener("click", function () {
+              setDrawerOpen(
+                !mobileDrawer.classList.contains("bh-drawer-visible"),
+              );
+            });
           });
-        });
 
-        mobileDrawer.querySelectorAll(".dropdown > .nav-link").forEach(function (link) {
-          link.addEventListener("click", function (event) {
-            if (window.innerWidth >= 992) return;
-            event.preventDefault();
-            event.stopPropagation();
-            const menuItem = link.closest(".dropdown");
-            const submenu = menuItem.querySelector(".dropdown-menu");
-            const isOpen = menuItem.classList.toggle("show");
-            submenu.classList.toggle("show", isOpen);
-            link.setAttribute("aria-expanded", String(isOpen));
+        mobileDrawer
+          .querySelectorAll(".dropdown > .nav-link")
+          .forEach(function (link) {
+            link.addEventListener("click", function (event) {
+              if (window.innerWidth >= 992) return;
+              event.preventDefault();
+              event.stopPropagation();
+              const menuItem = link.closest(".dropdown");
+              const submenu = menuItem.querySelector(".dropdown-menu");
+              const isOpen = menuItem.classList.toggle("show");
+              submenu.classList.toggle("show", isOpen);
+              link.setAttribute("aria-expanded", String(isOpen));
+            });
           });
-        });
 
         document.addEventListener("keydown", function (event) {
-          if (event.key === "Escape" && mobileDrawer.classList.contains("bh-drawer-visible")) {
+          if (
+            event.key === "Escape" &&
+            mobileDrawer.classList.contains("bh-drawer-visible")
+          ) {
             setDrawerOpen(false);
             drawerToggle.focus();
           }

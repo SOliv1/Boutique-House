@@ -37,6 +37,25 @@
 
 > https://railway.com
 
+### Search launch switch
+
+Search indexing is disabled by default while Boutique House is a prototype.
+In Railway, open the Django service, select **Variables**, and add:
+
+```text
+SEO_INDEXING_ENABLED=1
+PUBLIC_SITE_URL=https://boutique-house-production-751b.up.railway.app
+```
+
+Save the variables and allow Railway to redeploy. Then verify:
+
+- `/robots.txt` allows public pages and links to the sitemap.
+- `/sitemap.xml` lists public products and collections.
+- `/admin/`, `/accounts/`, `/bag/`, `/checkout/`, `/profile/`, and
+  `/track-order/` remain excluded and marked `noindex`.
+
+To return to prototype mode, set `SEO_INDEXING_ENABLED=0` and redeploy.
+
 [![Jekyll site CI](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/jekyll.yml) [![CodeQL](https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml)
 
 <!-- [![CodeQL](https://github.com/SOliv1/boutique_ado_v1/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SOliv1/boutique_house/actions/workflows/codeql-analysis.yml)`

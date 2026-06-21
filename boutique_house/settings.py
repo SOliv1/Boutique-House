@@ -23,6 +23,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-development-key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
+SEO_INDEXING_ENABLED = os.environ.get(
+    'SEO_INDEXING_ENABLED',
+    '',
+).lower() in {'1', 'true', 'yes', 'on'}
+PUBLIC_SITE_URL = os.environ.get(
+    'PUBLIC_SITE_URL',
+    'https://boutique-house-production-751b.up.railway.app',
+).rstrip('/')
 IS_TESTING = (
     'test' in os.sys.argv
     or 'pytest' in os.path.basename(os.sys.argv[0])
@@ -62,6 +70,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -109,6 +118,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'boutique_house.context_processors.seo_settings',
                 'bag.contexts.bag_contents',
             ],
             'builtins': [

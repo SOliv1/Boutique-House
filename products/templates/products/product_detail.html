@@ -1,6 +1,21 @@
 {% extends "base.html" %}
 {% load static product_colours %}
 
+{% block title %}{% if product.seo_title %}{{ product.seo_title }}{% else %}{{ product.name }} — Boutique House{% endif %}{% endblock %}
+{% block meta_description %}{{ product.seo_description|default:product.description|striptags|truncatechars:300 }}{% endblock %}
+{% block meta_keywords %}{% if product.seo_keywords %}{{ product.seo_keywords }}{% else %}{{ product.name }}, boutique house, curated boutique{% if product.collection %}, {{ product.collection.friendly_name }}{% endif %}{% endif %}{% endblock %}
+{% block canonical_url %}https://boutique-house-production-751b.up.railway.app{% url 'product_detail' product.id %}{% endblock %}
+{% block og_type %}product{% endblock %}
+{% block og_title %}{{ product.name }} — Boutique House{% endblock %}
+{% block og_description %}{{ product.seo_description|default:product.description|striptags|truncatechars:300 }}{% endblock %}
+{% block og_image %}{% if product_og_image_url %}{{ product_og_image_url }}{% else %}https://boutique-house-production-751b.up.railway.app{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}{% endif %}{% endblock %}
+{% block og_image_alt %}{{ product.name }} at Boutique House{% endblock %}
+{% block og_url %}https://boutique-house-production-751b.up.railway.app{% url 'product_detail' product.id %}{% endblock %}
+{% block twitter_title %}{{ product.name }} — Boutique House{% endblock %}
+{% block twitter_description %}{{ product.seo_description|default:product.description|striptags|truncatechars:300 }}{% endblock %}
+{% block twitter_image %}{% if product_og_image_url %}{{ product_og_image_url }}{% else %}https://boutique-house-production-751b.up.railway.app{% static 'images/collections/garden/boutique-banner-garden-cover.png' %}{% endif %}{% endblock %}
+{% block twitter_image_alt %}{{ product.name }} at Boutique House{% endblock %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">

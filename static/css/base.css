@@ -163,6 +163,14 @@ body {
     color: rgba(255, 255, 255, .52);
 }
 
+.site-footer__micro {
+    color: rgba(255, 255, 255, .55);
+    font-size: .65rem;
+    letter-spacing: .08em;
+    margin-top: .65rem;
+    text-transform: uppercase;
+}
+
 .delivery-page,
 .tracking-page {
     background: #f7f1e8;

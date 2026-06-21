@@ -22,6 +22,21 @@ class Collection(models.Model):
     description = models.TextField(null=True, blank=True)
     hero_image_url = models.CharField(max_length=1024, null=True, blank=True)
     hero_image = models.ImageField(null=True, blank=True)
+    seo_title = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Browser and search title. Leave blank to use the collection name.',
+    )
+    seo_description = models.CharField(
+        max_length=320,
+        blank=True,
+        help_text='Short factual search and social description.',
+    )
+    seo_keywords = models.CharField(
+        max_length=500,
+        blank=True,
+        help_text='Comma-separated search phrases.',
+    )
 
     def __str__(self):
         return self.name
@@ -52,6 +67,21 @@ class Product(models.Model):
                                  blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+    seo_title = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text='Browser and search title. Leave blank to use Product Name — Boutique House.',
+    )
+    seo_description = models.CharField(
+        max_length=320,
+        blank=True,
+        help_text='Short factual, keyword-aware search and social description.',
+    )
+    seo_keywords = models.CharField(
+        max_length=500,
+        blank=True,
+        help_text='Comma-separated product search phrases.',
+    )
 
     def __str__(self):
         return self.name

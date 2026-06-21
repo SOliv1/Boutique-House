@@ -140,3 +140,73 @@ class ProductPromotionViewTests(TestCase):
         self.assertContains(response, 'Garden Deal')
         self.assertNotContains(response, 'New Garden Glasses')
         self.assertContains(response, 'Special Deals')
+
+
+class SeoMetadataTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.collection = Collection.objects.create(
+            name='seo_collection',
+            friendly_name='SEO Collection',
+            seo_title='Archive Collection — Boutique House',
+            seo_description='A concise archival collection description.',
+            seo_keywords='archival fashion, curated vintage',
+        )
+        cls.product = Product.objects.create(
+            collection=cls.collection,
+            name='Archive Skirt',
+            description='Long fallback product description.',
+            price='125.00',
+            image_url='https://images.example.com/archive-skirt.jpg',
+            seo_title='Archive Skirt — Boutique House',
+            seo_description='A concise archival skirt description.',
+            seo_keywords='archive skirt, vintage fashion uk',
+        )
+
+    def test_product_page_renders_product_seo_metadata(self):
+        response = self.client.get(
+            reverse('product_detail', args=[self.product.id]),
+        )
+
+        self.assertContains(
+            response,
+            '<title>Archive Skirt — Boutique House</title>',
+            html=True,
+        )
+        self.assertContains(
+            response,
+            'content="A concise archival skirt description."',
+        )
+        self.assertContains(
+            response,
+            'content="https://images.example.com/archive-skirt.jpg"',
+        )
+        self.assertContains(
+            response,
+            'https://boutique-house-production-751b.up.railway.app/products/'
+            f'{self.product.id}/',
+        )
+
+    def test_collection_page_renders_collection_seo_metadata(self):
+        response = self.client.get(
+            reverse('products'),
+            {'collection': self.collection.name},
+        )
+
+        self.assertContains(
+            response,
+            '<title>Archive Collection — Boutique House</title>',
+            html=True,
+        )
+        self.assertContains(
+            response,
+            'content="A concise archival collection description."',
+        )
+        self.assertContains(
+            response,
+            'content="archival fashion, curated vintage"',
+        )
+        self.assertContains(
+            response,
+            '?collection=seo_collection',
+        )

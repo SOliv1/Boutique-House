@@ -1,4 +1,18 @@
-{% extends "base.html" %} {% load static product_colours %} {% block page_header %}
+{% extends "base.html" %} {% load static product_colours %}
+{% block title %}{% if current_collection and current_collection.seo_title %}{{ current_collection.seo_title }}{% elif current_collection %}{{ current_collection.friendly_name }} — Boutique House{% else %}Boutique House — Curated Living, Vintage Finds &amp; Atmospheric Homeware{% endif %}{% endblock %}
+{% block meta_description %}{% if current_collection and current_collection.seo_description %}{{ current_collection.seo_description }}{% elif current_collection and current_collection.description %}{{ current_collection.description|striptags|truncatechars:300 }}{% else %}Browse vintage fashion, atmospheric homeware, and curated seasonal living from Boutique House.{% endif %}{% endblock %}
+{% block meta_keywords %}{% if current_collection and current_collection.seo_keywords %}{{ current_collection.seo_keywords }}{% else %}boutique house, curated living, vintage fashion uk, vintage homeware uk{% endif %}{% endblock %}
+{% block canonical_url %}https://boutique-house-production-751b.up.railway.app{{ request.path }}{% if current_collection %}?collection={{ current_collection.name|urlencode }}{% endif %}{% endblock %}
+{% block og_title %}{% if current_collection and current_collection.seo_title %}{{ current_collection.seo_title }}{% elif current_collection %}{{ current_collection.friendly_name }} — Boutique House{% else %}Boutique House — Curated Living{% endif %}{% endblock %}
+{% block og_description %}{% if current_collection and current_collection.seo_description %}{{ current_collection.seo_description }}{% elif current_collection and current_collection.description %}{{ current_collection.description|striptags|truncatechars:300 }}{% else %}Vintage fashion, atmospheric homeware, and curated seasonal living.{% endif %}{% endblock %}
+{% block og_image %}{% if collection_og_image_url %}{{ collection_og_image_url }}{% else %}https://boutique-house-production-751b.up.railway.app{% static 'images/promotions/boutique-house-cinematic-promotion.jpg' %}{% endif %}{% endblock %}
+{% block og_image_alt %}{% if current_collection %}{{ current_collection.friendly_name }} at Boutique House{% else %}Boutique House curated collections{% endif %}{% endblock %}
+{% block og_url %}https://boutique-house-production-751b.up.railway.app{{ request.path }}{% if current_collection %}?collection={{ current_collection.name|urlencode }}{% endif %}{% endblock %}
+{% block twitter_title %}{% if current_collection and current_collection.seo_title %}{{ current_collection.seo_title }}{% elif current_collection %}{{ current_collection.friendly_name }} — Boutique House{% else %}Boutique House — Curated Living{% endif %}{% endblock %}
+{% block twitter_description %}{% if current_collection and current_collection.seo_description %}{{ current_collection.seo_description }}{% elif current_collection and current_collection.description %}{{ current_collection.description|striptags|truncatechars:300 }}{% else %}Vintage fashion, atmospheric homeware, and curated seasonal living.{% endif %}{% endblock %}
+{% block twitter_image %}{% if collection_og_image_url %}{{ collection_og_image_url }}{% else %}https://boutique-house-production-751b.up.railway.app{% static 'images/promotions/boutique-house-cinematic-promotion.jpg' %}{% endif %}{% endblock %}
+{% block twitter_image_alt %}{% if current_collection %}{{ current_collection.friendly_name }} at Boutique House{% else %}Boutique House curated collections{% endif %}{% endblock %}
+{% block page_header %}
 <div class="container header-container">
   <div class="row">
     <div class="col"></div>
