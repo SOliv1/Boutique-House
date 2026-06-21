@@ -1,16 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#D8D5D1" />
-  <g
-    fill="none"
-    stroke="#2E2924"
-    stroke-width="1.7"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  >
-    <path d="M8.6 7.4V24.6" />
-    <path d="M8.6 8.2H14.6C16.5 8.2 18 9.7 18 11.6C18 13.5 16.5 15 14.6 15H8.6" />
-    <path d="M8.6 15H15.2C17.2 15 18.8 16.6 18.8 18.6C18.8 20.6 17.2 22.2 15.2 22.2H8.6" />
-    <path d="M22.2 7.4V24.6" />
-    <path d="M22.2 16H27.4" />
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#604858"/>
+  <text
+    x="32"
+    y="41"
+    fill="#fffaf4"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="28"
+    font-weight="600"
+    letter-spacing="-2"
+    text-anchor="middle"
+  >BH</text>
 </svg>
