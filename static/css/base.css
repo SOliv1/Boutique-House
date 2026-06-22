@@ -1221,7 +1221,7 @@ body {
 }
 
 .vintage-notes-hero__slide--archive {
-    animation: vintageHeroSlideFade 18s ease-in-out infinite;
+    animation: vintageHeroSlideFade 36s ease-in-out infinite;
 }
 
 .vintage-notes-hero__slide--archive img {
@@ -1232,14 +1232,29 @@ body {
 }
 
 .vintage-notes-hero__slide--wildcard {
-    animation: vintageHeroSlideFade 18s ease-in-out 9s infinite;
+    animation: vintageHeroSlideFade 36s ease-in-out 9s infinite;
 }
 
-.vintage-notes-hero__slide--wildcard img {
+.vintage-notes-hero__slide--wildcard img,
+.vintage-notes-hero__slide--summer img,
+.vintage-notes-hero__slide--summer-accessories img {
     box-shadow: 0 22px 48px rgba(68, 48, 34, .18);
     max-height: min(53vh, 580px);
     max-width: min(86vw, 1060px);
     width: auto;
+}
+
+.vintage-notes-hero__slide--summer {
+    animation: vintageHeroSlideFade 36s ease-in-out 18s infinite;
+}
+
+.vintage-notes-hero__slide--summer img,
+.vintage-notes-hero__slide--summer-accessories img {
+    max-width: 47%;
+}
+
+.vintage-notes-hero__slide--summer-accessories {
+    animation: vintageHeroSlideFade 36s ease-in-out 27s infinite;
 }
 
 .vintage-notes-hero__veil {
@@ -1429,13 +1444,13 @@ body {
         transform: scale(1.006);
     }
 
-    9%,
-    43% {
+    4.5%,
+    20% {
         opacity: 1;
         transform: scale(1.006);
     }
 
-    52% {
+    25% {
         opacity: 0;
         transform: scale(1.018);
     }
@@ -2258,9 +2273,16 @@ body.promotion-is-open {
         max-width: 32%;
     }
 
-    .vintage-notes-hero__slide--wildcard img {
+    .vintage-notes-hero__slide--wildcard img,
+    .vintage-notes-hero__slide--summer img,
+    .vintage-notes-hero__slide--summer-accessories img {
         max-height: 43vh;
         max-width: 94vw;
+    }
+
+    .vintage-notes-hero__slide--summer img,
+    .vintage-notes-hero__slide--summer-accessories img {
+        max-width: 48%;
     }
 
     .vintage-notes-hero__content {
