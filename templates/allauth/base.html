@@ -34,6 +34,78 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(function () {
+                var $mainNav = $('#main-nav');
+                var $navToggle = $('.js-main-nav-toggle');
+                var mobileNavQuery = window.matchMedia('(max-width: 991.98px)');
+
+                if (!$mainNav.length || !$navToggle.length) {
+                    return;
+                }
+
+                function setNavExpanded(isExpanded) {
+                    $navToggle
+                        .attr('aria-expanded', isExpanded ? 'true' : 'false')
+                        .toggleClass('is-open', isExpanded);
+                }
+
+                function resetMobileNavDropdowns() {
+                    $mainNav.find('.dropdown-menu.show').removeClass('show');
+                    $mainNav.find("[data-toggle='dropdown']").attr('aria-expanded', 'false');
+                }
+
+                function openMobileNav() {
+                    if (!mobileNavQuery.matches) {
+                        return;
+                    }
+
+                    $mainNav.addClass('show').removeClass('collapsing').css('height', '');
+                    setNavExpanded(true);
+                }
+
+                function closeMobileNav() {
+                    if (!mobileNavQuery.matches || !$mainNav.hasClass('show')) {
+                        return;
+                    }
+
+                    $mainNav.removeClass('show collapsing').css('height', '');
+                    setNavExpanded(false);
+                    resetMobileNavDropdowns();
+                }
+
+                $navToggle.on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    if ($mainNav.hasClass('show')) {
+                        closeMobileNav();
+                    } else {
+                        openMobileNav();
+                    }
+                });
+
+                $mainNav.on('click', "a:not([data-toggle='dropdown'])", closeMobileNav);
+
+                $(document).on('click', function (event) {
+                    if (!mobileNavQuery.matches || !$mainNav.hasClass('show')) {
+                        return;
+                    }
+
+                    if ($(event.target).closest('.navbar').length) {
+                        return;
+                    }
+
+                    closeMobileNav();
+                });
+
+                if (mobileNavQuery.addEventListener) {
+                    mobileNavQuery.addEventListener('change', closeMobileNav);
+                } else {
+                    mobileNavQuery.addListener(closeMobileNav);
+                }
+            });
+        </script>
         <!-- Stripe -->
         <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
@@ -107,7 +179,7 @@
         </div>
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler js-main-nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a href="{% url 'home' %}" class="mobile-brand-link d-lg-none" aria-label="Boutique House home">BH</a>
