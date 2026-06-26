@@ -17,10 +17,15 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-12 col-md">
                 <hr>
                 <h2 class="logo-font mb-4">My Profile</h2>
                 <hr>
+            </div>
+            <div class="col-12 col-md-auto d-flex align-items-md-center justify-content-md-end mb-4">
+                <a class="btn btn-outline-black rounded-0 profile-signout-link" href="{% url 'account_logout' %}">
+                    Sign Out
+                </a>
             </div>
         </div>
         <div class="row">

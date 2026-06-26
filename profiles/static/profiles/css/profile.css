@@ -66,6 +66,10 @@ body {
     color: white !important;
 }
 
+.profile-signout-link {
+    min-width: 8rem;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,

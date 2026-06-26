@@ -2,7 +2,7 @@
     <a
         class="bh-mobile-action"
         href="{% if request.user.is_authenticated %}{% url 'profile' %}{% else %}{% url 'account_login' %}{% endif %}"
-        aria-label="My Account"
+        aria-label="{% if request.user.is_authenticated %}My Account{% else %}Sign In{% endif %}"
     >
         <svg class="bh-premium-icon bh-account-icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
             <circle cx="16" cy="12" r="6" fill="currentColor"></circle>

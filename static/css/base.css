@@ -52,6 +52,22 @@ html {
     white-space: nowrap;
 }
 
+.bh-account-signout {
+    color: #604858;
+    display: block;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    margin-top: .15rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.bh-account-signout:hover,
+.bh-account-signout:focus {
+    color: #171310;
+    text-decoration: underline;
+}
+
 .bh-premium-icon {
     color: var(--bh-text);
     display: block;
