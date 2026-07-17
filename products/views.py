@@ -12,13 +12,14 @@ from .forms import ProductForm
 from django.http import JsonResponse
 from products.models import Product
 
-
 # Create your views here.
 
 def vintage_notes_count(request):
-    count = Product.objects.filter(collection="vintage_notes").count()
-    return JsonResponse({ "count": count })
-
+    try:
+        count = Product.objects.filter(collection="vintage_notes").count()
+        return JsonResponse({"count": count})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 
 def _absolute_media_url(request, uploaded_image=None, external_url=None):
