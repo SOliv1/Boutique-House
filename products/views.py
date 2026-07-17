@@ -8,17 +8,17 @@ from django.db.models.functions import Lower
 from .models import Product, Category, Collection
 from .forms import ProductForm
 
-# Dynamic badge: Vintage Notes count
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .models import Product
+# Dynamic Badges
+from django.http import JsonResponse
+from products.models import Product
+
 
 # Create your views here.
 
-@api_view(['GET'])
 def vintage_notes_count(request):
     count = Product.objects.filter(collection="vintage_notes").count()
-    return Response({ "count": count })
+    return JsonResponse({ "count": count })
+
 
 
 def _absolute_media_url(request, uploaded_image=None, external_url=None):
