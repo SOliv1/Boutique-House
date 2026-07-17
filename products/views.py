@@ -8,19 +8,8 @@ from django.db.models.functions import Lower
 from .models import Product, Category, Collection
 from .forms import ProductForm
 
-# Dynamic Badges
-from django.http import JsonResponse
-from products.models import Product
 
-# Create your views here.
-
-def vintage_notes_count(request):
-    try:
-        count = Product.objects.filter(collection="vintage_notes").count()
-        return JsonResponse({"count": count})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
-
+#Add your views here
 
 def _absolute_media_url(request, uploaded_image=None, external_url=None):
     if external_url:
