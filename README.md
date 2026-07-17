@@ -1,7 +1,8 @@
 # 🛍️ Boutique House
 #### Future domain address: boutiquehouse.co.uk
 
-## 🚀 Live Site
+ ## [🚀 Live Site](https://boutique-house-production-751b.up.railway.app/) 
+
 <p align="center">
 
   <!-- Build Status -->
@@ -30,8 +31,6 @@
     <img src="https://github.com/SOliv1/Boutique-House/actions/workflows/codeql-analysis.yml/badge.svg" alt="CodeQL">
   </a>
 </p>
-
-**[boutique-house-production-751b.up.railway.app](https://boutique-house-production-751b.up.railway.app)**
 
 > Deployed on [Railway](https://railway.app)
 
