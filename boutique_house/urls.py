@@ -17,7 +17,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from products.views import vintage_notes_count
+
 
 from .sitemaps import sitemaps
 from .views import robots_txt
