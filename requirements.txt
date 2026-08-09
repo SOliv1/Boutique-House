@@ -2,7 +2,7 @@ asgiref==3.11.1
 certifi==2026.5.20
 charset-normalizer==3.4.7
 crispy-bootstrap4==2026.2
-Django==6.0.6
+Django==6.0.7
 django-allauth==65.18.0
 django-anymail==14.0
 django-countries==9.0.0
