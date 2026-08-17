@@ -54,8 +54,8 @@
       />
       {% else %}
       <img
-        src="{% static 'images/collections/garden/boutique-banner-portrait.png' %}"
-        alt="Summer portrait"
+        src="{{ seasonal_cover.url }}"
+        alt="{{ seasonal_cover.label }} portrait"
         class="home-hero-portrait"
       />
       {% endif %}

@@ -6,6 +6,7 @@ from django.views.decorators.http import require_http_methods
 from checkout.models import Order
 
 from .models import HomePageHero, HomePromotion
+from .seasonal_covers import get_seasonal_cover
 
 
 def index(request):
@@ -19,6 +20,7 @@ def index(request):
     context = {
         'home_hero': home_hero,
         'home_promotion': home_promotion,
+        'seasonal_cover': get_seasonal_cover(),
     }
     return render(request, 'home/index.html', context)
 
